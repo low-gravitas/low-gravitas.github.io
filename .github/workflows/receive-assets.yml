@@ -16,18 +16,18 @@ jobs:
       - name: Download zen CSS (theme repo dispatch)
         if: github.event.action == 'update-zen-css'
         run: |
-          curl -sL "https://raw.githubusercontent.com/low-gravitas/low-gravitas-zen-theme/${{ github.event.client_payload.sha }}/docs/low-gravitas-zen.css" \
-            -o low-gravitas-zen.css
-          curl -sL "https://raw.githubusercontent.com/low-gravitas/low-gravitas-zen-theme/${{ github.event.client_payload.sha }}/docs/low-gravitas-common.css" \
-            -o low-gravitas-common.css
+          curl -sL -o low-gravitas-zen.css \
+            "https://github.com/low-gravitas/low-gravitas-zen-theme/releases/download/${{ github.event.client_payload.version }}/low-gravitas-zen.css"
+          curl -sL -o low-gravitas-common.css \
+            "https://github.com/low-gravitas/low-gravitas-zen-theme/releases/download/${{ github.event.client_payload.version }}/low-gravitas-common.css"
 
       - name: Download symbol font (font repo dispatch)
         if: github.event.action == 'update-symbol-font'
         run: |
-          curl -sL "https://raw.githubusercontent.com/low-gravitas/low-gravitas-symbol-font/${{ github.event.client_payload.sha }}/site/LowGravitasSymbols.ttf" \
-            -o LowGravitasSymbols.ttf
-          curl -sL "https://raw.githubusercontent.com/low-gravitas/low-gravitas-symbol-font/${{ github.event.client_payload.sha }}/site/low-gravitas-symbols.css" \
-            -o low-gravitas-symbols.css
+          curl -sL -o LowGravitasSymbols.ttf \
+            "https://github.com/low-gravitas/low-gravitas-symbol-font/releases/download/${{ github.event.client_payload.version }}/LowGravitasSymbols.ttf"
+          curl -sL -o low-gravitas-symbols.css \
+            "https://github.com/low-gravitas/low-gravitas-symbol-font/releases/download/${{ github.event.client_payload.version }}/low-gravitas-symbols.css"
 
       - name: Commit and push
         run: |
