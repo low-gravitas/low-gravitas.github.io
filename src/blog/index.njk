@@ -4,11 +4,7 @@ title: Blog
 description: Low Gravitas Blog — writing about themes, fonts, developer tools, and warm low-blue-light design.
 extraCss: /css/blog.css
 tags: []
-pagination:
-  data: collections.posts
-  size: 10
-  alias: posts
-permalink: /blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}
+permalink: /blog/
 ---
 
 <div class="post-index">
@@ -18,7 +14,7 @@ permalink: /blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber
   </div>
 
   <div class="post-list">
-    {% for post in posts %}
+    {% for post in collections.posts %}
     <article class="post-summary">
       <h2><a href="{{ post.url }}">{% if post.data.draft %}<span class="draft-badge">DRAFT</span> {% endif %}{{ post.data.title }}</a></h2>
       <div class="post-meta">
@@ -33,13 +29,6 @@ permalink: /blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber
     <p class="post-empty">No posts yet — check back soon.</p>
     {% endfor %}
   </div>
-
-  {% if pagination.pages.length > 1 %}
-  <nav class="pagination" aria-label="Blog pagination">
-    {% if pagination.href.previous %}<a href="{{ pagination.href.previous }}" class="btn">Newer</a>{% endif %}
-    {% if pagination.href.next %}<a href="{{ pagination.href.next }}" class="btn">Older</a>{% endif %}
-  </nav>
-  {% endif %}
 
   <div class="feed-link">
     <a href="/blog/feed.xml" class="btn"><span class="lg" aria-hidden="true">&#xF09E;</span> RSS Feed</a>
