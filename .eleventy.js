@@ -1,9 +1,7 @@
 // lowgravitas.com — Eleventy config
 //
-// Phase 1a: minimal viable 11ty build. Renders the landing page at /
-// using the existing root-level CSS/TTF via passthrough copy. Phases
-// 1b (vendor pipeline), 1c (common.css @layer ownership), and 1d
-// (sitemap, redirects) layer onto this.
+// Phase 1b: vendor pipeline added. Root-level CSS/TTF passthrough retained
+// for the landing page (1c moves ownership to src/css/ + vendor/generated/).
 
 export default function (eleventyConfig) {
   // ── Passthrough copies ────────────────────────────────────────────────────
@@ -11,6 +9,12 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/img");
+
+  // Vendor generated assets → _site/vendor/
+  // vendor/ is in .gitignore (it's fetched, not committed). Eleventy 3 respects
+  // .gitignore by default, so we must explicitly un-ignore the generated subtree.
+  eleventyConfig.ignores.delete("vendor/generated");
+  eleventyConfig.addPassthroughCopy({ "vendor/generated": "vendor" });
 
   // 1a-only: serve the existing root-level mirrored CSS/TTF from _site/
   // so the landing renders via `eleventy --serve` without moving ownership
