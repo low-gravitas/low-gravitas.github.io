@@ -4,10 +4,12 @@
 // assets served from vendor/generated/ → _site/vendor/.
 
 import { execSync } from "node:child_process";
+import rssPlugin from "@11ty/eleventy-plugin-rss";
 
 const buildHash = (process.env.GITHUB_SHA ?? execSync("git rev-parse HEAD").toString()).trim().slice(0, 8);
 
 export default function (eleventyConfig) {
+  eleventyConfig.addPlugin(rssPlugin);
   // ── Passthrough copies ────────────────────────────────────────────────────
   eleventyConfig.addPassthroughCopy({ "src/static": "/" });
   eleventyConfig.addPassthroughCopy("src/css");
