@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/vendor/low-gravitas-symbols.css">
 <link rel="stylesheet" href="/css/common.css">
 {% if extraCss %}<link rel="stylesheet" href="{{ extraCss }}">{% endif %}
+{% if tags and "blog" in tags %}<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Low Gravitas Blog">{% endif %}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
 
@@ -56,5 +57,9 @@
   });
 })();
 </script>
+{% if tags and "blog" in tags %}
+<script src="/js/blog-code.js"></script>
+<script src="/js/blog-lightbox.js"></script>
+{% endif %}
 </body>
 </html>

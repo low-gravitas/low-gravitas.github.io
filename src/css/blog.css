@@ -1,0 +1,840 @@
+/* Low Gravitas Blog — blog-specific styles
+   Depends on low-gravitas-zen.css and low-gravitas-common.css */
+
+/* ── Blog index ──────────────────────────────────────────────────────────── */
+
+.post-index {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px 64px;
+}
+
+.post-index-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.post-index-header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.post-index-tagline {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 56px;
+}
+
+.post-summary {
+  position: relative;
+  background: var(--surface, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border-dim);
+  border-radius: 10px;
+  padding: 24px 28px;
+  transition: border-color 0.15s;
+}
+
+.post-summary:hover {
+  border-color: var(--accent);
+}
+
+.post-summary h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.post-summary h2 a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+/* Make the entire card clickable via the title link */
+.post-summary h2 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+}
+
+.post-summary h2 a:hover {
+  color: var(--accent);
+}
+
+.post-summary h2 a:focus-visible {
+  outline: none;
+}
+
+.post-summary h2 a:focus-visible::after {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.post-excerpt {
+  color: var(--text-dim);
+  font-size: 0.925rem;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.post-empty {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.draft-badge {
+  display: inline-block;
+  font-size: 0.65em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bg);
+  background: var(--lgz-bright-yellow, #d4a017);
+  border-radius: 4px;
+  padding: 0.15em 0.5em;
+  vertical-align: middle;
+  margin-right: 0.25em;
+}
+
+.feed-link {
+  margin-top: 8px;
+}
+
+/* ── Post meta (shared between index and post view) ──────────────────────── */
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.post-meta time {
+  font-family: "SF Mono", "Fira Code", "JetBrains Mono", "Menlo", monospace;
+}
+
+.post-author::before {
+  content: "·";
+  margin-right: 12px;
+}
+
+.post-reading-time {
+  color: var(--text-dim);
+}
+
+.post-reading-time::before {
+  content: "·";
+  margin-right: 12px;
+}
+
+/* ── Full post layout ────────────────────────────────────────────────────── */
+
+.post {
+  max-width: 720px;
+  margin: 1rem auto;
+  padding: 48px 40px 64px;
+  background: var(--surface);
+  border-radius: 12px;
+}
+
+.post-header {
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.post-description {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+/* ── Post content typography ─────────────────────────────────────────────── */
+
+.post-content {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.post-content h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--lgz-bright-blue);
+  margin: 1.5em 0 0.5em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--lgz-yellow);
+  margin: 1.6em 0 0.5em;
+}
+
+.post-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.4em 0 0.4em;
+}
+
+.post-content p {
+  margin: 0 0 1.2em;
+}
+
+.post-content ul,
+.post-content ol {
+  margin: 0 0 1.2em 1.5em;
+}
+
+.post-content li {
+  margin-bottom: 0.4em;
+}
+
+.post-content li > ul,
+.post-content li > ol {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+.post-content strong {
+  font-weight: 600;
+  color: var(--lgz-bright-white);
+}
+
+.post-content em {
+  font-style: italic;
+  color: var(--text);
+}
+
+.post-content a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.post-content a:hover {
+  color: var(--accent);
+}
+
+.post-content blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1.5em 0;
+  padding: 0.5em 0 0.5em 1.25em;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.post-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.post-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5em 0;
+}
+
+/* ── Inline code ─────────────────────────────────────────────────────────── */
+
+.post-content :not(pre) > code {
+  font-family: "SF Mono", "Fira Code", "JetBrains Mono", "Menlo", monospace;
+  font-size: 0.875em;
+  background: var(--surface);
+  border: 1px solid var(--border-dim);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  color: var(--lgz-bright-green);
+}
+
+/* ── Code blocks (Prism-compatible, Zen theme colors) ────────────────────── */
+
+.post-content pre {
+  background: var(--bg) !important;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25em 1.5em;
+  margin: 1.5em 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.post-content pre code {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: inherit;
+  font-family: "SF Mono", "Fira Code", "JetBrains Mono", "Menlo", monospace;
+  color: var(--lgz-white);
+}
+
+/* Prism token colors — mapped to Zen palette */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--lgz-blue);
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: var(--text-dim);
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--lgz-bright-red);
+}
+
+.token.boolean,
+.token.number {
+  color: var(--lgz-bright-yellow);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: var(--lgz-green);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: var(--lgz-bright-cyan);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: var(--lgz-bright-blue);
+}
+
+.token.keyword {
+  color: var(--lgz-bright-red);
+  font-weight: 500;
+}
+
+.token.regex,
+.token.important {
+  color: var(--lgz-bright-magenta);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/* ── Enhanced code blocks ────────────────────────────────────────────────── */
+
+/* Wrapper — carries border, radius, margin; pre inside has none of these */
+.code-block {
+  position: relative;
+  margin: 1.5em 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Header bar — sits outside the scrolling pre */
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3em 0.75em;
+  border-bottom: 1px solid var(--border-dim);
+  background: var(--bg);
+}
+
+/* Language label */
+.code-block-label {
+  font-size: 0.7rem;
+  font-family: "SF Mono", "Fira Code", "JetBrains Mono", "Menlo", monospace;
+  color: var(--text-dim);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.code-block-label[data-is-title] {
+  text-transform: none;
+  letter-spacing: normal;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* Copy button — always visible, no opacity trick */
+.code-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  background: transparent;
+  border: 1px solid var(--border-dim);
+  border-radius: 4px;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  padding: 0.2em 0.45em;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+.code-copy-btn:hover {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.code-copy-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.code-copy-btn[data-copied] {
+  color: var(--lgz-bright-green, #88c070);
+  border-color: var(--lgz-bright-green, #88c070);
+}
+
+/* pre inside wrapper — strip border/radius/margin; keep overflow scroll */
+.post-content .code-block pre {
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 1.25em 1.5em;
+}
+
+/* Line numbers */
+.post-content pre[data-line-numbers] code {
+  counter-reset: line;
+}
+
+.post-content pre[data-line-numbers] code .highlight-line {
+  display: inline-block;
+  width: 100%;
+}
+
+.post-content pre[data-line-numbers] code .highlight-line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2.5em;
+  margin-right: 1em;
+  text-align: right;
+  color: var(--text-dim);
+  opacity: 0.4;
+  font-size: 0.85em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Line highlighting */
+.post-content pre .highlight-line[data-highlighted] {
+  background: rgba(255, 255, 134, 0.06);
+  margin-left: -1.5em;
+  margin-right: -1.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  border-left: 2px solid var(--accent);
+}
+
+/* ── Images ──────────────────────────────────────────────────────────────── */
+
+/* Standalone images not inside a layout figure */
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  border: 1px solid var(--border-dim);
+  margin: 1.5em auto;
+}
+
+/* Clearfix — contains floated figures */
+.post-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ── Image layout system ─────────────────────────────────────────────────── */
+
+/* Shared styles for all layout figure types */
+.post-content .img-full,
+.post-content .img-center,
+.post-content .img-left,
+.post-content .img-right {
+  margin: 0;
+}
+
+.post-content .img-full img,
+.post-content .img-center img,
+.post-content .img-left img,
+.post-content .img-right img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  border: 1px solid var(--border-dim);
+  margin: 0;
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-content .img-full img:hover,
+.post-content .img-center img:hover,
+.post-content .img-left img:hover,
+.post-content .img-right img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+.post-content .img-link {
+  display: block;
+  text-decoration: none;
+}
+
+.post-content .img-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.post-content figcaption {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-top: 6px;
+  line-height: 1.3;
+}
+
+/* Tighter captions on floated/centered images */
+.post-content .img-left figcaption,
+.post-content .img-right figcaption {
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+/* Full width */
+.post-content .img-full {
+  width: 100%;
+  margin: 2em 0;
+}
+
+/* Centered block */
+.post-content .img-center {
+  width: 80%;
+  margin: 1em auto;
+}
+
+/* Float left */
+.post-content .img-left {
+  float: left;
+  width: 45%;
+  margin: 0.25rem 1.5em 0.25rem 0;
+  clear: left;
+}
+
+/* Float right */
+.post-content .img-right {
+  float: right;
+  width: 45%;
+  margin: 0.25rem 0 0.25rem 1.5em;
+  clear: right;
+}
+
+/*
+ * Baseline grid alignment for floated images.
+ * Text line-height is 1.75rem (28px at 16px base).
+ * The figure's total height must be a multiple of this
+ * so text wraps cleanly underneath without a partial-line gap.
+ *
+ * Figure outer height = img height + border (2px) + caption-margin (4px)
+ *                       + caption height (~17px) = img + ~23px
+ *
+ * We set img height to (N * 1.75rem - 1.5rem) and use object-fit: cover
+ * to crop. The ~1.5rem accounts for caption + border overhead, kept
+ * slightly under the exact value so text always has room to start.
+ */
+.post-content .img-left img,
+.post-content .img-right img {
+  height: calc(7 * 1.75rem - 1.3rem - 0.5rem);
+  object-fit: cover;
+}
+
+/* ── Lightbox ────────────────────────────────────────────────────────────── */
+
+dialog.img-lightbox {
+  display: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+dialog.img-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+dialog.img-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+dialog.img-lightbox img {
+  max-width: 100%;
+  max-height: calc(100vh - 4rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+  cursor: zoom-out;
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.6);
+}
+
+.img-lightbox-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.img-lightbox-close:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.img-lightbox-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Post footer ─────────────────────────────────────────────────────────── */
+
+.post-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.post-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.15s;
+}
+
+.post-back:hover {
+  color: var(--link);
+}
+
+.post-back .lg {
+  font-size: 12px;
+}
+
+/* ── Page layout ─────────────────────────────────────────────────────────── */
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+.page h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.page-content {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.page-content h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--lgz-bright-blue);
+  margin: 1.8em 0 0.5em;
+}
+
+.page-content p {
+  margin: 0 0 1.2em;
+}
+
+.page-content ul,
+.page-content ol {
+  margin: 0 0 1.2em 1.5em;
+}
+
+.page-content li {
+  margin-bottom: 0.4em;
+}
+
+.page-content a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.page-content a:hover {
+  color: var(--accent);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+/* Mid-width: center images switch to full-width, no float */
+@media (max-width: 900px) {
+  .post-content .img-center {
+    width: 100%;
+    margin: 2em 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .post,
+  .page {
+    padding: 32px 16px 48px;
+    border-radius: 0;
+  }
+
+  .post-index {
+    padding: 48px 16px 48px;
+  }
+
+  .post-header h1,
+  .page h1 {
+    font-size: 1.6rem;
+  }
+
+  .post-index-header h1 {
+    font-size: 2rem;
+  }
+
+  .post-index-header {
+    margin-bottom: 40px;
+  }
+
+  .post-content .code-block {
+    margin-left: -16px;
+    margin-right: -16px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+
+  .post-content .code-block pre {
+    padding: 1em;
+    font-size: 0.8rem;
+  }
+
+  /* All image layouts become full-width at mobile */
+  .post-content .img-left,
+  .post-content .img-right,
+  .post-content .img-center,
+  .post-content .img-full {
+    float: none;
+    width: 100%;
+    margin: 1.5em 0;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .post-summary h2 a,
+  .post-back {
+    transition: none;
+  }
+
+  .post-content .img-full img,
+  .post-content .img-center img,
+  .post-content .img-left img,
+  .post-content .img-right img {
+    transition: none;
+  }
+
+  .post-content .img-full img:hover,
+  .post-content .img-center img:hover,
+  .post-content .img-left img:hover,
+  .post-content .img-right img:hover {
+    transform: none;
+  }
+}

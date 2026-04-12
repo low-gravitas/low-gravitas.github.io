@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+title: Blog
+description: Low Gravitas Blog — writing about themes, fonts, developer tools, and warm low-blue-light design.
+extraCss: /css/blog.css
+tags: []
+pagination:
+  data: collections.posts
+  size: 10
+  alias: posts
+permalink: /blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}
+---
+
+<div class="post-index">
+  <div class="post-index-header">
+    <h1>Blog</h1>
+    <p class="post-index-tagline">Notes on Low Gravitas projects, software development, and things that catch my attention.</p>
+  </div>
+
+  <div class="post-list">
+    {% for post in posts %}
+    <article class="post-summary">
+      <h2><a href="{{ post.url }}">{% if post.data.draft %}<span class="draft-badge">DRAFT</span> {% endif %}{{ post.data.title }}</a></h2>
+      <div class="post-meta">
+        <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+        {% if post.data.author %}<span class="post-author">by {{ post.data.author }}</span>{% endif %}
+      </div>
+      {% if post.data.description %}
+      <p class="post-excerpt">{{ post.data.description }}</p>
+      {% endif %}
+    </article>
+    {% else %}
+    <p class="post-empty">No posts yet — check back soon.</p>
+    {% endfor %}
+  </div>
+
+  {% if pagination.pages.length > 1 %}
+  <nav class="pagination" aria-label="Blog pagination">
+    {% if pagination.href.previous %}<a href="{{ pagination.href.previous }}" class="btn">Newer</a>{% endif %}
+    {% if pagination.href.next %}<a href="{{ pagination.href.next }}" class="btn">Older</a>{% endif %}
+  </nav>
+  {% endif %}
+
+  <div class="feed-link">
+    <a href="/blog/feed.xml" class="btn"><span class="lg" aria-hidden="true">&#xF09E;</span> RSS Feed</a>
+  </div>
+</div>
