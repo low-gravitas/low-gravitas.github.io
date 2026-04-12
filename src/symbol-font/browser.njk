@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+title: Low Gravitas Symbols — Glyph Browser
+description: Browse 11,800+ glyphs. Search, filter, inspect, and export CSS subsets.
+bodyClass: demo-symbol-font
+extraCss: /css/demos/symbol-font.css
+---
+
+<h1 class="sr-only">Low Gravitas Symbols Glyph Browser</h1>
+<div class="toolbar">
+  <div class="toolbar-row">
+    <label for="search" class="sr-only">Search glyphs</label>
+    <input id="search" type="text" placeholder="Search by name or hex code (e.g. E0C4)..." autocomplete="off">
+    <label for="set-filter" class="sr-only">Filter by icon set</label>
+    <select id="set-filter">
+      <option value="">All Sets</option>
+    </select>
+    <label for="sort-order" class="sr-only">Sort order</label>
+    <select id="sort-order">
+      <option value="name">Sort: Name</option>
+      <option value="codepoint">Sort: Codepoint</option>
+    </select>
+    <span id="count" aria-live="polite" aria-atomic="true"></span>
+  </div>
+  <div class="toolbar-hint">Arrows navigate. Space/click to inspect. Enter/&#8984;-click to collect. Shift extends range.</div>
+</div>
+
+<div id="grid">
+  <div id="loading">Loading glyphs...</div>
+  <div id="container" role="grid" aria-label="Glyph results" tabindex="0"></div>
+</div>
+
+<div id="selection-panel">
+  <span class="sel-count" id="sel-count"></span>
+  <div class="sel-icons" id="sel-icons"></div>
+  <button id="sel-clear">Clear</button>
+  <button id="sel-download" class="primary">Download CSS</button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>window.GLYPHS_URL = "/vendor/glyphs.json";</script>
+<script src="/js/glyph-browser.js"></script>

@@ -1,0 +1,81 @@
+---
+layout: layouts/base.njk
+title: Low Gravitas Symbols
+description: A comprehensive symbol font combining glyphs from Nerd Fonts, Font Awesome, Material Design, Codicons, and more — all in a single font file.
+bodyClass: demo-symbol-font
+extraCss: /css/demos/symbol-font.css
+---
+
+<div class="hero-icons" aria-hidden="true"><span>&#xE702;</span><span>&#xE711;</span><span>&#xE900;</span><span>&#xF121;</span><span>&#xEA73;</span><span>&#xF413;</span></div>
+<h1>Low Gravitas Symbols</h1>
+<div class="version" id="version">{{ site.versions.symbolFont }}</div>
+<p>
+  A comprehensive symbol font combining glyphs from Nerd Fonts, Font Awesome,
+  Material Design, Codicons, Devicons, Weather Icons, and more &mdash;
+  all in a single font file for terminals, editors, and the web.
+</p>
+
+<div class="actions">
+  <a class="btn primary" href="https://github.com/low-gravitas/low-gravitas-symbol-font/releases/latest">
+    <span class="lg" aria-hidden="true">&#xF019;</span> Download Font
+  </a>
+  <a class="btn" href="/symbol-font/browser/">
+    <span class="lg" aria-hidden="true">&#xF002;</span> Browse Glyphs
+  </a>
+  <a class="btn" href="https://github.com/low-gravitas/low-gravitas-symbol-font">
+    <span class="lg" aria-hidden="true">&#xF09B;</span> View on GitHub
+  </a>
+</div>
+
+<div class="features">
+  <div class="feature fade-in">
+    <div class="icon" aria-hidden="true">&#xF413;</div>
+    <h2>11,800+ Glyphs</h2>
+    <p>Icons from 15 popular sets, merged into a single unified font.</p>
+  </div>
+  <div class="feature fade-in">
+    <div class="icon" aria-hidden="true">&#xEA73;</div>
+    <h2>CSS Subset Builder</h2>
+    <p>Pick the icons you need and download a minimal CSS stylesheet.</p>
+  </div>
+  <div class="feature fade-in">
+    <div class="icon" aria-hidden="true">&#xF489;</div>
+    <h2>Terminal Ready</h2>
+    <p>Designed for monospaced environments &mdash; terminals, editors, and status lines.</p>
+  </div>
+</div>
+
+<div class="sets-preview fade-in">
+  <h2>Included Icon Sets</h2>
+  <div class="sets-grid" id="sets-grid"></div>
+</div>
+
+<script>
+(function() {
+  var fadeObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function() { entry.target.classList.add('visible'); }, i * 100);
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(function(el) { fadeObserver.observe(el); });
+
+  fetch(window.GLYPHS_URL || '/vendor/glyphs.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var counts = {};
+      data.forEach(function(g) { counts[g.set] = (counts[g.set] || 0) + 1; });
+      var grid = document.getElementById('sets-grid');
+      Object.keys(counts).sort().forEach(function(set) {
+        var pill = document.createElement('a');
+        pill.className = 'set-pill';
+        pill.href = '/symbol-font/browser/?set=' + encodeURIComponent(set);
+        pill.innerHTML = set + '<span class="ct">' + counts[set].toLocaleString() + '</span>';
+        grid.appendChild(pill);
+      });
+    })
+    .catch(function() {});
+})();
+</script>
