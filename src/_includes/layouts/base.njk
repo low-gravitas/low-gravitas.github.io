@@ -11,17 +11,11 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/LowGravitasSymbols.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/low-gravitas-zen.css">
-<link rel="stylesheet" href="/low-gravitas-common.css">
+<link rel="preload" href="/vendor/LowGravitasSymbols.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="/vendor/low-gravitas-zen.css">
+<link rel="stylesheet" href="/vendor/low-gravitas-symbols.css">
+<link rel="stylesheet" href="/css/common.css">
 {% if extraCss %}<link rel="stylesheet" href="{{ extraCss }}">{% endif %}
-<style>
-@font-face {
-  font-family: 'LowGravitasSymbols';
-  src: url('/LowGravitasSymbols.ttf') format('truetype');
-  font-display: swap;
-}
-</style>
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
 
