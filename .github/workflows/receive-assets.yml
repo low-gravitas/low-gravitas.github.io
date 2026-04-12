@@ -11,7 +11,7 @@ jobs:
   commit-assets:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Download zen CSS (theme repo dispatch)
         if: github.event.action == 'update-zen-css'
