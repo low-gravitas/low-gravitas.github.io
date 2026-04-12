@@ -2,7 +2,7 @@
 
 /* ── Marketing page ── */
 
-.demo-symbol-font main {
+.demo-symbol-font:not(.demo-symbol-browser) main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +10,8 @@
   padding: 64px 24px;
   text-align: center;
 }
+
+.demo-symbol-browser { overflow-x: hidden; }
 
 .demo-symbol-font .hero-icons {
   font-family: 'LowGravitasSymbols', monospace;
