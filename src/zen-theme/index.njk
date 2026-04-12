@@ -27,7 +27,7 @@ extraCss: /css/demos/zen-theme.css
 {%- set darkHex = palette.dark.palette[name] -%}
 {%- set lightHex = palette.light.palette[name] -%}
 {%- set varName = "lgz-" + name -%}
-<div class="swatch" style="background: var(--{{ varName }});" data-dark="{{ darkHex }}" data-light="{{ lightHex }}"><span>{{ name }}</span></div>
+<div class="swatch" style="background: var(--{{ varName }}); --label-dark: {{ darkHex | contrastLabel }}; --label-light: {{ lightHex | contrastLabel }};" data-dark="{{ darkHex }}" data-light="{{ lightHex }}"><span>{{ name }}</span></div>
 {%- endfor %}
     </div>
   </div>
@@ -130,6 +130,16 @@ extraCss: /css/demos/zen-theme.css
   }
 
   syncDemos(getTheme());
+
+  // Sync demos when the global theme toggle (in base.njk) changes data-theme
+  new MutationObserver(function() {
+    syncDemos(getTheme());
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  // Also sync on OS preference change when no explicit user theme is set
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function() {
+    if (!sessionStorage.getItem('theme')) syncDemos(getTheme());
+  });
 
   document.querySelectorAll('.demo-toggle').forEach(function(btn) {
     var section = btn.closest('.demo-section');

@@ -41,6 +41,17 @@ export default function (eleventyConfig) {
     return `${Math.ceil(words / 200)} min read`;
   });
 
+  // Relative luminance → black or white label for swatch contrast
+  eleventyConfig.addFilter("contrastLabel", (hex) => {
+    const h = hex.replace("#", "");
+    const r = parseInt(h.substring(0, 2), 16) / 255;
+    const g = parseInt(h.substring(2, 4), 16) / 255;
+    const b = parseInt(h.substring(4, 6), 16) / 255;
+    const srgb = (c) => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    const L = 0.2126 * srgb(r) + 0.7152 * srgb(g) + 0.0722 * srgb(b);
+    return L > 0.179 ? "#000000" : "#ffffff";
+  });
+
   // ── Shortcodes ──────────────────────────────────────────────────────────
   eleventyConfig.addShortcode("image", function (src, alt, layout, caption) {
     layout = layout || "center";
