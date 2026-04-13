@@ -11,10 +11,9 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/vendor/LowGravitasSymbols.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/vendor/low-gravitas-zen.css">
-<link rel="stylesheet" href="/vendor/low-gravitas-symbols.css">
 <link rel="stylesheet" href="/css/common.css">
+{% if symbolsCss %}<link rel="stylesheet" href="/vendor/low-gravitas-symbols.css">{% endif %}
 {% if extraCss %}<link rel="stylesheet" href="{{ extraCss }}">{% endif %}
 {% if tags and "blog" in tags %}<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Low Gravitas Blog">{% endif %}
 </head>

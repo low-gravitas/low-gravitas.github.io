@@ -130,8 +130,13 @@ main { flex: 1; }
 a { color: var(--link); }
 a:hover { color: var(--accent); }
 
-/* ── Symbol font utility ── */
+/* ── Symbol font ── */
 
+@font-face {
+  font-family: 'LowGravitasSymbols';
+  src: url('/vendor/LowGravitasSymbols.ttf') format('truetype');
+  font-display: swap;
+}
 .lg { font-family: var(--font-symbol); }
 
 /* ══════════════════════════════════════════════════════
