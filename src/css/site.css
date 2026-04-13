@@ -9,12 +9,12 @@ main {
   justify-content: center;
   padding: 64px 24px;
   text-align: center;
-  max-width: 720px;
+  max-width: var(--content-narrow);
   margin: 0 auto;
 }
 
 h1 {
-  font-size: 2.4rem;
+  font-size: var(--text-3xl);
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 12px;
@@ -22,8 +22,8 @@ h1 {
 
 .tagline {
   color: var(--text-dim);
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
   margin-bottom: 48px;
 }
 
@@ -37,28 +37,28 @@ h1 {
 .card {
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--surface-radius);
   padding: 28px 24px;
   text-decoration: none;
   color: var(--text);
-  transition: border-color 0.15s, box-shadow 0.2s;
+  transition: border-color var(--duration-fast), box-shadow var(--duration-normal);
 }
 .card:hover {
   border-color: var(--accent);
-  box-shadow: 0 0 14px rgba(128, 64, 208, 0.4);
+  box-shadow: var(--surface-hover-glow);
 }
 
 .card h2 {
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
   font-weight: 700;
   color: var(--lgz-yellow);
   margin-bottom: 8px;
 }
 
 .card p {
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--text-dim);
-  line-height: 1.5;
+  line-height: var(--leading-snug);
 }
 
 @media (prefers-reduced-motion: reduce) {

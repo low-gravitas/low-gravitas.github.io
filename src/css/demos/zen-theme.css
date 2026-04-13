@@ -3,7 +3,7 @@
 /* ── Main ── */
 
 .demo-zen-theme main {
-  max-width: 960px;
+  max-width: var(--content-wide);
   width: 100%;
   margin: 0 auto;
   padding: 48px 24px;
@@ -16,15 +16,15 @@
   margin-bottom: 48px;
 }
 .demo-zen-theme .hero h1 {
-  font-size: 2.4rem;
+  font-size: var(--text-3xl);
   font-weight: 700;
   margin-bottom: 12px;
   color: var(--accent);
 }
 .demo-zen-theme .hero .tagline {
   color: var(--text-dim);
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
   max-width: 520px;
   margin: 0 auto 24px;
 }
@@ -33,7 +33,7 @@
 /* ── Section headers ── */
 
 .demo-zen-theme h2 {
-  font-size: 1.25rem;
+  font-size: var(--text-xl);
   font-weight: 700;
   margin: 2rem 0 0.75rem;
   color: var(--lgz-bright-blue);
@@ -54,12 +54,12 @@
 .demo-zen-theme .demo-toggle {
   background: none;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   padding: 4px 12px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: var(--text-xs);
   color: var(--text-dim);
-  transition: border-color 0.15s;
+  transition: border-color var(--duration-fast);
 }
 .demo-zen-theme .demo-toggle:hover { border-color: var(--accent); }
 .demo-zen-theme .demo-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -74,7 +74,7 @@
 }
 .demo-zen-theme .swatch {
   aspect-ratio: 1;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -82,7 +82,7 @@
   min-height: 60px;
   border: 1px solid var(--border);
   position: relative;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform var(--duration-fast), box-shadow var(--duration-fast);
 }
 .demo-zen-theme .swatch:hover { transform: scale(1.05); }
 .demo-zen-theme .swatch span { font-size: 0.6rem; text-align: center; word-break: break-all; }
@@ -91,9 +91,9 @@
 .demo-zen-theme .swatch::after {
   content: attr(data-dark);
   font-size: 0.55rem;
-  font-family: "SF Mono", monospace;
+  font-family: var(--font-mono);
   opacity: 0;
-  transition: opacity 0.15s;
+  transition: opacity var(--duration-fast);
   position: absolute;
   top: 4px; left: 0; right: 0;
   text-align: center;
@@ -107,10 +107,10 @@
 
 .demo-zen-theme .ide {
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--code-radius);
   overflow: hidden;
   margin-bottom: 1.5rem;
-  transition: box-shadow 0.2s;
+  transition: box-shadow var(--duration-normal);
 }
 .demo-zen-theme .ide-titlebar {
   background: var(--surface-raised);
@@ -118,7 +118,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text);
   border-bottom: 1px solid var(--border);
 }
@@ -130,8 +130,8 @@
   width: 170px;
   flex-shrink: 0;
   padding: 8px 0;
-  font-family: "SF Mono", "Fira Code", "JetBrains Mono", monospace;
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
   line-height: 1.8;
   border-right: 1px solid var(--border);
   color: var(--text);
@@ -150,7 +150,7 @@
 .demo-zen-theme .ide-tabs {
   background: var(--surface);
   display: flex;
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   border-bottom: 1px solid var(--border);
 }
 .demo-zen-theme .ide-tab { padding: 5px 14px; color: var(--text-dim); border-right: 1px solid var(--border); }
@@ -159,7 +159,7 @@
   flex: 1;
   padding: 8px 12px;
   overflow-x: auto;
-  font-family: "SF Mono", "Fira Code", "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   line-height: 1.55;
   white-space: pre;
@@ -191,9 +191,9 @@
   background: var(--bg);
   color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--code-radius);
   overflow: hidden;
-  transition: box-shadow 0.2s;
+  transition: box-shadow var(--duration-normal);
 }
 .demo-zen-theme .terminal-titlebar {
   background: var(--surface-raised);
@@ -201,15 +201,15 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text);
   border-bottom: 1px solid var(--border);
 }
 .demo-zen-theme .terminal-body {
   padding: 10px 14px;
-  font-family: "SF Mono", "Fira Code", monospace;
+  font-family: var(--font-mono);
   font-size: 0.8rem;
-  line-height: 1.6;
+  line-height: var(--leading-normal);
 }
 
 /* ── Selection & cursor ── */
