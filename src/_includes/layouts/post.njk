@@ -13,7 +13,7 @@ layout: layouts/base.njk
     {% if description %}<p class="post-description" itemprop="description">{{ description }}</p>{% endif %}
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <div class="prose post-content" itemprop="articleBody">
     {{ content | safe }}
   </div>
 

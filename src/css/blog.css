@@ -177,19 +177,47 @@
   margin-top: 12px;
 }
 
-/* ── Post content typography ─────────────────────────────────────────────── */
+/* ── Shared prose typography ─────────────────────────────────────────────── */
 
-.post-content {
+.prose {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   color: var(--text);
 }
 
-.post-content h2 {
+.prose h2 {
   font-size: var(--text-xl);
   font-weight: 600;
   color: var(--lgz-bright-blue);
   margin: 1.5em 0 0.5em;
+}
+
+.prose p {
+  margin: 0 0 1.2em;
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 1.2em 1.5em;
+}
+
+.prose li {
+  margin-bottom: 0.4em;
+}
+
+.prose a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--accent);
+}
+
+/* ── Post-specific extensions ───────────────────────────────────────────── */
+
+.post-content h2 {
   padding-bottom: 0.25em;
   border-bottom: 1px solid rgba(168,152,128,0.15);
 }
@@ -208,19 +236,6 @@
   margin: 1.4em 0 0.4em;
 }
 
-.post-content p {
-  margin: 0 0 1.2em;
-}
-
-.post-content ul,
-.post-content ol {
-  margin: 0 0 1.2em 1.5em;
-}
-
-.post-content li {
-  margin-bottom: 0.4em;
-}
-
 .post-content li > ul,
 .post-content li > ol {
   margin-top: 0.4em;
@@ -235,16 +250,6 @@
 .post-content em {
   font-style: italic;
   color: var(--text);
-}
-
-.post-content a {
-  color: var(--link);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.post-content a:hover {
-  color: var(--accent);
 }
 
 .post-content blockquote {
@@ -732,40 +737,9 @@ dialog.img-lightbox img {
   border-bottom: 1px solid var(--border-dim);
 }
 
-.page-content {
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
-  color: var(--text);
-}
-
+/* .page-content inherits from .prose; only override h2 top margin */
 .page-content h2 {
-  font-size: var(--text-xl);
-  font-weight: 600;
-  color: var(--lgz-bright-blue);
-  margin: 1.8em 0 0.5em;
-}
-
-.page-content p {
-  margin: 0 0 1.2em;
-}
-
-.page-content ul,
-.page-content ol {
-  margin: 0 0 1.2em 1.5em;
-}
-
-.page-content li {
-  margin-bottom: 0.4em;
-}
-
-.page-content a {
-  color: var(--link);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.page-content a:hover {
-  color: var(--accent);
+  margin-top: 1.8em;
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
