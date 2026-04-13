@@ -11,7 +11,8 @@
   // This lets the CSS consolidate around [data-theme="light"] / [data-theme="dark"]
   // without parallel @media (prefers-color-scheme: light) blocks.
   (function () {
-    var t = localStorage.getItem('theme');
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
     if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', t);
   })();
@@ -38,31 +39,11 @@
 
 {% include "partials/footer.njk" %}
 
-<script>
-(function() {
-  const themeBtn = document.getElementById('theme-toggle');
-  if (!themeBtn) return;
-  themeBtn.textContent = String.fromCodePoint(0xF050E);
-
-  themeBtn.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme') || 'dark';
-    const next = current === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', next);
-    document.documentElement.setAttribute('data-theme', next);
-  });
-
-  // Follow OS changes only if the user hasn't explicitly chosen a theme.
-  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-      document.documentElement.setAttribute('data-theme', e.matches ? 'light' : 'dark');
-    }
-  });
-})();
-</script>
-<script src="/js/effects.js"></script>
+<script src="/js/theme-toggle.js" defer></script>
+<script src="/js/effects.js" defer></script>
 {% if tags and "blog" in tags %}
-<script src="/js/blog-code.js"></script>
-<script src="/js/blog-lightbox.js"></script>
+<script src="/js/blog-code.js" defer></script>
+<script src="/js/blog-lightbox.js" defer></script>
 {% endif %}
 </body>
 </html>

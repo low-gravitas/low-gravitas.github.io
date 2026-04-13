@@ -8,7 +8,7 @@ extraCss: /css/demos/symbol-font.css
 
 <div class="hero-icons" aria-hidden="true"><span>&#xE702;</span><span>&#xE711;</span><span>&#xE900;</span><span>&#xF121;</span><span>&#xEA73;</span><span>&#xF413;</span></div>
 <h1>Low Gravitas Symbols</h1>
-<div class="version" id="version"></div>
+<div class="version" id="version" data-version="{{ site.versions.symbolFont }}"></div>
 <p>
   A comprehensive symbol font combining glyphs from Nerd Fonts, Font Awesome,
   Material Design, Codicons, Devicons, Weather Icons, and more &mdash;
@@ -50,55 +50,4 @@ extraCss: /css/demos/symbol-font.css
   <div class="sets-grid" id="sets-grid"></div>
 </div>
 
-<script>
-(function() {
-  var fadeObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry, i) {
-      if (entry.isIntersecting) {
-        setTimeout(function() { entry.target.classList.add('visible'); }, i * 100);
-        fadeObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(function(el) { fadeObserver.observe(el); });
-
-  function countUp(el, target, duration) {
-    var start = performance.now();
-    var update = function(now) {
-      var progress = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * target).toLocaleString();
-      if (progress < 1) requestAnimationFrame(update);
-      else el.textContent = target.toLocaleString();
-    };
-    requestAnimationFrame(update);
-  }
-
-  var versionEl = document.getElementById('version');
-  versionEl.textContent = '{{ site.versions.symbolFont }} \u00B7 ';
-
-  fetch(window.GLYPHS_URL || '/vendor/glyphs.json')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      var counts = {};
-      data.forEach(function(g) { counts[g.set] = (counts[g.set] || 0) + 1; });
-      var grid = document.getElementById('sets-grid');
-      Object.keys(counts).sort().forEach(function(set) {
-        var pill = document.createElement('a');
-        pill.className = 'set-pill iridescent clay-ripple';
-        pill.href = '/symbol-font/browser/?set=' + encodeURIComponent(set);
-        pill.innerHTML = set + '<span class="ct">' + counts[set].toLocaleString() + '</span>' +
-          '<span class="iri-layer2" aria-hidden="true"></span>' +
-          '<span class="ripple-ring" aria-hidden="true"></span>' +
-          '<span class="ripple-ring" aria-hidden="true"></span>';
-        grid.appendChild(pill);
-      });
-
-      var countSpan = document.createElement('span');
-      versionEl.appendChild(countSpan);
-      countUp(countSpan, data.length, 1200);
-      versionEl.insertAdjacentHTML('beforeend', ' glyphs');
-    })
-    .catch(function() {});
-})();
-</script>
+<script src="/js/symbol-font-landing.js" defer></script>
