@@ -39,7 +39,7 @@
 .post-summary {
   position: relative;
   background: var(--grad-surface);
-  border: 1px solid rgba(168,152,128,0.2);
+  border: 1px solid var(--border-medium);
   border-radius: var(--surface-radius);
   box-shadow: var(--shadow-raised-sm);
   padding: 24px 28px;
@@ -159,7 +159,7 @@
 .post-header {
   margin-bottom: 40px;
   padding-bottom: 24px;
-  border-bottom: 1px solid rgba(168,152,128,0.15);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .post-header h1 {
@@ -219,7 +219,7 @@
 
 .post-content h2 {
   padding-bottom: 0.25em;
-  border-bottom: 1px solid rgba(168,152,128,0.15);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .post-content h3 {
@@ -266,7 +266,7 @@
 
 .post-content hr {
   border: none;
-  border-top: 1px solid rgba(168,152,128,0.15);
+  border-top: 1px solid var(--border-light);
   margin: 2.5em 0;
 }
 
@@ -286,7 +286,7 @@
 
 .post-content pre {
   background: var(--bg) !important;
-  border: 1px solid rgba(168,152,128,0.15);
+  border: 1px solid var(--border-light);
   border-radius: var(--code-radius);
   box-shadow: var(--shadow-pressed);
   padding: 1.25em 1.5em;
@@ -386,7 +386,7 @@
 .code-block {
   position: relative;
   margin: 1.5em 0;
-  border: 1px solid rgba(168,152,128,0.15);
+  border: 1px solid var(--border-light);
   border-radius: var(--code-radius);
   box-shadow: var(--shadow-pressed);
   overflow: hidden;
@@ -426,7 +426,7 @@
   align-items: center;
   gap: 0.3em;
   background: var(--grad-surface);
-  border: 1px solid rgba(168,152,128,0.2);
+  border: 1px solid var(--border-medium);
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-raised-sm);
   color: var(--text-dim);
@@ -699,7 +699,7 @@ dialog.img-lightbox img {
 .post-footer {
   margin-top: 48px;
   padding-top: 24px;
-  border-top: 1px solid rgba(168,152,128,0.15);
+  border-top: 1px solid var(--border-light);
 }
 
 .post-back {

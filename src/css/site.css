@@ -36,7 +36,7 @@ h1 {
 
 .card {
   background: var(--grad-surface);
-  border: 1px solid rgba(168,152,128,0.2);
+  border: 1px solid var(--border-medium);
   border-radius: var(--surface-radius);
   box-shadow: var(--shadow-raised-sm);
   padding: 28px 24px;
