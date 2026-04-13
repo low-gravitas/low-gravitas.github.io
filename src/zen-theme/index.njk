@@ -10,15 +10,15 @@ extraCss: /css/demos/zen-theme.css
   <h1>Low Gravitas Zen</h1>
   <p class="tagline">A warm, low-blue-light color theme for editors and terminals. Dark and light variants with WCAG AA contrast.</p>
   <div class="actions">
-    <a class="btn primary" href="/vendor/low-gravitas-zen.css"><span class="lg" aria-hidden="true">&#xF019;</span> Download CSS Tokens</a>
-    <a class="btn" href="https://github.com/low-gravitas/low-gravitas-zen-theme"><span class="lg" aria-hidden="true">&#xF09B;</span> View on GitHub</a>
+    <a class="btn btn-primary iridescent clay-ripple" href="/vendor/low-gravitas-zen.css"><span class="lg" aria-hidden="true">&#xF019;</span> Download CSS Tokens</a>
+    <a class="btn iridescent clay-ripple" href="https://github.com/low-gravitas/low-gravitas-zen-theme"><span class="lg" aria-hidden="true">&#xF09B;</span> View on GitHub</a>
   </div>
 </div>
 
 <div class="demo-section">
   <div class="demo-header">
     <h2>Palette</h2>
-    <button class="demo-toggle" aria-label="Toggle demo theme"><span class="demo-toggle-label">Light</span></button>
+    <span class="demo-switch-wrap iridescent clay-ripple"><span class="demo-switch-text">Dark</span><button class="demo-switch" role="switch" aria-checked="false" aria-label="Toggle demo light mode"><span class="demo-switch-track"><span class="demo-switch-knob"></span></span></button><span class="demo-switch-text">Light</span></span>
   </div>
   <div class="demo" data-theme="dark">
     <div class="swatches fade-in">
@@ -37,7 +37,7 @@ extraCss: /css/demos/zen-theme.css
 
 <div class="demo-section">
   <div class="demo-header">
-    <button class="demo-toggle" aria-label="Toggle demo theme"><span class="demo-toggle-label">Light</span></button>
+    <span class="demo-switch-wrap iridescent clay-ripple"><span class="demo-switch-text">Dark</span><button class="demo-switch" role="switch" aria-checked="false" aria-label="Toggle demo light mode"><span class="demo-switch-track"><span class="demo-switch-knob"></span></span></button><span class="demo-switch-text">Light</span></span>
   </div>
   <div class="demo" data-theme="dark">
     <div class="ide fade-in">
@@ -67,7 +67,7 @@ extraCss: /css/demos/zen-theme.css
 
 <div class="demo-section">
   <div class="demo-header">
-    <button class="demo-toggle" aria-label="Toggle demo theme"><span class="demo-toggle-label">Light</span></button>
+    <span class="demo-switch-wrap iridescent clay-ripple"><span class="demo-switch-text">Dark</span><button class="demo-switch" role="switch" aria-checked="false" aria-label="Toggle demo light mode"><span class="demo-switch-track"><span class="demo-switch-knob"></span></span></button><span class="demo-switch-text">Light</span></span>
   </div>
   <div class="demo" data-theme="dark">
     <div class="ide fade-in">
@@ -103,7 +103,7 @@ extraCss: /css/demos/zen-theme.css
 <div class="demo-section">
   <div class="demo-header">
     <h2>Terminal</h2>
-    <button class="demo-toggle" aria-label="Toggle demo theme"><span class="demo-toggle-label">Light</span></button>
+    <span class="demo-switch-wrap iridescent clay-ripple"><span class="demo-switch-text">Dark</span><button class="demo-switch" role="switch" aria-checked="false" aria-label="Toggle demo light mode"><span class="demo-switch-track"><span class="demo-switch-knob"></span></span></button><span class="demo-switch-text">Light</span></span>
   </div>
   <div class="demo" data-theme="dark">
     <div class="terminal fade-in">
@@ -118,8 +118,8 @@ extraCss: /css/demos/zen-theme.css
   function syncDemos(theme) {
     document.querySelectorAll('.demo-section').forEach(function(section) {
       section.querySelector('.demo').setAttribute('data-theme', theme);
-      var label = section.querySelector('.demo-toggle-label');
-      if (label) label.textContent = theme === 'dark' ? 'Light' : 'Dark';
+      var sw = section.querySelector('.demo-switch');
+      if (sw) sw.setAttribute('aria-checked', theme === 'light' ? 'true' : 'false');
     });
   }
 
@@ -141,14 +141,14 @@ extraCss: /css/demos/zen-theme.css
     if (!sessionStorage.getItem('theme')) syncDemos(getTheme());
   });
 
-  document.querySelectorAll('.demo-toggle').forEach(function(btn) {
+  document.querySelectorAll('.demo-switch').forEach(function(btn) {
     var section = btn.closest('.demo-section');
     var demo = section.querySelector('.demo');
     btn.addEventListener('click', function() {
       var current = demo.getAttribute('data-theme') || 'dark';
       var next = current === 'dark' ? 'light' : 'dark';
       demo.setAttribute('data-theme', next);
-      btn.querySelector('.demo-toggle-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+      btn.setAttribute('aria-checked', next === 'light' ? 'true' : 'false');
     });
   });
 

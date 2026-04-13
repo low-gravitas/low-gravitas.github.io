@@ -16,13 +16,13 @@ extraCss: /css/demos/symbol-font.css
 </p>
 
 <div class="actions">
-  <a class="btn primary" href="https://github.com/low-gravitas/low-gravitas-symbol-font/releases/latest">
+  <a class="btn btn-primary iridescent clay-ripple" href="https://github.com/low-gravitas/low-gravitas-symbol-font/releases/latest">
     <span class="lg" aria-hidden="true">&#xF019;</span> Download Font
   </a>
-  <a class="btn" href="/symbol-font/browser/">
+  <a class="btn iridescent clay-ripple" href="/symbol-font/browser/">
     <span class="lg" aria-hidden="true">&#xF002;</span> Browse Glyphs
   </a>
-  <a class="btn" href="https://github.com/low-gravitas/low-gravitas-symbol-font">
+  <a class="btn iridescent clay-ripple" href="https://github.com/low-gravitas/low-gravitas-symbol-font">
     <span class="lg" aria-hidden="true">&#xF09B;</span> View on GitHub
   </a>
 </div>
@@ -85,9 +85,12 @@ extraCss: /css/demos/symbol-font.css
       var grid = document.getElementById('sets-grid');
       Object.keys(counts).sort().forEach(function(set) {
         var pill = document.createElement('a');
-        pill.className = 'set-pill';
+        pill.className = 'set-pill iridescent clay-ripple';
         pill.href = '/symbol-font/browser/?set=' + encodeURIComponent(set);
-        pill.innerHTML = set + '<span class="ct">' + counts[set].toLocaleString() + '</span>';
+        pill.innerHTML = set + '<span class="ct">' + counts[set].toLocaleString() + '</span>' +
+          '<span class="iri-layer2" aria-hidden="true"></span>' +
+          '<span class="ripple-ring" aria-hidden="true"></span>' +
+          '<span class="ripple-ring" aria-hidden="true"></span>';
         grid.appendChild(pill);
       });
 

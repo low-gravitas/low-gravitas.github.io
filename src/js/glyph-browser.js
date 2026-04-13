@@ -128,7 +128,7 @@
       if (visibleCards.has(i)) continue;
       const g = filtered[i], row = Math.floor(i / cols), col = i % cols;
       const card = document.createElement('div');
-      card.className = 'card' + (collection.has(g.cp) ? ' collected' : '');
+      card.className = 'card iridescent clay-ripple' + (collection.has(g.cp) ? ' collected' : '');
       card.style.cssText = 'left:' + (padLeft + col * (CARD_W + GAP)) + 'px;top:' + (row * (CARD_H + GAP)) + 'px;width:' + CARD_W + 'px;height:' + CARD_H + 'px';
       card.dataset.cp = g.cp;
       card.dataset.idx = i;
@@ -141,7 +141,10 @@
         '<span class="glyph" aria-hidden="true">' + ch + '</span>' +
         '<span class="name" title="' + escAttr(g.name) + '">' + esc(g.name) + '</span>' +
         '<span class="set">' + esc(g.set) + '</span>' +
-        '<span class="cp">U+' + g.hex + '</span>';
+        '<span class="cp">U+' + g.hex + '</span>' +
+        '<span class="iri-layer2" aria-hidden="true"></span>' +
+        '<span class="ripple-ring" aria-hidden="true"></span>' +
+        '<span class="ripple-ring" aria-hidden="true"></span>';
 
       card.addEventListener('focus', () => { activeGridIndex = i; ensureCardVisible(i); });
       card.addEventListener('click', (e) => {
@@ -267,11 +270,11 @@
     const link = window.location.pathname + '?glyph=' + g.hex;
     const pDis = idx <= 0, nDis = idx >= filtered.length - 1;
     return (
-      '<button class="modal-close" aria-label="Close dialog" title="Close (Esc or Space)">&times;</button>' +
+      '<button class="modal-close iridescent clay-ripple" aria-label="Close dialog" title="Close (Esc or Space)">&times;<span class="iri-layer2" aria-hidden="true"></span><span class="ripple-ring" aria-hidden="true"></span><span class="ripple-ring" aria-hidden="true"></span></button>' +
       '<div class="modal-specimen-nav">' +
-        '<button class="modal-nav prev" aria-label="Previous glyph" title="Previous glyph"' + (pDis ? ' disabled' : '') + '>&#8249;</button>' +
+        '<button class="modal-nav prev iridescent clay-ripple" aria-label="Previous glyph" title="Previous glyph"' + (pDis ? ' disabled' : '') + '>&#8249;<span class="iri-layer2" aria-hidden="true"></span><span class="ripple-ring" aria-hidden="true"></span><span class="ripple-ring" aria-hidden="true"></span></button>' +
         '<div class="glyph-specimen" aria-hidden="true">' + ch + '</div>' +
-        '<button class="modal-nav next" aria-label="Next glyph" title="Next glyph"' + (nDis ? ' disabled' : '') + '>&#8250;</button>' +
+        '<button class="modal-nav next iridescent clay-ripple" aria-label="Next glyph" title="Next glyph"' + (nDis ? ' disabled' : '') + '>&#8250;<span class="iri-layer2" aria-hidden="true"></span><span class="ripple-ring" aria-hidden="true"></span><span class="ripple-ring" aria-hidden="true"></span></button>' +
       '</div>' +
       '<div class="modal-info">' +
         '<div class="glyph-name">' + esc(g.name) + '</div>' +
@@ -285,7 +288,7 @@
         (cls ? '<button data-val="' + escAttr(cls) + '"><span>Copy CSS Class</span><span class="label mono">' + esc(cls) + '</span></button>' : '') +
         '<button data-val="' + escAttr(link) + '"><span>Copy Link</span><span class="label mono">?glyph=' + g.hex + '</span></button>' +
       '</div>' +
-      '<div class="modal-footer"><button data-action="collect">' + colLabel + '</button></div>'
+      '<div class="modal-footer"><button class="iridescent clay-ripple" data-action="collect">' + colLabel + '<span class="iri-layer2" aria-hidden="true"></span><span class="ripple-ring" aria-hidden="true"></span><span class="ripple-ring" aria-hidden="true"></span></button></div>'
     );
   }
 

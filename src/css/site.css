@@ -30,22 +30,23 @@ h1 {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  gap: 24px;
   width: 100%;
 }
 
 .card {
-  background: var(--bg);
-  border: 1px solid var(--border);
+  background: var(--grad-surface);
+  border: 1px solid rgba(168,152,128,0.2);
   border-radius: var(--surface-radius);
+  box-shadow: var(--shadow-raised-sm);
   padding: 28px 24px;
   text-decoration: none;
   color: var(--text);
-  transition: border-color var(--duration-fast), box-shadow var(--duration-normal);
+  position: relative;
+  transition: transform var(--duration-fast);
 }
 .card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--surface-hover-glow);
+  transform: translateY(-1px);
 }
 
 .card h2 {
@@ -59,6 +60,16 @@ h1 {
   font-size: var(--text-sm);
   color: var(--text-dim);
   line-height: var(--leading-snug);
+}
+
+[data-theme="light"] .card {
+  border-color: rgba(90,78,62,0.2);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .card {
+    border-color: rgba(90,78,62,0.2);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
