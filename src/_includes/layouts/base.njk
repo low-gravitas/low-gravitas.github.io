@@ -31,7 +31,7 @@
 (function() {
   const themeBtn = document.getElementById('theme-toggle');
   if (!themeBtn) return;
-  let userTheme = sessionStorage.getItem('theme') || null;
+  let userTheme = localStorage.getItem('theme') || null;
   themeBtn.textContent = String.fromCodePoint(0xF050E);
 
   function getTheme() {
@@ -47,7 +47,7 @@
 
   themeBtn.addEventListener('click', () => {
     userTheme = getTheme() === 'dark' ? 'light' : 'dark';
-    sessionStorage.setItem('theme', userTheme);
+    localStorage.setItem('theme', userTheme);
     applyTheme();
   });
 

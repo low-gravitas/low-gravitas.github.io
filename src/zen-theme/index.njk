@@ -124,7 +124,7 @@ extraCss: /css/demos/zen-theme.css
   }
 
   function getTheme() {
-    var t = sessionStorage.getItem('theme');
+    var t = localStorage.getItem('theme');
     if (t) return t;
     return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   }
@@ -138,7 +138,7 @@ extraCss: /css/demos/zen-theme.css
 
   // Also sync on OS preference change when no explicit user theme is set
   window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function() {
-    if (!sessionStorage.getItem('theme')) syncDemos(getTheme());
+    if (!localStorage.getItem('theme')) syncDemos(getTheme());
   });
 
   document.querySelectorAll('.demo-switch').forEach(function(btn) {
