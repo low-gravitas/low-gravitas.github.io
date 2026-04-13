@@ -145,6 +145,10 @@ a:hover { color: var(--accent); }
 }
 .lg { font-family: var(--font-symbol); }
 
+} /* end @layer base — iridescent/ripple systems are in @layer components below */
+
+@layer components {
+
 /* ══════════════════════════════════════════════════════
    Iridescent system — dual-layer, auto-rotating, edge-weighted
    ══════════════════════════════════════════════════════ */
@@ -343,6 +347,10 @@ a:hover { color: var(--accent); }
   55%  {               opacity: 0.12; }
   100% { inset: -10px; opacity: 0; }
 }
+
+} /* end @layer components */
+
+@layer base {
 
 /* ── Nav ── */
 

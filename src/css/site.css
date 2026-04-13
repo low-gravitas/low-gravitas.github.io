@@ -2,6 +2,8 @@
    Shared layout rules are in common.css.
    Color variables come from low-gravitas-zen.css (linked in HTML). */
 
+@layer components {
+
 main {
   display: flex;
   flex-direction: column;
@@ -75,3 +77,5 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .card { transition: none; }
 }
+
+} /* end @layer components */

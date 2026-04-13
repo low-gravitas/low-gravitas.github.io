@@ -1,5 +1,7 @@
 /* Low Gravitas Zen — theme demo styles, scoped under .demo-zen-theme */
 
+@layer demos {
+
 /* ── Main ── */
 
 .demo-zen-theme main {
@@ -314,3 +316,5 @@
   .demo-zen-theme .swatches { grid-template-columns: repeat(4, 1fr); }
   .demo-zen-theme .ide-sidebar { display: none; }
 }
+
+} /* end @layer demos */

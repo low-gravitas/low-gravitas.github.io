@@ -1,5 +1,7 @@
 /* Low Gravitas Symbol Font — demo styles, scoped under .demo-symbol-font */
 
+@layer demos {
+
 /* ── Marketing page ── */
 
 .demo-symbol-font:not(.demo-symbol-browser) main {
@@ -517,3 +519,5 @@
   .demo-symbol-font .modal-backdrop, .demo-symbol-font .modal-dialog, .demo-symbol-font .toast, .demo-symbol-font .card { transition: none; }
   .demo-symbol-font .hero-icons span { animation: none; }
 }
+
+} /* end @layer demos */

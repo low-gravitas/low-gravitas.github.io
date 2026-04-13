@@ -1,6 +1,8 @@
 /* Low Gravitas Blog — blog-specific styles
    Depends on low-gravitas-zen.css and low-gravitas-common.css */
 
+@layer components {
+
 /* ── Blog index ──────────────────────────────────────────────────────────── */
 
 .post-index {
@@ -825,3 +827,5 @@ dialog.img-lightbox img {
     transform: none;
   }
 }
+
+} /* end @layer components */
