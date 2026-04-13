@@ -46,18 +46,7 @@ extraCss: /css/demos/zen-theme.css
         <div class="ide-sidebar"><div class="dir">src/</div><div class="file active">&nbsp;&nbsp;fibonacci.py</div><div class="file">&nbsp;&nbsp;utils.py</div><div class="file">&nbsp;&nbsp;config.toml</div><div class="dir">tests/</div><div class="file">&nbsp;&nbsp;test_fib.py</div><div class="dir">docs/</div><div class="file">&nbsp;&nbsp;README.md</div></div>
         <div class="ide-editor">
           <div class="ide-tabs"><div class="ide-tab active">fibonacci.py</div><div class="ide-tab">utils.py</div></div>
-          <div class="ide-code"><span><span class="line-num"> 1</span><span class="tk-keyword">def</span> <span class="tk-function">fibonacci</span>(n: <span class="tk-type">int</span>) -&gt; <span class="tk-type">list</span>[<span class="tk-type">int</span>]:</span>
-<span><span class="line-num"> 2</span>    <span class="tk-string">"""Generate Fibonacci sequence up to n terms."""</span></span>
-<span><span class="line-num"> 3</span>    <span class="tk-keyword">if</span> n &lt;= <span class="tk-number">0</span>:</span>
-<span><span class="line-num"> 4</span>        <span class="tk-keyword">return</span> []</span>
-<span><span class="line-num"> 5</span>    sequence = [<span class="tk-number">0</span>, <span class="tk-number">1</span>]</span>
-<span><span class="line-num"> 6</span>    <span class="tk-keyword">for</span> i <span class="tk-keyword">in</span> <span class="selected-text"><span class="tk-type">range</span>(<span class="tk-number">2</span>, n)</span>:</span>
-<span><span class="line-num"> 7</span>        sequence.append(sequence[-<span class="tk-number">1</span>] + sequence[-<span class="tk-number">2</span>])</span>
-<span><span class="line-num"> 8</span>    <span class="tk-keyword">return</span> sequence[:n]</span>
-<span><span class="line-num"> 9</span></span>
-<span><span class="line-num">10</span><span class="tk-comment"># Print the first 10 Fibonacci numbers</span></span>
-<span><span class="line-num">11</span>result = fibonacci(<span class="tk-number">10</span>)</span>
-<span class="cursor-line"><span class="line-num">12</span><span class="tk-type">print</span>(<span class="tk-string">f"Fibonacci: {result}"</span>)<span class="cursor-bar"></span></span></div>
+          <div class="ide-code">{{ codeSamples.python | safe }}</div>
         </div>
       </div>
       <div class="ide-statusbar"><span>Python 3.14 &bull; UTF-8 &bull; LF</span><span>Ln 12, Col 24</span></div>
@@ -76,23 +65,7 @@ extraCss: /css/demos/zen-theme.css
         <div class="ide-sidebar"><div class="dir">src/</div><div class="file active">&nbsp;&nbsp;api.js</div><div class="file">&nbsp;&nbsp;index.js</div><div class="file">&nbsp;&nbsp;types.ts</div><div class="dir">components/</div><div class="file">&nbsp;&nbsp;App.tsx</div></div>
         <div class="ide-editor">
           <div class="ide-tabs"><div class="ide-tab active">api.js</div><div class="ide-tab">index.js</div></div>
-          <div class="ide-code"><span><span class="line-num"> 1</span><span class="tk-comment">// Fetch user data with retry and timeout</span></span>
-<span><span class="line-num"> 2</span><span class="tk-keyword">async</span> <span class="tk-keyword">function</span> <span class="tk-function">fetchUser</span>(<span class="tk-variable">userId</span>) {</span>
-<span><span class="line-num"> 3</span>  <span class="tk-keyword">const</span> <span class="tk-variable">maxRetries</span> = <span class="tk-number">3</span>;</span>
-<span><span class="line-num"> 4</span>  <span class="tk-keyword">for</span> (<span class="tk-keyword">let</span> <span class="tk-variable">attempt</span> = <span class="tk-number">1</span>; <span class="tk-variable">attempt</span> &lt;= <span class="tk-variable">maxRetries</span>; <span class="tk-variable">attempt</span>++) {</span>
-<span><span class="line-num"> 5</span>    <span class="tk-keyword">try</span> {</span>
-<span><span class="line-num"> 6</span>      <span class="tk-keyword">const</span> <span class="tk-variable">response</span> = <span class="tk-keyword">await</span> <span class="tk-type">fetch</span>(<span class="tk-string">`/api/users/${userId}`</span>);</span>
-<span><span class="line-num"> 7</span>      <span class="tk-keyword">if</span> (!<span class="tk-variable">response</span>.ok) {</span>
-<span><span class="line-num"> 8</span>        <span class="tk-keyword">throw</span> <span class="tk-keyword">new</span> <span class="tk-type">Error</span>(<span class="tk-string">`HTTP ${response.status}`</span>);</span>
-<span><span class="line-num"> 9</span>      }</span>
-<span><span class="line-num">10</span>      <span class="tk-keyword">const</span> { <span class="tk-variable">name</span>, <span class="tk-variable">email</span>, <span class="tk-variable">role</span> } = <span class="tk-keyword">await</span> <span class="tk-variable">response</span>.json();</span>
-<span><span class="line-num">11</span>      <span class="tk-keyword">return</span> { <span class="tk-variable">name</span>, <span class="tk-variable">email</span>, <span class="tk-variable">role</span>, <span class="tk-variable">active</span>: <span class="tk-keyword">true</span> };</span>
-<span><span class="line-num">12</span>    } <span class="tk-keyword">catch</span> (<span class="tk-variable">error</span>) {</span>
-<span><span class="line-num">13</span>      <span class="tk-keyword">if</span> (<span class="tk-variable">attempt</span> === <span class="tk-variable">maxRetries</span>) <span class="tk-keyword">throw</span> <span class="tk-variable">error</span>;</span>
-<span><span class="line-num">14</span>      <span class="tk-keyword">await</span> <span class="tk-keyword">new</span> <span class="tk-type">Promise</span>(<span class="tk-variable">r</span> =&gt; <span class="tk-type">setTimeout</span>(<span class="tk-variable">r</span>, <span class="tk-number">500</span> * <span class="tk-variable">attempt</span>));</span>
-<span><span class="line-num">15</span>    }</span>
-<span><span class="line-num">16</span>  }</span>
-<span><span class="line-num">17</span>}</span></div>
+          <div class="ide-code">{{ codeSamples.js | safe }}</div>
         </div>
       </div>
       <div class="ide-statusbar"><span>JavaScript &bull; UTF-8 &bull; LF</span><span>Ln 1, Col 1</span></div>
