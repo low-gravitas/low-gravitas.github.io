@@ -94,12 +94,6 @@
   background: linear-gradient(145deg, #d4c9bc, #ded6c9);
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .demo-symbol-font .feature {
-    background: linear-gradient(145deg, #d4c9bc, #ded6c9);
-  }
-}
-
 .demo-symbol-font .feature .icon {
   font-family: 'LowGravitasSymbols', monospace;
   font-size: 24px;

@@ -96,20 +96,6 @@
     --bg-edge: #c8bca8;
     --sticky-bg: rgba(200,188,168,0.8);
   }
-
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) {
-      --shadow-raised:    3px 3px 8px rgba(166,150,128,0.2), -3px -3px 8px rgba(255,255,255,0.5);
-      --shadow-raised-sm: 2px 2px 4px rgba(166,150,128,0.18), -2px -2px 4px rgba(255,255,255,0.4);
-      --shadow-pressed:    inset 2px 2px 5px rgba(166,150,128,0.18), inset -2px -2px 5px rgba(255,255,255,0.4);
-      --shadow-pressed-sm: inset 1px 1px 3px rgba(166,150,128,0.15), inset -1px -1px 3px rgba(255,255,255,0.35);
-      --shadow-drop:    0 6px 24px rgba(0, 0, 0, 0.2);
-      --surface-light: #e4dace;
-      --surface-dark:  #d0c5b6;
-      --bg-edge: #c8bca8;
-      --sticky-bg: rgba(200,188,168,0.8);
-    }
-  }
 }
 
 @layer base {
@@ -388,12 +374,6 @@ nav .nav-left {
   filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7));
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .brand-logo {
-    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7));
-  }
-}
-
 nav .nav-right { display: flex; gap: 6px; align-items: center; }
 
 nav a {
@@ -477,12 +457,6 @@ nav a.nav-left:hover { color: var(--accent); }
   border-color: rgba(90,78,62,0.2);
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .btn {
-    border-color: rgba(90,78,62,0.2);
-  }
-}
-
 /* Primary button — stacked iridescent gradient */
 .btn-primary {
   background:
@@ -520,21 +494,6 @@ nav a.nav-left:hover { color: var(--accent); }
     conic-gradient(from var(--hue, 0deg), #7040a0, #4090b0, #a05090, #409880, #7040a0);
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .btn-primary {
-    background:
-      radial-gradient(farthest-side at 50% 50%, rgba(92,45,145,0.98) 0%, rgba(92,45,145,0.93) 38%, rgba(92,45,145,0.35) 100%),
-      conic-gradient(from var(--hue, 0deg), #7040a0, #4090b0, #a05090, #409880, #7040a0);
-    color: #fff;
-  }
-  :root:not([data-theme="dark"]) .btn-primary:hover {
-    color: #fff;
-    background:
-      radial-gradient(farthest-side at 50% 50%, rgba(92,45,145,0.93) 0%, rgba(92,45,145,0.8) 38%, rgba(92,45,145,0.15) 100%),
-      conic-gradient(from var(--hue, 0deg), #7040a0, #4090b0, #a05090, #409880, #7040a0);
-  }
-}
-
 /* Ghost button — borderless, faint transparent background */
 .btn-ghost {
   background: rgba(60,48,36,0.2);
@@ -564,18 +523,6 @@ nav a.nav-left:hover { color: var(--accent); }
 [data-theme="light"] .btn-ghost:hover {
   background: rgba(219,208,194,0.4);
   box-shadow: none;
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .btn-ghost {
-    background: rgba(219,208,194,0.2);
-    box-shadow: none;
-    border: none;
-  }
-  :root:not([data-theme="dark"]) .btn-ghost:hover {
-    background: rgba(219,208,194,0.4);
-    box-shadow: none;
-  }
 }
 
 /* Disabled button */

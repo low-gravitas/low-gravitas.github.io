@@ -68,12 +68,6 @@ h1 {
   border-color: rgba(90,78,62,0.2);
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .card {
-    border-color: rgba(90,78,62,0.2);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .card { transition: none; }
 }

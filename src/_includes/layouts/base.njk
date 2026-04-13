@@ -6,6 +6,16 @@
 <meta name="color-scheme" content="dark light">
 <meta name="description" content="{{ description or 'Low Gravitas — developer tools, side projects, and randomness.' }}">
 <title>{{ title or 'Low Gravitas' }}</title>
+<script>
+  // Set data-theme before CSS loads so we always have an explicit theme attribute.
+  // This lets the CSS consolidate around [data-theme="light"] / [data-theme="dark"]
+  // without parallel @media (prefers-color-scheme: light) blocks.
+  (function () {
+    var t = localStorage.getItem('theme');
+    if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
@@ -32,28 +42,20 @@
 (function() {
   const themeBtn = document.getElementById('theme-toggle');
   if (!themeBtn) return;
-  let userTheme = localStorage.getItem('theme') || null;
   themeBtn.textContent = String.fromCodePoint(0xF050E);
 
-  function getTheme() {
-    if (userTheme) return userTheme;
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  }
-  function applyTheme() {
-    if (userTheme) document.documentElement.setAttribute('data-theme', userTheme);
-    else document.documentElement.removeAttribute('data-theme');
-  }
-
-  applyTheme();
-
   themeBtn.addEventListener('click', () => {
-    userTheme = getTheme() === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', userTheme);
-    applyTheme();
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('theme', next);
+    document.documentElement.setAttribute('data-theme', next);
   });
 
-  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
-    if (!userTheme) applyTheme();
+  // Follow OS changes only if the user hasn't explicitly chosen a theme.
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      document.documentElement.setAttribute('data-theme', e.matches ? 'light' : 'dark');
+    }
   });
 })();
 </script>
