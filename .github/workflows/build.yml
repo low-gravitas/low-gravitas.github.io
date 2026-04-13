@@ -19,6 +19,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
@@ -38,16 +39,14 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: node scripts/fetch-artifacts.mjs
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - run: node scripts/stage-vendor.mjs
-      - run: node scripts/verify-palette.mjs
       - run: pnpm test
+      # `pnpm run build` invokes the `prebuild` hook (fetch-artifacts,
+      # stage-vendor, verify-palette) then the Eleventy build, so we don't
+      # run those scripts explicitly anymore.
       - run: pnpm run build
         env:
           NODE_ENV: production
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
