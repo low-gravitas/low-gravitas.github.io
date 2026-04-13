@@ -224,7 +224,7 @@
   function refreshCollectionVisuals() {
     updateCollectionPanel();
     visibleCards.forEach((card) => {
-      const cp = parseInt(card.dataset.cp), idx = parseInt(card.dataset.idx), g = filtered[idx];
+      const cp = Number(card.dataset.cp), idx = Number(card.dataset.idx), g = filtered[idx];
       card.classList.toggle('collected', collection.has(cp));
       if (g) card.setAttribute('aria-label', g.name + ', U+' + g.hex + ', ' + g.set + (collection.has(g.cp) ? ', collected' : ''));
     });
@@ -471,7 +471,7 @@
       span.setAttribute('role', 'button');
       span.setAttribute('tabindex', '0');
       span.setAttribute('aria-label', 'Remove ' + g.name + ' from collection');
-      const rm = () => { collection.delete(cp); updateCollectionPanel(); visibleCards.forEach(c => { if (parseInt(c.dataset.cp) === cp) c.classList.remove('collected'); }); };
+      const rm = () => { collection.delete(cp); updateCollectionPanel(); visibleCards.forEach(c => { if (Number(c.dataset.cp) === cp) c.classList.remove('collected'); }); };
       span.addEventListener('click', rm);
       span.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); rm(); } });
       selIcons.appendChild(span);

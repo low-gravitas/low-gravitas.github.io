@@ -1,9 +1,10 @@
+{%- set url = page.url or "" -%}
 <nav>
   <a href="/" class="nav-left"><img src="/apple-touch-icon.png" alt="" class="brand-logo" width="28" height="28"> Low Gravitas</a>
   <div class="nav-right">
-    <a href="/low-gravitas-zen-theme/" class="iridescent clay-ripple">Zen Theme</a>
-    <a href="/low-gravitas-symbol-font/" class="iridescent clay-ripple">Symbol Font</a>
-    <a href="/blog/" class="iridescent clay-ripple">Blog</a>
+    <a href="/low-gravitas-zen-theme/" class="iridescent clay-ripple"{% if "/zen-theme/" in url or "/low-gravitas-zen-theme/" in url %} aria-current="page"{% endif %}>Zen Theme</a>
+    <a href="/low-gravitas-symbol-font/" class="iridescent clay-ripple"{% if "/symbol-font/" in url or "/low-gravitas-symbol-font/" in url %} aria-current="page"{% endif %}>Symbol Font</a>
+    <a href="/blog/" class="iridescent clay-ripple"{% if "/blog/" in url %} aria-current="page"{% endif %}>Blog</a>
     <button id="theme-toggle" class="iridescent clay-ripple" aria-label="Toggle light/dark theme">&#xF050E;</button>
   </div>
 </nav>

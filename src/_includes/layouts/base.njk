@@ -6,6 +6,15 @@
 <meta name="color-scheme" content="dark light">
 <meta name="description" content="{{ description or 'Low Gravitas — developer tools, side projects, and randomness.' }}">
 <title>{{ title or 'Low Gravitas' }}</title>
+<meta property="og:title" content="{{ title or 'Low Gravitas' }}">
+<meta property="og:description" content="{{ description or 'Low Gravitas — developer tools, side projects, and randomness.' }}">
+<meta property="og:type" content="{% if tags and 'blog' in tags %}article{% else %}website{% endif %}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ title or 'Low Gravitas' }}">
+<meta name="twitter:description" content="{{ description or 'Low Gravitas — developer tools, side projects, and randomness.' }}">
+<meta name="twitter:image" content="{{ site.url }}/icon-512.png">
 <script>
   // Set data-theme before CSS loads so we always have an explicit theme attribute.
   // This lets the CSS consolidate around [data-theme="light"] / [data-theme="dark"]
