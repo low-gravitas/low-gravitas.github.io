@@ -23,9 +23,10 @@
   }
 
   var versionEl = document.getElementById('version');
-  if (!versionEl) return;
-  var version = versionEl.dataset.version || '';
-  versionEl.textContent = version + ' \u00B7 ';
+  if (versionEl) {
+    var version = versionEl.dataset.version || '';
+    versionEl.textContent = version + ' \u00B7 ';
+  }
 
   fetch(window.GLYPHS_URL || '/vendor/glyphs.json')
     .then(function (r) { return r.json(); })
@@ -55,10 +56,12 @@
         grid.appendChild(pill);
       });
 
-      var countSpan = document.createElement('span');
-      versionEl.appendChild(countSpan);
-      countUp(countSpan, data.length, 1200);
-      versionEl.insertAdjacentHTML('beforeend', ' glyphs');
+      if (versionEl) {
+        var countSpan = document.createElement('span');
+        versionEl.appendChild(countSpan);
+        countUp(countSpan, data.length, 1200);
+        versionEl.insertAdjacentHTML('beforeend', ' glyphs');
+      }
     })
     .catch(function () {});
 })();

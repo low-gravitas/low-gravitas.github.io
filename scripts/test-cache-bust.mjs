@@ -1,18 +1,11 @@
 // scripts/test-cache-bust.mjs — fixture test for the cache-busting HTML transform
 //
-// Simulates the transform function from .eleventy.js against known HTML
-// fixtures and asserts expected output. Runs as `pnpm test`.
+// Exercises the actual cacheBust function from build-utils.mjs (the same one
+// .eleventy.js uses) against known HTML fixtures. Runs as `pnpm test`.
+
+import { cacheBust } from "./build-utils.mjs";
 
 const HASH = "abc12345";
-
-// ── Simulate the transform ─────────────────────────────────────────────────
-
-function cacheBust(content, buildHash) {
-  return content.replace(
-    /(<(?:link|script)\b[^>]*?\b(?:href|src)=")(\/(css|js|vendor)\/[^"?]+)(")/g,
-    (match, pre, path, _dir, post) => `${pre}${path}?v=${buildHash}${post}`
-  );
-}
 
 // ── Fixtures ───────────────────────────────────────────────────────────────
 

@@ -37,6 +37,11 @@
           btn.innerHTML = '<span class="lg">\uF0C5</span>';
           btn.removeAttribute('data-copied');
         }, 1500);
+      }).catch(function () {
+        btn.innerHTML = '<span class="lg">\uF00D</span> Failed';
+        setTimeout(function () {
+          btn.innerHTML = '<span class="lg">\uF0C5</span>';
+        }, 1500);
       });
     });
     header.appendChild(btn);

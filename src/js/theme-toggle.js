@@ -3,7 +3,6 @@
 (function () {
   var btn = document.getElementById('theme-toggle');
   if (!btn) return;
-  btn.textContent = String.fromCodePoint(0xF050E);
 
   btn.addEventListener('click', function () {
     var current = document.documentElement.getAttribute('data-theme') || 'dark';

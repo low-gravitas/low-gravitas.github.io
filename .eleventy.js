@@ -3,12 +3,12 @@
 // Phase 1c: common.css ownership transferred to src/css/. Vendor generated
 // assets served from vendor/generated/ → _site/vendor/.
 
-import { execSync } from "node:child_process";
 import rssPlugin from "@11ty/eleventy-plugin-rss";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import markdownIt from "markdown-it";
+import Image from "@11ty/eleventy-img";
+import { buildHash, cacheBust } from "./scripts/build-utils.mjs";
 
-const buildHash = (process.env.GITHUB_SHA ?? execSync("git rev-parse HEAD").toString()).trim().slice(0, 8);
 const isProduction = process.env.NODE_ENV === "production";
 
 export default function (eleventyConfig) {
@@ -53,14 +53,29 @@ export default function (eleventyConfig) {
   });
 
   // ── Shortcodes ──────────────────────────────────────────────────────────
-  eleventyConfig.addShortcode("image", function (src, alt, layout, caption) {
+  // Reads image dimensions from the source file via eleventy-img (dryRun so
+  // it doesn't re-encode) and emits width/height attributes so the browser
+  // reserves space and avoids cumulative layout shift on blog post images.
+  eleventyConfig.addAsyncShortcode("image", async function (src, alt, layout, caption) {
     layout = layout || "center";
     const fullSrc = `/${src}`;
     const captionHtml = caption ? `\n  <figcaption>${caption}</figcaption>` : "";
+    let dims = "";
+    try {
+      const metadata = await Image(`src/${src}`, {
+        formats: [null],
+        widths: [null],
+        dryRun: true,
+      });
+      const entry = Object.values(metadata)[0]?.[0];
+      if (entry) dims = ` width="${entry.width}" height="${entry.height}"`;
+    } catch (e) {
+      // Fall back to no dimensions if the source image can't be read.
+    }
     return (
       `<figure class="img-${layout}">` +
       `\n  <a href="${fullSrc}" class="img-link">` +
-      `\n    <img src="${fullSrc}" alt="${alt}" loading="lazy">` +
+      `\n    <img src="${fullSrc}" alt="${alt}"${dims} loading="lazy">` +
       `\n  </a>${captionHtml}` +
       `\n</figure>`
     );
@@ -101,22 +116,12 @@ export default function (eleventyConfig) {
 
   // ── Cache-busting HTML transform ──────────────────────────────────────────
   // Appends ?v=<buildHash> to local CSS, JS, and vendor asset references in
-  // rendered HTML. Skips absolute URLs, meta-refresh targets, and CSS url().
+  // rendered HTML. The function is shared with the test suite (build-utils.mjs).
   eleventyConfig.addTransform("cache-bust", function (content) {
     if (!this.outputPath || !this.outputPath.endsWith(".html")) {
       return content;
     }
-
-    const v = buildHash;
-
-    // Rewrite <link rel="stylesheet" href="/css/..." or "/vendor/...">,
-    //         <link rel="preload" href="/css/..." or "/vendor/...">,
-    //         <script src="/js/..." or "/vendor/...">.
-    // Skip absolute URLs and meta-refresh content attributes.
-    return content.replace(
-      /(<(?:link|script)\b[^>]*?\b(?:href|src)=")(\/(css|js|vendor)\/[^"?]+)(")/g,
-      (match, pre, path, _dir, post) => `${pre}${path}?v=${v}${post}`
-    );
+    return cacheBust(content, buildHash);
   });
 
   return {
