@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Start the Eleventy dev server on the port puma-dev expects.
+#
+# puma-dev (~/.puma-dev/lowgravitas and ~/.puma-dev/www.lowgravitas) proxies
+# https://lowgravitas.test to localhost:$PORT. Change PORT here AND both
+# puma-dev files together — they must match.
+
+set -euo pipefail
+
+PORT="${PORT:-4747}"
+cd "$(dirname "$0")/.."
+
+echo "Dev server: http://localhost:${PORT}  →  https://lowgravitas.test (via puma-dev)"
+exec pnpm exec eleventy --serve --port="${PORT}"

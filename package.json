@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "node scripts/fetch-artifacts.mjs && node scripts/stage-vendor.mjs && node scripts/verify-palette.mjs",
     "build": "eleventy",
-    "dev": "eleventy --serve",
+    "dev": "eleventy --serve --port=4747",
     "test": "node scripts/test-cache-bust.mjs",
     "clean": "rm -rf _site"
   },
