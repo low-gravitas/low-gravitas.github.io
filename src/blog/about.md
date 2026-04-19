@@ -12,7 +12,7 @@ This blog is where we write about the design decisions, technical details, and p
 
 ## Projects
 
-- **[Zen Theme](/zen-theme/)** — A warm color theme for VS Code, IntelliJ, Ghostty, iTerm2, Warp, and the web. Dark and light variants with WCAG AA contrast.
+- **[Theme](/theme/)** — A warm color theme for VS Code, IntelliJ, Ghostty, iTerm2, Warp, and the web. Dark and light variants with WCAG AA contrast.
 - **[Symbol Font](/symbol-font/)** — 11,800+ glyphs from Nerd Fonts, Font Awesome, Material Design, Codicons, and more — in a single font file.
 
 ## Contact

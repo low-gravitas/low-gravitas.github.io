@@ -1,75 +1,39 @@
-/* Low Gravitas Hub — site-specific styles
-   Shared layout rules are in common.css.
-   Color variables come from low-gravitas-zen.css (linked in HTML). */
+/* Low Gravitas Hub — homepage-specific styles.
+   Shared layout and the .card component live in common.css. This file adds
+   page-scoped centering + the hero card grid. */
 
 @layer components {
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 24px;
+    text-align: center;
+    max-width: var(--content-narrow);
+    margin: 0 auto;
+  }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 64px 24px;
-  text-align: center;
-  max-width: var(--content-narrow);
-  margin: 0 auto;
-}
+  .home h1 {
+    font-size: var(--text-3xl);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--lg-accent-fg);
+    margin-bottom: 12px;
+  }
 
-h1 {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
+  .home .tagline {
+    color: var(--lg-text-dim);
+    font-size: var(--text-lg);
+    line-height: var(--leading-normal);
+    margin-bottom: 48px;
+    max-width: 56ch;
+  }
 
-.tagline {
-  color: var(--text-dim);
-  font-size: var(--text-lg);
-  line-height: var(--leading-normal);
-  margin-bottom: 48px;
+  .home .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    width: 100%;
+  }
 }
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  width: 100%;
-}
-
-.card {
-  background: var(--grad-surface);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--surface-radius);
-  box-shadow: var(--shadow-raised-sm);
-  padding: 28px 24px;
-  text-decoration: none;
-  color: var(--text);
-  position: relative;
-  transition: transform var(--duration-fast);
-}
-.card:hover {
-  transform: translateY(-1px);
-}
-
-.card h2 {
-  font-size: var(--text-xl);
-  font-weight: 700;
-  color: var(--lgz-yellow);
-  margin-bottom: 8px;
-}
-
-.card p {
-  font-size: var(--text-sm);
-  color: var(--text-dim);
-  line-height: var(--leading-snug);
-}
-
-[data-theme="light"] .card {
-  border-color: rgba(90,78,62,0.2);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card { transition: none; }
-}
-
-} /* end @layer components */

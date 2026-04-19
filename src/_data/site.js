@@ -12,7 +12,7 @@ export default {
   buildTime: new Date().toISOString(),
   buildHash,
   versions: {
-    zenTheme: pins["zen-theme"],
+    theme: pins["theme"],
     symbolFont: pins["symbol-font"],
   },
 };

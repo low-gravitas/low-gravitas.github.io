@@ -1,6 +1,6 @@
 // scripts/fetch-artifacts.mjs — hardened artifact fetcher for lowgravitas.com
 //
-// Downloads pinned release artifacts from zen-theme and symbol-font repos,
+// Downloads pinned release artifacts from theme and symbol-font repos,
 // verifies SHA-256 against artifacts.lock.json, and populates vendor/.
 // Supports LGZ_USE_VENDOR_LOCAL=1 for local development with sibling repos.
 
@@ -15,9 +15,9 @@ const execFile = promisify(execFileCb);
 // ── Hardcoded repo map ─────────────────────────────────────────────────────
 // artifacts.json carries tags only; repo ownership lives here, not in config.
 const REPO_MAP = {
-  "zen-theme": {
-    repo: "low-gravitas/low-gravitas-zen-theme",
-    files: ["low-gravitas-zen.css", "palette.json", "code-samples.html"],
+  "theme": {
+    repo: "low-gravitas/low-gravitas-theme",
+    files: ["low-gravitas.css", "palette.json", "code-samples.html"],
   },
   "symbol-font": {
     repo: "low-gravitas/low-gravitas-symbol-font",
@@ -49,13 +49,13 @@ async function fileExists(filePath) {
 }
 
 function sentinelPath(pins) {
-  return join(VENDOR, `.fetched-${pins["zen-theme"]}-${pins["symbol-font"]}`);
+  return join(VENDOR, `.fetched-${pins["theme"]}-${pins["symbol-font"]}`);
 }
 
 // ── Vendor-local override ──────────────────────────────────────────────────
 
 const VENDOR_LOCAL_DIRS = {
-  "zen-theme": join(ROOT, "vendor-local", "low-gravitas-zen-theme"),
+  "theme": join(ROOT, "vendor-local", "low-gravitas-theme"),
   "symbol-font": join(ROOT, "vendor-local", "low-gravitas-symbol-font"),
 };
 

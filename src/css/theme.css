@@ -1,0 +1,261 @@
+/* Low Gravitas Theme page — palette strip, IDE mock, terminal mock.
+   Uses vendor/low-gravitas.css tokens directly (--lgz-* raw + --bg / --surface /
+   --text / --accent / --selection-* / --link semantic aliases) so the demo
+   always shows the authoritative theme palette, not a site-accent approximation.
+   Each demo section has its own [data-theme] attribute so visitors can flip
+   dark/light independently of the site theme. */
+
+@layer pages {
+
+  /* ── Per-section header + toggle ──────────────────────────────────────── */
+  .demo-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .demo-section-head h2 {
+    color: var(--lg-accent-fg);
+    margin: 0;
+  }
+
+  /* ── Palette strip ─────────────────────────────────────────────────────── */
+  .palette-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+    gap: 6px;
+    max-width: 960px;
+    margin: 0 auto 48px;
+  }
+  .swatch-cell {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--lg-border-subtle);
+    display: flex;
+    align-items: flex-end;
+    padding: 6px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    overflow: hidden;
+    cursor: default;
+  }
+  .swatch-cell .label {
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    padding: 1px 4px;
+    border-radius: 3px;
+    position: relative;
+    z-index: 2;
+  }
+  /* Hex overlay appears on hover/focus — uses attr() to pull the
+     per-variant hex from data-dark / data-light. */
+  .swatch-cell::after {
+    content: attr(data-dark);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    background: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    transition: opacity var(--dur-fast) var(--ease-out);
+    pointer-events: none;
+  }
+  .demo[data-theme="light"] .swatch-cell::after {
+    content: attr(data-light);
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+  }
+  .swatch-cell:hover::after,
+  .swatch-cell:focus-visible::after { opacity: 1; }
+
+  /* ── IDE mock ──────────────────────────────────────────────────────────── */
+  .ide-mock {
+    max-width: 900px;
+    margin: 0 auto 32px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-raised);
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    background: var(--bg);
+    color: var(--text);
+  }
+  .ide-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-dim);
+    font-size: var(--text-xs);
+    background: var(--surface-raised);
+    color: var(--text-dim);
+  }
+  .ide-dots { display: flex; gap: 6px; }
+  .ide-dots span {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .ide-body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 320px;
+  }
+  .ide-sidebar {
+    border-right: 1px solid var(--border-dim);
+    padding: 10px 0;
+    font-size: var(--text-xs);
+    background: var(--surface);
+    color: var(--text-dim);
+  }
+  .ide-sidebar .dir { padding: 2px 12px; color: var(--lgz-yellow); }
+  .ide-sidebar .file {
+    padding: 2px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ide-sidebar .file.active {
+    background: var(--bg);
+    color: var(--lgz-bright-white);
+  }
+  .ide-editor {
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .ide-tabs {
+    display: flex;
+    gap: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-dim);
+  }
+  .ide-tab {
+    padding: 6px 14px;
+    font-size: var(--text-xs);
+    color: var(--text-dim);
+    border-right: 1px solid var(--border-dim);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+  .ide-tab.active {
+    background: var(--bg);
+    color: var(--lgz-bright-white);
+    border-bottom-color: var(--accent);
+  }
+  .ide-code {
+    flex: 1;
+    padding: 10px 14px;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+  .ide-code pre,
+  .ide-code code {
+    font-family: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    white-space: pre;
+    color: var(--text);
+  }
+  /* Each top-level <span> in code-samples.html wraps one source line.
+     Block display gives each its own row; white-space: pre on the span
+     itself preserves indentation without collapsing the inter-line
+     newlines into extra height at the parent level. */
+  .ide-code > span {
+    display: block;
+    white-space: pre;
+  }
+  .ide-statusbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 14px;
+    border-top: 1px solid var(--border-dim);
+    font-size: 11px;
+    background: var(--surface-raised);
+    color: var(--text-dim);
+  }
+
+  /* ── Terminal mock ─────────────────────────────────────────────────────── */
+  .terminal-mock {
+    max-width: 760px;
+    margin: 0 auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-raised);
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    background: var(--bg);
+    color: var(--text);
+  }
+  .terminal-body {
+    padding: 14px 18px;
+    line-height: 1.55;
+  }
+
+  /* ── Syntax tokens emitted by upstream code-samples.html ─────────────── */
+  .tk-keyword  { color: var(--lgz-bright-red); }
+  .tk-string   { color: var(--lgz-green); }
+  .tk-comment  { color: var(--lgz-blue); font-style: italic; }
+  .tk-number   { color: var(--lgz-bright-yellow); }
+  .tk-function { color: var(--lgz-bright-blue); }
+  .tk-type     { color: var(--lgz-yellow); }
+  .tk-variable { color: var(--lgz-bright-magenta); }
+
+  .line-num {
+    display: inline-block;
+    width: 2.5em;
+    text-align: right;
+    padding-right: 1em;
+    color: var(--text-dim);
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .selected-text {
+    background: var(--selection-bg);
+    color: var(--selection-fg);
+    border-radius: 2px;
+  }
+  .cursor-line { background: var(--surface); display: block; }
+  .cursor-bar {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--lgz-cursor);
+    vertical-align: text-bottom;
+    margin-left: 2px;
+    animation: cursor-blink 1.1s steps(2) infinite;
+  }
+  @keyframes cursor-blink {
+    50% { opacity: 0; }
+  }
+
+  /* Terminal output classes — shell output coloring */
+  .term-ok   { color: var(--lgz-green); }
+  .term-err  { color: var(--lgz-red); }
+  .term-warn { color: var(--lgz-yellow); }
+  .term-info { color: var(--lgz-blue); }
+
+  /* ── Responsive ───────────────────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .ide-body { grid-template-columns: 1fr; }
+    .ide-sidebar { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor-bar { animation: none; }
+  }
+}

@@ -15,8 +15,12 @@ permalink: /blog/
 
   <div class="post-list">
     {% for post in collections.posts %}
-    <article class="post-summary iridescent clay-ripple">
-      <h2><a href="{{ post.url }}">{% if post.data.draft %}<span class="draft-badge">DRAFT</span> {% endif %}{{ post.data.title }}</a></h2>
+    <article class="post-summary card card--link iri-rim">
+      <h2>
+        <a href="{{ post.url }}">
+          {% if post.data.draft %}<span class="draft-badge">DRAFT</span> {% endif %}{{ post.data.title }}
+        </a>
+      </h2>
       <div class="post-meta">
         <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
         {% if post.data.author %}<span class="post-author">by {{ post.data.author }}</span>{% endif %}
@@ -31,6 +35,8 @@ permalink: /blog/
   </div>
 
   <div class="feed-link">
-    <a href="/blog/feed.xml" class="btn iridescent clay-ripple"><span class="lg" aria-hidden="true">&#xF09E;</span> RSS Feed</a>
+    <a href="/blog/feed.xml" class="btn iri-rim">
+      <span class="lg" aria-hidden="true">&#xF09E;</span> RSS Feed
+    </a>
   </div>
 </div>

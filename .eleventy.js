@@ -107,6 +107,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/img");
+  eleventyConfig.addPassthroughCopy("src/fonts");
 
   // Vendor generated assets → _site/vendor/
   // vendor/ is in .gitignore (it's fetched, not committed). Eleventy 3 respects

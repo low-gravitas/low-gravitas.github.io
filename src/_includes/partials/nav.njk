@@ -1,10 +1,14 @@
 {%- set url = page.url or "" -%}
-<nav>
-  <a href="/" class="nav-left"><img src="/apple-touch-icon.png" alt="" class="brand-logo" width="28" height="28"> Low Gravitas</a>
-  <div class="nav-right">
-    <a href="/low-gravitas-zen-theme/" class="iridescent clay-ripple"{% if "/zen-theme/" in url or "/low-gravitas-zen-theme/" in url %} aria-current="page"{% endif %}>Zen Theme</a>
-    <a href="/low-gravitas-symbol-font/" class="iridescent clay-ripple"{% if "/symbol-font/" in url or "/low-gravitas-symbol-font/" in url %} aria-current="page"{% endif %}>Symbol Font</a>
-    <a href="/blog/" class="iridescent clay-ripple"{% if "/blog/" in url %} aria-current="page"{% endif %}>Blog</a>
-    <button id="theme-toggle" class="iridescent clay-ripple" aria-label="Toggle light/dark theme">&#xF050E;</button>
+<nav class="top-nav">
+  <a href="/" class="top-nav-brand">
+    <img src="/apple-touch-icon.png" alt="" class="brand-logo" width="28" height="28">
+    Low Gravitas
+  </a>
+  <div class="top-nav-links">
+    <a href="/theme/" class="iri-rim"{% if "/theme/" in url %} aria-current="page"{% endif %}>Theme</a>
+    <a href="/symbol-font/" class="iri-rim"{% if "/symbol-font/" in url %} aria-current="page"{% endif %}>Symbol Font</a>
+    <a href="/blog/" class="iri-rim"{% if "/blog/" in url %} aria-current="page"{% endif %}>Blog</a>
+    <button id="iri-pause-toggle" class="icon-btn iri-rim" aria-label="Pause motion" aria-pressed="false" title="Pause motion">&#xF040E;</button>
+    <button id="theme-toggle" class="icon-btn iri-rim" aria-label="Toggle light/dark theme">&#xF050E;</button>
   </div>
 </nav>

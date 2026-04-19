@@ -1,0 +1,163 @@
+---
+layout: layouts/base.njk
+title: Low Gravitas Theme
+description: A warm, low-blue-light color theme for editors and terminals. Dark and light variants with WCAG AA contrast.
+bodyClass: demo-theme
+extraCss: /css/theme.css
+---
+
+{%- set paletteNames = [
+  "black", "red", "green", "yellow",
+  "blue", "magenta", "cyan", "white",
+  "bright-black", "bright-red", "bright-green", "bright-yellow",
+  "bright-blue", "bright-magenta", "bright-cyan", "bright-white",
+  "bg-deep", "bg-mid", "bg-raised", "selection", "cursor", "accent"
+] -%}
+
+<section class="hero">
+  <h1>Low Gravitas Theme</h1>
+  <p class="tagline">
+    A warm, low-blue-light color palette for editors and terminals.
+    Dark and light variants with WCAG AA contrast throughout.
+  </p>
+  <div class="actions">
+    <a class="btn btn--primary iri-rim" href="/vendor/low-gravitas.css">
+      <span class="lg" aria-hidden="true">&#xF019;</span> Download CSS Tokens
+    </a>
+    <a class="btn iri-rim" href="https://github.com/low-gravitas/low-gravitas-theme">
+      <span class="lg" aria-hidden="true">&#xF09B;</span> View on GitHub
+    </a>
+  </div>
+</section>
+
+<section class="pattern-section" style="max-width: 1100px; margin: 0 auto; padding: 0 24px 48px;">
+
+  <div class="demo-section-head">
+    <h2>Palette</h2>
+    <div class="segmented" role="group" aria-label="Palette demo theme">
+      <button data-demo-theme="dark" aria-pressed="true">Dark</button>
+      <button data-demo-theme="light" aria-pressed="false">Light</button>
+    </div>
+  </div>
+  <div class="demo" data-theme="dark">
+    <div class="palette-strip">
+      {%- for name in paletteNames -%}
+      <div class="swatch-cell"
+           style="background: var(--lgz-{{ name }});"
+           data-dark="{{ palette.dark.palette[name] }}"
+           data-light="{{ palette.light.palette[name] }}"
+           tabindex="0">
+        <span class="label">{{ name }}</span>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+
+  <div class="demo-section-head">
+    <h2>Editor</h2>
+    <div class="segmented" role="group" aria-label="Editor demo theme">
+      <button data-demo-theme="dark" aria-pressed="true">Dark</button>
+      <button data-demo-theme="light" aria-pressed="false">Light</button>
+    </div>
+  </div>
+  <div class="demo" data-theme="dark">
+    <div class="ide-mock">
+      <div class="ide-titlebar">
+        <div class="ide-dots">
+          <span style="background: var(--lgz-red);"></span>
+          <span style="background: var(--lgz-yellow);"></span>
+          <span style="background: var(--lgz-green);"></span>
+        </div>
+        <span>fibonacci.py — Low Gravitas</span>
+      </div>
+      <div class="ide-body">
+        <aside class="ide-sidebar">
+          <div class="dir">src/</div>
+          <div class="file active">fibonacci.py</div>
+          <div class="file">utils.py</div>
+          <div class="file">config.toml</div>
+          <div class="dir">tests/</div>
+          <div class="file">test_fib.py</div>
+          <div class="dir">docs/</div>
+          <div class="file">README.md</div>
+        </aside>
+        <div class="ide-editor">
+          <div class="ide-tabs">
+            <div class="ide-tab active">fibonacci.py</div>
+            <div class="ide-tab">utils.py</div>
+          </div>
+          <div class="ide-code">{{ codeSamples.python | safe }}</div>
+        </div>
+      </div>
+      <div class="ide-statusbar">
+        <span>Python 3.14 • UTF-8 • LF</span>
+        <span>Ln 12, Col 24</span>
+      </div>
+    </div>
+
+    <div class="ide-mock">
+      <div class="ide-titlebar">
+        <div class="ide-dots">
+          <span style="background: var(--lgz-red);"></span>
+          <span style="background: var(--lgz-yellow);"></span>
+          <span style="background: var(--lgz-green);"></span>
+        </div>
+        <span>api.js — Low Gravitas</span>
+      </div>
+      <div class="ide-body">
+        <aside class="ide-sidebar">
+          <div class="dir">src/</div>
+          <div class="file active">api.js</div>
+          <div class="file">index.js</div>
+          <div class="file">types.ts</div>
+          <div class="dir">components/</div>
+          <div class="file">App.tsx</div>
+        </aside>
+        <div class="ide-editor">
+          <div class="ide-tabs">
+            <div class="ide-tab active">api.js</div>
+            <div class="ide-tab">index.js</div>
+          </div>
+          <div class="ide-code">{{ codeSamples.js | safe }}</div>
+        </div>
+      </div>
+      <div class="ide-statusbar">
+        <span>JavaScript • UTF-8 • LF</span>
+        <span>Ln 1, Col 1</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section-head">
+    <h2>Terminal</h2>
+    <div class="segmented" role="group" aria-label="Terminal demo theme">
+      <button data-demo-theme="dark" aria-pressed="true">Dark</button>
+      <button data-demo-theme="light" aria-pressed="false">Light</button>
+    </div>
+  </div>
+  <div class="demo" data-theme="dark">
+    <div class="terminal-mock">
+      <div class="ide-titlebar">
+        <div class="ide-dots">
+          <span style="background: var(--lgz-red);"></span>
+          <span style="background: var(--lgz-yellow);"></span>
+          <span style="background: var(--lgz-green);"></span>
+        </div>
+        <span>bash — 80×24</span>
+      </div>
+      <div class="terminal-body">
+<span class="term-ok">user@host</span>:<span class="term-info">~/project</span>$ git status<br>
+<span class="tk-comment">On branch main</span><br>
+<span class="term-ok">&nbsp;&nbsp;modified:&nbsp;&nbsp;&nbsp;src/fibonacci.py</span><br>
+<span class="term-err">&nbsp;&nbsp;deleted:&nbsp;&nbsp;&nbsp;&nbsp;old_config.yaml</span><br>
+<span class="term-warn">&nbsp;&nbsp;new file:&nbsp;&nbsp;&nbsp;README.md</span><br>
+<br>
+<span class="term-ok">user@host</span>:<span class="term-info">~/project</span>$ echo <span class="term-ok">"Hello, World!"</span><br>
+Hello, World!
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script src="/js/theme-demo.js" defer></script>

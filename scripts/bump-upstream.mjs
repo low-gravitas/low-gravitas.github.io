@@ -2,9 +2,9 @@
 //
 // Usage:
 //   node scripts/bump-upstream.mjs              # resolve latest for both
-//   node scripts/bump-upstream.mjs --zen=vX.Y.Z
-//   node scripts/bump-upstream.mjs --font=vA.B.C
-//   node scripts/bump-upstream.mjs --zen=vX.Y.Z --font=vA.B.C
+//   node scripts/bump-upstream.mjs --theme=vX.Y.Z
+//   node scripts/bump-upstream.mjs --symbol-font=vA.B.C
+//   node scripts/bump-upstream.mjs --theme=vX.Y.Z --symbol-font=vA.B.C
 //
 // Never auto-commits. Prints a diff summary and commit reminder.
 
@@ -21,7 +21,7 @@ const ARTIFACTS_JSON = join(ROOT, "artifacts.json");
 const LOCK_JSON = join(ROOT, "artifacts.lock.json");
 
 const REPOS = {
-  "zen-theme": "low-gravitas/low-gravitas-zen-theme",
+  "theme": "low-gravitas/low-gravitas-theme",
   "symbol-font": "low-gravitas/low-gravitas-symbol-font",
 };
 
@@ -39,12 +39,11 @@ const args = Object.fromEntries(
 // ── Resolve target tags ────────────────────────────────────────────────────
 
 async function resolveTag(key) {
-  const argKey = key === "zen-theme" ? "zen" : "font";
-  const explicit = args[argKey];
+  const explicit = args[key];
 
   if (explicit) {
     if (!TAG_RE.test(explicit)) {
-      console.error(`FATAL: invalid tag format --${argKey}=${explicit} (expected vX.Y.Z)`);
+      console.error(`FATAL: invalid tag format --${key}=${explicit} (expected vX.Y.Z)`);
       process.exit(1);
     }
     return explicit;
@@ -109,9 +108,9 @@ const newLock = JSON.parse(await readFile(LOCK_JSON, "utf8"));
 
 // File → repo-key mapping for grouped display
 const FILE_OWNERS = {
-  "low-gravitas-zen.css": "zen-theme",
-  "palette.json": "zen-theme",
-  "code-samples.html": "zen-theme",
+  "low-gravitas.css": "theme",
+  "palette.json": "theme",
+  "code-samples.html": "theme",
   "LowGravitasSymbols.ttf": "symbol-font",
   "low-gravitas-symbols.css": "symbol-font",
   "glyphs.json": "symbol-font",
@@ -136,5 +135,5 @@ for (const key of Object.keys(REPOS)) {
 }
 
 console.log(`\nNext:  git add artifacts.json artifacts.lock.json \\`);
-console.log(`       && git commit -m "bump upstream: zen=${newPins["zen-theme"]} font=${newPins["symbol-font"]}" \\`);
+console.log(`       && git commit -m "bump upstream: theme=${newPins["theme"]} symbol-font=${newPins["symbol-font"]}" \\`);
 console.log(`       && git push`);

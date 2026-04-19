@@ -59,18 +59,24 @@ build` share one path — don't duplicate the fetch steps in a workflow.
 
 ### CSS layers
 
-`common.css` declares `@layer tokens, base, components, demos;`.
-- `tokens` — design tokens (`--text-*`, `--radius-*`, `--shadow-*`,
-  `--border-{faint,subtle,light,medium}`, etc.) and the `[data-theme="light"]`
-  token overrides.
-- `base` — reset, body, links, symbol font, nav, buttons, footer.
-- `components` — iridescent / ripple / clay effect systems (in common.css),
-  plus all of `site.css` and `blog.css`.
-- `demos` — `css/demos/zen-theme.css` and `css/demos/symbol-font.css`,
-  both scoped under their `.demo-*` body classes.
+`common.css` declares `@layer tokens, base, components, pages;`.
+- `tokens` — raw scale tokens (`--text-*`, `--radius-*`, `--shadow-*`,
+  `--leading-*`, `--dur-*`, `--ease-*`, `--font-*`) stay unprefixed and
+  are shared with vendor. The site semantic layer uses `--lg-*` prefixes
+  (`--lg-bg`, `--lg-surface-*`, `--lg-accent`, `--lg-accent-fg`, `--lg-text`,
+  etc.) with `[data-theme="light"]` overrides.
+- `base` — reset, self-hosted `@font-face` declarations, body, headings,
+  links, skip-link, aurora background, reduced-motion.
+- `components` — `.iri-rim` rotating rim system, `.btn`, `.card`,
+  `.callout`, `.segmented`, `.pill`, `.badge`, form controls
+  (`.input`, `.textarea`, `.select`, `.check`, `.radio`, `.toggle`,
+  `.slider`), modal/tooltip/toast/popover, top-nav, hero, footer.
+- `pages` — page-scoped CSS in `theme.css` (palette strip + IDE/terminal
+  mocks with zen palette scoped via `--z-*`) and `symbol-font.css` (glyph
+  browser toolbar + virtual card grid + modal + selection panel).
 
-Shared typography sits on a `.prose` class in `blog.css`; `.post-content`
-and `.page-content` extend it with context-specific additions.
+`blog.css` extends `.prose` for blog-post typography, code blocks, and
+images; `.post-content` and `.page-content` layer on top.
 
 ### Symbol font loading
 
@@ -84,7 +90,7 @@ and `.page-content` extend it with context-specific additions.
 
 ### Vendor artifact pipeline
 
-- `artifacts.json` pins tags (e.g. `zen-theme: v1.3.1`). `artifacts.lock.json`
+- `artifacts.json` pins tags (e.g. `theme: v2.0.0`). `artifacts.lock.json`
   stores SHA-256 hashes per file. Both are committed.
 - `scripts/fetch-artifacts.mjs` downloads pinned releases, verifies hashes
   (TOFU on first run), uses `vendor/.fetched-<tag>` sentinel for skip-if-
@@ -100,11 +106,12 @@ and `.page-content` extend it with context-specific additions.
 
 ### Code samples
 
-`src/zen-theme/index.njk` consumes `vendor/code-samples.html` (generated
-upstream from `palette.toml`) via `src/_data/codeSamples.js`, which parses
-the file into `{python, js}` and **throws on miss** to fail the build
-loudly. Syntax-highlighted markup uses semantic classes (`tk-keyword`,
-`tk-string`, etc.) that resolve to colors in the current theme.
+`src/theme/index.njk` can consume `vendor/code-samples.html` (generated
+upstream from `palette.toml`) via `src/_data/codeSamples.js` if the page
+wants to use upstream-authored highlighted code. Current markup uses
+inline tk-* spans. Syntax-highlighted markup uses semantic classes
+(`tk-keyword`, `tk-string`, etc.) that resolve through the `--z-*` tokens
+scoped in `theme.css`.
 
 ## Deferred / known gaps
 

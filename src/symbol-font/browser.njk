@@ -4,38 +4,44 @@ title: Low Gravitas Symbols — Glyph Browser
 description: Browse 11,800+ glyphs. Search, filter, inspect, and export CSS subsets.
 bodyClass: demo-symbol-font demo-symbol-browser
 symbolsCss: true
-extraCss: /css/demos/symbol-font.css
+extraCss: /css/symbol-font.css
 ---
 
 <h1 class="sr-only">Low Gravitas Symbols Glyph Browser</h1>
 <div class="toolbar">
   <div class="toolbar-row">
     <label for="search" class="sr-only">Search glyphs</label>
-    <span class="input-wrap iridescent clay-ripple"><input id="search" type="text" placeholder="Search by name or hex code (e.g. E0C4)..." autocomplete="off"></span>
+    <span class="input-wrap iri-rim">
+      <input id="search" type="text" placeholder="Search by name or hex code (e.g. E0C4)..." autocomplete="off">
+    </span>
     <label for="set-filter" class="sr-only">Filter by icon set</label>
-    <span class="select-wrap iridescent clay-ripple"><select id="set-filter">
-      <option value="">All Sets</option>
-    </select></span>
+    <span class="select-wrap iri-rim">
+      <select id="set-filter">
+        <option value="">All Sets</option>
+      </select>
+    </span>
     <label for="sort-order" class="sr-only">Sort order</label>
-    <span class="select-wrap iridescent clay-ripple"><select id="sort-order">
-      <option value="name">Sort: Name</option>
-      <option value="codepoint">Sort: Codepoint</option>
-    </select></span>
+    <span class="select-wrap iri-rim">
+      <select id="sort-order">
+        <option value="name">Sort: Name</option>
+        <option value="codepoint">Sort: Codepoint</option>
+      </select>
+    </span>
     <span id="count" aria-live="polite" aria-atomic="true"></span>
   </div>
   <div class="toolbar-hint">Arrows navigate. Space/click to inspect. Enter/&#8984;-click to collect. Shift extends range.</div>
 </div>
 
 <div id="grid">
-  <div id="loading">Loading glyphs...</div>
+  <div id="loading">Loading glyphs…</div>
   <div id="container" role="grid" aria-label="Glyph results" tabindex="0"></div>
 </div>
 
 <div id="selection-panel">
   <span class="sel-count" id="sel-count"></span>
   <div class="sel-icons" id="sel-icons"></div>
-  <button id="sel-clear" class="iridescent clay-ripple">Clear</button>
-  <button id="sel-download" class="primary iridescent clay-ripple">Download CSS</button>
+  <button id="sel-clear" class="iri-rim">Clear</button>
+  <button id="sel-download" class="primary iri-rim">Download CSS</button>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
