@@ -399,12 +399,12 @@
      interacted with. */
   .iri-rim:hover,
   .iri-rim:focus-within {
-    /* Slower layer uses steps(120) = 30 paints/sec instead of 60. The
-       faster layer stays linear so the composite motion still reads as
-       fluid; the stepped layer's 3° jumps are hidden under it. */
+    /* Both layers use steps(100) — 50 and 25 paints/sec respectively
+       (3.6° per step). Stepping both still reads as continuous because
+       the two layers step on independent phases. */
     animation:
-      iri-spin-rim   2s linear infinite,
-      iri-spin-rim2  4s steps(120) infinite reverse;
+      iri-spin-rim   2s steps(100) infinite,
+      iri-spin-rim2  4s steps(100) infinite reverse;
   }
   @keyframes iri-spin-rim  { from { --hue-rim:  0deg; }  to { --hue-rim:  360deg; } }
   @keyframes iri-spin-rim2 { from { --hue-rim2: 90deg; } to { --hue-rim2: 450deg; } }
