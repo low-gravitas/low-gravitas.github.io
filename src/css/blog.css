@@ -380,34 +380,44 @@
   padding: 1.25em 1.5em;
 }
 
-/* Line numbers */
-.post-content pre[data-line-numbers] code { counter-reset: line; }
-.post-content pre[data-line-numbers] code .highlight-line {
-  display: inline-block;
-  width: 100%;
+/* Line wrappers — rendered whenever data-line-numbers OR data-highlight is set.
+   Override the ancestor <pre>'s default white-space: pre so that \n text nodes
+   between line blocks collapse (no double-spacing); keep white-space: pre on
+   the wrappers themselves so intra-line indentation survives. */
+.post-content pre[data-line-numbers],
+.post-content pre[data-highlight] { white-space: normal; }
+
+.post-content pre .highlight-line {
+  display: block;
+  white-space: pre;
 }
+
+/* Line numbers. --lnum-width is set inline by blog-code.js based on the
+   block's line count (min 2ch). */
+.post-content pre[data-line-numbers] code { counter-reset: line; }
 .post-content pre[data-line-numbers] code .highlight-line::before {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
-  width: 2.5em;
-  margin-right: 1em;
+  width: var(--lnum-width, 2ch);
+  margin-right: 1ch;
   text-align: right;
-  color: var(--lg-text-dim);
-  opacity: 0.4;
-  font-size: 0.85em;
+  color: var(--text-dim);
+  opacity: 0.5;
   user-select: none;
   -webkit-user-select: none;
 }
 
-/* Line highlighting */
+/* Line highlighting. padding-left subtracts the border width so the
+   highlighted line's content aligns with non-highlighted lines' content
+   (otherwise the 2px border pushes line numbers / code 2px to the right). */
 .post-content pre .highlight-line[data-highlighted] {
-  background: rgba(255, 255, 134, 0.06);
+  background: color-mix(in oklab, var(--lgz-accent) 12%, transparent);
   margin-left: -1.5em;
   margin-right: -1.5em;
-  padding-left: 1.5em;
+  padding-left: calc(1.5em - 2px);
   padding-right: 1.5em;
-  border-left: 2px solid var(--lg-accent-fg);
+  border-left: 2px solid var(--lgz-accent);
 }
 
 /* ── Images ──────────────────────────────────────────────────────────────── */
