@@ -844,10 +844,15 @@
     outline: 2px solid var(--lg-accent-fg);
     outline-offset: 3px;
   }
-  .toggle--dual .toggle-label-a { color: var(--lg-text); }
-  .toggle--dual input:checked ~ .toggle-label-a { color: var(--lg-text-dim); }
-  .toggle--dual .toggle-label-b { color: var(--lg-text-dim); }
-  .toggle--dual input:checked ~ .toggle-label-b { color: var(--lg-text); }
+  /* Inactive side gets the dimmest neutral + regular weight; active side gets
+     full-text + medium weight. The weight shift keeps the contrast readable
+     in light mode where text ↔ text-faint luminance delta is small. */
+  .toggle--dual .toggle-label-a,
+  .toggle--dual .toggle-label-b { transition: color var(--dur-fast); }
+  .toggle--dual .toggle-label-a { color: var(--lg-text);       font-weight: 500; }
+  .toggle--dual .toggle-label-b { color: var(--lg-text-faint); font-weight: 400; }
+  .toggle--dual input:checked ~ .toggle-label-a { color: var(--lg-text-faint); font-weight: 400; }
+  .toggle--dual input:checked ~ .toggle-label-b { color: var(--lg-text);       font-weight: 500; }
 
   .slider {
     appearance: none;
@@ -870,18 +875,18 @@
     -webkit-appearance: none;
     width: 18px; height: 18px;
     border-radius: 50%;
-    background: linear-gradient(145deg, var(--lg-accent), var(--lg-accent-deep));
+    background: var(--lg-accent-fg);
     border: 2px solid var(--lg-bg);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18);
     margin-top: -7px;
     cursor: grab;
   }
   .slider::-moz-range-thumb {
     width: 18px; height: 18px;
     border-radius: 50%;
-    background: linear-gradient(145deg, var(--lg-accent), var(--lg-accent-deep));
+    background: var(--lg-accent-fg);
     border: 2px solid var(--lg-bg);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18);
     cursor: grab;
   }
 }
