@@ -115,6 +115,13 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.delete("vendor/generated");
   eleventyConfig.addPassthroughCopy({ "vendor/generated": "vendor" });
 
+  // Dev-only: expose design prototypes at /demos/ for reference during
+  // development. Production builds skip them so they never ship.
+  if (!isProduction) {
+    eleventyConfig.ignores.delete("demos");
+    eleventyConfig.addPassthroughCopy({ "demos": "/demos" });
+  }
+
   // ── Cache-busting HTML transform ──────────────────────────────────────────
   // Appends ?v=<buildHash> to local CSS, JS, and vendor asset references in
   // rendered HTML. The function is shared with the test suite (build-utils.mjs).
