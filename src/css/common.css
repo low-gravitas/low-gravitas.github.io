@@ -324,6 +324,9 @@
   html[data-page-bg="iri-vivid"]  body::after { opacity: 0.75; }
   html[data-page-bg="none"] body::before,
   html[data-page-bg="none"] body::after { animation: none; }
+  /* Pause aurora when the tab isn't visible — JS sets this on visibilitychange. */
+  html[data-aurora="paused"] body::before,
+  html[data-aurora="paused"] body::after { animation-play-state: paused; }
 
   main, header, footer, nav, section { position: relative; z-index: 1; }
 
@@ -389,7 +392,13 @@
    mask-composite to carve out the center.
    ══════════════════════════════════════════════════════════════ */
 @layer components {
-  :root {
+  /* Hue animation only runs while a rim is visible (hover/focus). Running
+     it on :root would repaint every .iri-rim conic-gradient every frame
+     even though most pseudos are opacity: 0. Scoped here, the @property
+     value inherits into the pseudos and stays static when nothing is
+     interacted with. */
+  .iri-rim:hover,
+  .iri-rim:focus-within {
     animation:
       iri-spin-rim   2s linear infinite,
       iri-spin-rim2  4s linear infinite reverse;

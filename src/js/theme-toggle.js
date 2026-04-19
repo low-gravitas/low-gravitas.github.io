@@ -19,4 +19,16 @@
       document.documentElement.setAttribute('data-theme', e.matches ? 'light' : 'dark');
     }
   });
+
+  // Pause aurora animation while the tab is hidden — the rotating
+  // conic gradients + filter: blur are expensive to paint every frame.
+  function syncAurora() {
+    if (document.hidden) {
+      document.documentElement.setAttribute('data-aurora', 'paused');
+    } else {
+      document.documentElement.removeAttribute('data-aurora');
+    }
+  }
+  document.addEventListener('visibilitychange', syncAurora);
+  syncAurora();
 })();
