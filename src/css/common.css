@@ -7,8 +7,6 @@
 /* @property must live outside @layer (spec limitation) */
 @property --hue-rim  { syntax: '<angle>'; initial-value: 0deg;   inherits: true; }
 @property --hue-rim2 { syntax: '<angle>'; initial-value: 90deg;  inherits: true; }
-@property --a1       { syntax: '<angle>'; initial-value: 0deg;   inherits: false; }
-@property --a2       { syntax: '<angle>'; initial-value: 180deg; inherits: false; }
 
 @layer tokens, base, components, pages;
 
@@ -267,7 +265,9 @@
   body::before {
     top: -25vh;
     height: 95vh;
-    background: conic-gradient(from var(--a1) at 42% 62%,
+    transform-origin: 42% 62%;
+    will-change: transform;
+    background: conic-gradient(from 0deg at 42% 62%,
       transparent 0%,
       rgba(255, 221, 102, 0.18) 11%,
       rgba(220, 140, 200, 0.2) 26%,
@@ -281,7 +281,9 @@
   body::after {
     bottom: -25vh;
     height: 90vh;
-    background: conic-gradient(from var(--a2) at 58% 38%,
+    transform-origin: 58% 38%;
+    will-change: transform;
+    background: conic-gradient(from 0deg at 58% 38%,
       transparent 0%,
       rgba(200, 150, 230, 0.2) 14%,
       rgba(140, 180, 220, 0.22) 28%,
@@ -293,7 +295,7 @@
     animation: aurora-spin-b 38s linear infinite reverse;
   }
   [data-theme="light"] body::before {
-    background: conic-gradient(from var(--a1) at 42% 62%,
+    background: conic-gradient(from 0deg at 42% 62%,
       transparent 0%,
       rgba(112,  64, 160, 0.3) 11%,
       rgba(200, 100, 150, 0.25) 26%,
@@ -304,7 +306,7 @@
       transparent 86%);
   }
   [data-theme="light"] body::after {
-    background: conic-gradient(from var(--a2) at 58% 38%,
+    background: conic-gradient(from 0deg at 58% 38%,
       transparent 0%,
       rgba(210, 140, 110, 0.24) 14%,
       rgba( 72, 120, 180, 0.28) 28%,
@@ -315,8 +317,12 @@
       transparent 86%);
   }
 
-  @keyframes aurora-spin-a { to { --a1: 360deg; } }
-  @keyframes aurora-spin-b { to { --a2: 540deg; } }
+  /* GPU-composited rotation: the conic gradient + filter: blur are painted
+     once to a layer; each frame just rotates the layer. transform-origin
+     puts the pivot on the gradient's focal point, mirroring the old
+     `from var(--a1) at 42% 62%` behavior visually. */
+  @keyframes aurora-spin-a { to { transform: rotate(360deg); } }
+  @keyframes aurora-spin-b { to { transform: rotate(360deg); } }
 
   html[data-page-bg="iri-subtle"] body::before,
   html[data-page-bg="iri-subtle"] body::after { opacity: 0.4; }
