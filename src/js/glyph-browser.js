@@ -128,7 +128,7 @@
       if (visibleCards.has(i)) continue;
       const g = filtered[i], row = Math.floor(i / cols), col = i % cols;
       const card = document.createElement('div');
-      card.className = 'card iri-rim' + (collection.has(g.cp) ? ' collected' : '');
+      card.className = 'card' + (collection.has(g.cp) ? ' collected' : '');
       card.style.cssText = 'left:' + (padLeft + col * (CARD_W + GAP)) + 'px;top:' + (row * (CARD_H + GAP)) + 'px;width:' + CARD_W + 'px;height:' + CARD_H + 'px';
       card.dataset.cp = g.cp;
       card.dataset.idx = i;

@@ -106,12 +106,12 @@
     transition: transform var(--dur-fast);
     padding: 8px;
     user-select: none;
-    /* overflow visible so .iri-rim::before / ::after (inset: -1px) aren't
-       clipped; the inner ellipsis labels manage their own overflow. */
-    overflow: visible;
   }
   .demo-symbol-browser .card:hover,
-  .demo-symbol-browser .card:focus-visible { transform: translateY(-1px); }
+  .demo-symbol-browser .card:focus-visible {
+    transform: translateY(-1px);
+    border-color: var(--lg-accent-fg);
+  }
   .demo-symbol-browser .card:focus { outline: none; }
   .demo-symbol-browser .card.collected {
     border-color: var(--lg-accent-fg);
