@@ -109,6 +109,11 @@
     /* overflow visible so .iri-rim::before / ::after (inset: -1px) aren't
        clipped; the inner ellipsis labels manage their own overflow. */
     overflow: visible;
+    /* Skip rendering work (glyph shaping, text layout, iri-rim pseudos) for
+       cards scrolled out of viewport. Virtual scrolling handles DOM churn
+       at a coarser grain; this gates paint/layout inside each card. */
+    content-visibility: auto;
+    contain-intrinsic-size: var(--card-size) var(--card-size);
   }
   .demo-symbol-browser .card:hover,
   .demo-symbol-browser .card:focus-visible { transform: translateY(-1px); }
