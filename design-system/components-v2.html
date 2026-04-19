@@ -60,7 +60,7 @@
         <div class="swatch" style="background: var(--lg-surface-deep);"><span>--surface-deep</span></div>
       </div>
 
-      <h3 class="inline-head" style="margin-top: 28px;"><span>Text & accent</span></h3>
+      <h3 class="inline-head"><span>Text & accent</span></h3>
       <div class="swatches">
         <div class="swatch" style="background: var(--lg-text); color: var(--lg-bg);"><span>--text</span></div>
         <div class="swatch" style="background: var(--lg-text-dim); color: var(--lg-bg);"><span>--text-dim</span></div>
@@ -70,16 +70,16 @@
         <div class="swatch" style="background: var(--lg-accent-deep); color: var(--lg-text-on-accent);"><span>--accent-deep</span></div>
       </div>
 
-      <h3 class="inline-head" style="margin-top: 28px;"><span>Aurora background palette</span> <span class="count">body::before / body::after conic stops</span></h3>
+      <h3 class="inline-head"><span>Aurora background palette</span> <span class="count">body::before / body::after conic stops</span></h3>
       <div class="swatches">
         <div class="swatch" style="background: var(--lg-iri-1);"><span>--iri-1</span></div>
         <div class="swatch" style="background: var(--lg-iri-2);"><span>--iri-2</span></div>
         <div class="swatch" style="background: var(--lg-iri-3);"><span>--iri-3</span></div>
         <div class="swatch" style="background: var(--lg-iri-4);"><span>--iri-4</span></div>
-        <div class="swatch" style="background: conic-gradient(from var(--hue, 0deg), var(--lg-iri-1), var(--lg-iri-2), var(--lg-iri-3), var(--lg-iri-4), var(--lg-iri-5)); color: var(--lg-text);"><span>conic composite</span></div>
+        <div class="swatch swatch--iri-composite"><span>conic composite</span></div>
       </div>
 
-      <h3 class="inline-head" style="margin-top: 28px;"><span>Iri-rim gradient</span> <span class="count">hover ring — two counter-rotating layers</span></h3>
+      <h3 class="inline-head"><span>Iri-rim gradient</span> <span class="count">hover ring — two counter-rotating layers</span></h3>
       <div class="swatches">
         <div class="swatch rim-preview rim-preview--after"><span>::after (100%)</span></div>
         <div class="swatch rim-preview rim-preview--before"><span>::before (50%)</span></div>
@@ -143,31 +143,31 @@
       <div class="specimen">
         <div class="specimen-label"><strong>Text input</strong>.input-wrap</div>
         <div class="specimen-row">
-          <label class="input-wrap" style="min-width: 260px;">
+          <label class="input-wrap input-wrap--md">
             <input type="text" class="input" placeholder="Type something">
-                      </label>
-          <label class="input-wrap input-wrap--icon" style="min-width: 260px;">
+          </label>
+          <label class="input-wrap input-wrap--icon input-wrap--md">
             <span class="input-icon" aria-hidden="true">&#x2315;</span>
             <input type="search" class="input" placeholder="Search glyphs">
-                      </label>
+          </label>
         </div>
       </div>
 
       <div class="specimen">
         <div class="specimen-label"><strong>With label + hint</strong>field composition</div>
-        <div class="specimen-row" style="width: 100%;">
-          <div class="field" style="flex: 1; max-width: 320px;">
+        <div class="field-pair">
+          <div class="field">
             <label class="field-label" for="i-email">Email</label>
-            <span class="input-wrap" style="display: block;">
+            <span class="input-wrap">
               <input type="email" class="input" id="i-email" placeholder="you@example.com">
-                          </span>
+            </span>
             <span class="field-hint">We'll never share it.</span>
           </div>
-          <div class="field" style="flex: 1; max-width: 320px;">
+          <div class="field">
             <label class="field-label" for="i-pw">Password</label>
-            <span class="input-wrap" style="display: block;">
+            <span class="input-wrap">
               <input type="password" class="input" id="i-pw" value="wrong" aria-invalid="true">
-                          </span>
+            </span>
             <span class="field-error">That password doesn't match.</span>
           </div>
         </div>
@@ -175,7 +175,7 @@
 
       <div class="specimen">
         <div class="specimen-label"><strong>Textarea</strong></div>
-        <div class="input-wrap" style="display: block; width: min(420px, 100%); min-width: 0;">
+        <div class="input-wrap textarea-demo">
           <textarea class="textarea" placeholder="Write a comment…"></textarea>
         </div>
       </div>
@@ -207,7 +207,7 @@
           <label class="check"><input type="checkbox" checked><span class="check-box"></span>Enable</label>
           <label class="check"><input type="checkbox" id="c-indet"><span class="check-box"></span>Indeterminate</label>
           <label class="check"><input type="checkbox"><span class="check-box"></span>Unchecked</label>
-          <label class="check" aria-disabled="true" style="opacity: 0.4;"><input type="checkbox" disabled><span class="check-box"></span>Disabled</label>
+          <label class="check" aria-disabled="true"><input type="checkbox" disabled><span class="check-box"></span>Disabled</label>
         </div>
       </div>
 
@@ -239,7 +239,7 @@
 
       <div class="specimen">
         <div class="specimen-label"><strong>Slider</strong>value label optional</div>
-        <div style="width: 320px;">
+        <div class="slider-demo">
           <input type="range" class="slider" min="0" max="100" value="45">
         </div>
       </div>
@@ -290,7 +290,7 @@
         <div class="card">
           <h3>With a footer row</h3>
           <p>A card that separates an action area from content. Works for dismissible announcements or "keep reading" panels.</p>
-          <div style="display: flex; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--lg-border-subtle);">
+          <div class="card-footer">
             <button class="btn btn--sm btn--ghost" type="button">Dismiss</button>
             <button class="btn btn--sm btn--primary iri-rim" type="button">Got it</button>
           </div>
@@ -316,7 +316,7 @@
 
       <div class="specimen">
         <div class="specimen-label"><strong>Badges</strong>inline with titles</div>
-        <div class="specimen-row" style="align-items: baseline;">
+        <div class="specimen-row specimen-row--baseline">
           <span>An article title <span class="badge">Draft</span></span>
           <span>Comments <span class="badge badge--count">12</span></span>
           <span>Version <span class="badge badge--version">v1.3.1</span></span>
@@ -335,7 +335,7 @@
 
       <div class="specimen">
         <div class="specimen-label"><strong>Keyboard keys</strong>inline</div>
-        <div class="specimen-row" style="align-items: baseline;">
+        <div class="specimen-row specimen-row--baseline">
           <span>Press <span class="kbd">&#x2318;</span> <span class="kbd">K</span> to search.</span>
           <span><span class="kbd">Shift</span> + <span class="kbd">click</span> to extend.</span>
           <span><span class="kbd">Esc</span> to close.</span>
@@ -344,7 +344,7 @@
 
       <div class="specimen">
         <div class="specimen-label"><strong>Dividers</strong>plain + labeled</div>
-        <div style="width: 100%;">
+        <div class="specimen-row--block">
           <hr>
           <div class="divider">or continue with</div>
         </div>
@@ -357,7 +357,7 @@
         <p class="note">Four semantic tones. Useful in blog posts and help text.</p>
       </div>
 
-      <div class="specimen-stack" style="width: 100%;">
+      <div class="specimen-stack specimen-stack--block">
         <div class="callout callout--info">
           <span class="callout-icon" aria-hidden="true">&#x24d8;</span>
           <div class="callout-body"><strong>Heads up</strong>The symbol font ships as TTF. WOFF2 would save ~1MB but requires an upstream change.</div>
@@ -385,8 +385,8 @@
 
       <div class="specimen">
         <div class="specimen-label"><strong>Top nav</strong>brand + links + theme toggle</div>
-        <div style="width: 100%;">
-          <nav class="top-nav" style="position: static; border-radius: var(--radius-md); border: 1px solid var(--lg-border-subtle);">
+        <div class="specimen-row--block">
+          <nav class="top-nav top-nav--specimen">
             <a href="#" class="top-nav-brand" onclick="event.preventDefault()">
               <span class="brand-mark" aria-hidden="true"></span>
               Low Gravitas
@@ -432,7 +432,7 @@
       <div class="specimen">
         <div class="specimen-label"><strong>Breadcrumb</strong></div>
         <nav aria-label="Breadcrumb">
-          <ol class="crumbs" style="list-style: none; padding: 0;">
+          <ol class="crumbs">
             <li><a href="#" onclick="event.preventDefault()">Home</a></li>
             <li class="crumbs-sep" aria-hidden="true">/</li>
             <li><a href="#" onclick="event.preventDefault()">Blog</a></li>
@@ -449,7 +449,7 @@
           <button class="btn btn--sm iri-rim" type="button">1</button>
           <button class="btn btn--sm btn--primary iri-rim" type="button" aria-current="page">2</button>
           <button class="btn btn--sm iri-rim" type="button">3</button>
-          <span class="btn btn--sm btn--quiet" aria-hidden="true" style="pointer-events: none;">…</span>
+          <span class="btn btn--sm btn--quiet" aria-hidden="true">…</span>
           <button class="btn btn--sm iri-rim" type="button">12</button>
           <button class="btn btn--sm btn--ghost" type="button" aria-label="Next">&rarr;</button>
         </div>
@@ -483,10 +483,11 @@
 
       <div class="specimen">
         <div class="specimen-label"><strong>Popover</strong>menu pattern</div>
-        <div style="position: relative; display: inline-block;">
+        <div class="popover-demo">
           <button class="btn iri-rim" type="button" id="pop-trigger" aria-expanded="false" aria-controls="pop-menu">
-            Actions <span aria-hidden="true">&#x25BE;</span>          </button>
-          <div class="popover" id="pop-menu" role="menu" style="top: calc(100% + 6px); left: 0; display: none;">
+            Actions <span aria-hidden="true">&#x25BE;</span>
+          </button>
+          <div class="popover" id="pop-menu" role="menu">
             <a class="popover-item" role="menuitem" href="#" onclick="event.preventDefault()"><span aria-hidden="true">&#x270E;</span> Edit</a>
             <a class="popover-item" role="menuitem" href="#" onclick="event.preventDefault()"><span aria-hidden="true">&#x2398;</span> Duplicate</a>
             <a class="popover-item" role="menuitem" href="#" onclick="event.preventDefault()"><span aria-hidden="true">&#x21a9;</span> Move to…</a>
@@ -506,7 +507,7 @@
                 <h2>Delete this post?</h2>
                 <button class="btn btn--icon btn--sm btn--quiet" type="button" aria-label="Close" data-close-modal>&times;</button>
               </div>
-              <p style="color: var(--lg-text-dim); font-size: var(--text-sm); line-height: var(--leading-snug);">
+              <p>
                 This will permanently remove <code class="inline">on-fonts-that-age-well.md</code> and its metadata. This action can't be undone.
               </p>
               <div class="modal-footer">
@@ -532,18 +533,18 @@
         <p class="note">Inline and block. Block carries an optional header with language label and copy button.</p>
       </div>
 
-      <p style="margin-bottom: 20px;">Inline code like <code class="inline">pnpm build</code> sits quietly in a sentence. Keywords (<code class="inline">const</code>, <code class="inline">async</code>) and paths (<code class="inline">src/index.njk</code>) don't break the reading rhythm.</p>
+      <p class="intro-para">Inline code like <code class="inline">pnpm build</code> sits quietly in a sentence. Keywords (<code class="inline">const</code>, <code class="inline">async</code>) and paths (<code class="inline">src/index.njk</code>) don't break the reading rhythm.</p>
 
       <div class="code-block">
         <div class="code-block-header">
           <span class="code-block-lang">javascript</span>
           <button class="btn btn--sm btn--ghost copy-btn" type="button" data-copy="example">Copy</button>
         </div>
-        <pre>async function <span style="color: #7088c0;">fetchArtifact</span>(tag) {
-  const url = `https://github.com/low-gravitas/${tag}`;
-  const <span style="color: var(--lg-accent-fg);">response</span> = await fetch(url);
-  if (!response.ok) throw new Error(`Failed: ${response.status}`);
-  return response.arrayBuffer();
+        <pre><span class="tk-keyword">async function</span> <span class="tk-function">fetchArtifact</span>(tag) {
+  <span class="tk-keyword">const</span> url = <span class="tk-string">`https://github.com/low-gravitas/${tag}`</span>;
+  <span class="tk-keyword">const</span> <span class="tk-variable">response</span> = <span class="tk-keyword">await</span> fetch(url);
+  <span class="tk-keyword">if</span> (!response.ok) <span class="tk-keyword">throw new</span> <span class="tk-function">Error</span>(<span class="tk-string">`Failed: ${response.status}`</span>);
+  <span class="tk-keyword">return</span> response.arrayBuffer();
 }</pre>
       </div>
     </section>
@@ -579,12 +580,12 @@
         <p class="note">Used on blog (no posts yet), browser (no results), future search UIs.</p>
       </div>
 
-      <div class="card" style="max-width: 480px; margin: 0 auto;">
+      <div class="card empty-demo">
         <div class="empty">
           <div class="empty-icon" aria-hidden="true">&#x2314;</div>
           <h3>No posts yet</h3>
           <p>Notes will show up here when we have something worth saying.</p>
-          <div style="margin-top: 20px;">
+          <div class="empty-cta">
             <a href="#" class="btn btn--sm iri-rim" onclick="event.preventDefault()">Subscribe to RSS</a>
           </div>
         </div>
@@ -597,10 +598,10 @@
         <p class="note">For the glyph browser while 11k glyphs load. Shimmer aligns to iri palette.</p>
       </div>
 
-      <div class="card" style="max-width: 420px;">
-        <span class="skeleton" style="width: 60%; height: 1.5em; margin-bottom: 12px;"></span>
-        <span class="skeleton" style="width: 100%; margin-bottom: 6px;"></span>
-        <span class="skeleton" style="width: 92%; margin-bottom: 6px;"></span>
+      <div class="card skeleton-demo">
+        <span class="skeleton skeleton--heading" style="width: 60%;"></span>
+        <span class="skeleton" style="width: 100%;"></span>
+        <span class="skeleton" style="width: 92%;"></span>
         <span class="skeleton" style="width: 72%;"></span>
       </div>
     </section>
@@ -611,7 +612,7 @@
         <p class="note">Three shapes used on home, symbol-font, and zen-theme. Same underlying structure — h1, tagline, actions — with decoration variants.</p>
       </div>
 
-      <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 24px;">
+      <div class="card card--showcase">
         <div class="hero">
           <h1>Low Gravitas</h1>
           <p class="tagline">Developer tools, side projects, and randomness.</p>
@@ -622,7 +623,7 @@
         </div>
       </div>
 
-      <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 24px;">
+      <div class="card card--showcase">
         <div class="hero">
           <div class="hero-icons" aria-hidden="true">
             <span>&#x2726;</span>
@@ -639,9 +640,9 @@
         </div>
       </div>
 
-      <div class="card" style="padding: 0; overflow: hidden;">
+      <div class="card card--showcase">
         <div class="hero">
-          <h1><em style="font-style: italic;">Zen</em></h1>
+          <h1><em>Zen</em></h1>
           <p class="tagline">A warm, low-blue-light color theme for editors and terminals. Dark and light variants, WCAG AA throughout.</p>
           <div class="actions">
             <a href="#" class="btn btn--primary iri-rim" onclick="event.preventDefault()">Download CSS</a>
@@ -651,7 +652,7 @@
       </div>
     </section>
 
-    <div class="demo-section" style="text-align: center; color: var(--lg-text-faint); font-family: var(--font-mono); font-size: var(--text-xs);">
+    <div class="demo-section demo-footer-note">
       End of atom library · Patterns demo next
     </div>
   </main>

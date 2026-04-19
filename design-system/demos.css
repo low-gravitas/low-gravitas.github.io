@@ -36,6 +36,8 @@ body { padding-bottom: 48px; }
   font-weight: 600;
 }
 .demo-controls .spacer { flex: 1; min-width: 12px; }
+.demo-title    { color: var(--lg-text);       font-size: var(--text-sm); }
+.demo-subtitle { color: var(--lg-text-faint); font-family: var(--font-mono); }
 
 /* Components-v2 page header */
 .demo-header {
@@ -110,7 +112,10 @@ body { padding-bottom: 48px; }
   margin-bottom: 4px;
 }
 .specimen-row   { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.specimen-row--baseline { align-items: baseline; }
+.specimen-row--block    { width: 100%; }
 .specimen-stack { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.specimen-stack--block  { width: 100%; }
 .specimen-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -178,6 +183,12 @@ body { padding-bottom: 48px; }
   padding: 2px 6px;
   border-radius: 3px;
 }
+.swatch--iri-composite {
+  background: conic-gradient(from 0deg,
+    var(--lg-iri-1), var(--lg-iri-2), var(--lg-iri-3),
+    var(--lg-iri-4), var(--lg-iri-5));
+  color: var(--lg-text);
+}
 [data-theme="light"] .swatch span {
   background: rgba(255, 255, 255, 0.6);
   color: var(--lg-text);
@@ -189,6 +200,9 @@ body { padding-bottom: 48px; }
   gap: 12px;
   margin-bottom: 10px;
 }
+.inline-head + .inline-head,
+.swatches + .inline-head,
+.specimen + .inline-head { margin-top: 28px; }
 .inline-head h3 { font-size: var(--text-lg); }
 .inline-head .count {
   font-family: var(--font-mono);
@@ -470,4 +484,58 @@ body { padding-bottom: 48px; }
 .glyph-card.is-selected {
   border-color: var(--lg-accent-fg);
   box-shadow: inset 0 0 0 1px var(--lg-accent-fg);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Specimen-local sizing — named so the catalog markup stays class-
+   based instead of carrying inline widths/margins. Each class is
+   used once (one per catalog specimen) but the name captures intent
+   better than an anonymous inline style.
+   ══════════════════════════════════════════════════════════════ */
+
+.input-wrap--md { min-width: 260px; }
+
+.field-pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+}
+.field-pair > .field { flex: 1; max-width: 320px; }
+
+.textarea-demo { display: block; width: min(420px, 100%); min-width: 0; }
+.slider-demo   { width: 320px; }
+
+.card--showcase {
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.card--showcase:last-of-type { margin-bottom: 0; }
+
+.empty-demo    { max-width: 480px; margin: 0 auto; }
+.empty-cta     { margin-top: 20px; }
+
+.skeleton-demo { max-width: 420px; }
+.skeleton + .skeleton { margin-top: 6px; }
+
+.intro-para    { margin-bottom: 20px; }
+
+/* Normally-sticky top nav shown inline as a specimen. */
+.top-nav--specimen {
+  position: static;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--lg-border-subtle);
+}
+
+/* Popover trigger wrapper — inline-block so the absolutely-positioned
+   menu anchors relative to the button inside the catalog page. */
+.popover-demo { position: relative; display: inline-block; }
+.popover-demo .popover { top: calc(100% + 6px); left: 0; display: none; }
+
+.demo-footer-note {
+  text-align: center;
+  color: var(--lg-text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
 }
