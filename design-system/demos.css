@@ -364,6 +364,60 @@ body { padding-bottom: 48px; }
   margin: 0 auto 48px;
 }
 
+/* Glyph-browser toolbar + selection-panel preview.
+   The site's real rules live in /css/symbol-font.css scoped under
+   .demo-symbol-browser (which applies position: sticky/fixed chrome
+   that overlays the page). The demo renders them in-flow inside a
+   .pattern-section, so we restate the layout pieces only. */
+.pattern-section > .toolbar {
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--lg-border-light);
+  background: var(--lg-sticky-bg);
+}
+.pattern-section > .toolbar .toolbar-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.pattern-section > .toolbar .input-wrap { flex: 1; min-width: 200px; }
+.pattern-section > .toolbar #count {
+  color: var(--lg-text-dim);
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  margin-left: auto;
+}
+.pattern-section > .toolbar .toolbar-hint {
+  color: var(--lg-text-dim);
+  font-size: var(--text-xs);
+  margin-top: 6px;
+}
+
+.pattern-section > #selection-panel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  background: var(--lg-grad-surface);
+  border-top: 1px solid var(--lg-border-medium);
+  box-shadow: var(--shadow-overlay);
+}
+.pattern-section > #selection-panel .sel-count {
+  color: var(--lg-text-dim);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+.pattern-section > #selection-panel .sel-icons {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  font-family: var(--font-symbol);
+  font-size: 20px;
+  padding: 2px 0;
+}
+
 /* Demo version of the glyph browser grid. The site's real browser uses an
    absolute-positioned virtual grid (see /css/symbol-font.css .card rule);
    this .glyph-grid / .glyph-card is a simpler showcase pattern. */
