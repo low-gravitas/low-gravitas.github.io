@@ -27,7 +27,7 @@
       if (grid) {
         Object.keys(counts).sort().forEach(function (set) {
           var pill = document.createElement('a');
-          pill.className = 'pill iri-rim';
+          pill.className = 'pill';
           pill.href = '/symbol-font/browser/?set=' + encodeURIComponent(set);
           pill.textContent = set + ' ';
           var ct = document.createElement('span');

@@ -5,9 +5,11 @@
     Low Gravitas
   </a>
   <div class="top-nav-links">
-    <a href="/theme/" class="iri-rim"{% if "/theme/" in url %} aria-current="page"{% endif %}>Theme</a>
-    <a href="/symbol-font/" class="iri-rim"{% if "/symbol-font/" in url %} aria-current="page"{% endif %}>Symbol Font</a>
-    <a href="/blog/" class="iri-rim"{% if "/blog/" in url %} aria-current="page"{% endif %}>Blog</a>
-    <button id="theme-toggle" class="icon-btn iri-rim" aria-label="Toggle light/dark theme">&#xF050E;</button>
+    <a href="/theme/"{% if "/theme/" in url %} aria-current="page"{% endif %}>Theme</a>
+    <a href="/symbol-font/"{% if "/symbol-font/" in url %} aria-current="page"{% endif %}>Symbol Font</a>
+    <a href="/blog/"{% if "/blog/" in url %} aria-current="page"{% endif %}>Blog</a>
   </div>
+  <button id="theme-toggle" class="btn btn--icon btn--sm iri-rim" aria-label="Toggle light/dark theme">
+    <span class="lg" aria-hidden="true">&#xF050E;</span>
+  </button>
 </nav>

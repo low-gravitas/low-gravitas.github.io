@@ -664,6 +664,7 @@
     transform: translateY(-50%);
     color: var(--lg-text-faint);
     pointer-events: none;
+    font-family: var(--font-symbol);
     font-size: 14px;
   }
 
@@ -1236,9 +1237,13 @@
    ══════════════════════════════════════════════════════════════ */
 @layer components {
   .top-nav {
-    display: flex;
+    /* 3-column grid centers .top-nav-links in the nav's visual middle,
+       independent of brand/toggle widths. A flex space-between layout
+       only equalizes gaps, which drifts the middle item off-center when
+       the outer two items are unequal widths. */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
     gap: 16px;
     padding: 14px 24px;
     background: var(--lg-sticky-bg);
@@ -1249,6 +1254,9 @@
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
   }
+  .top-nav > .top-nav-brand { justify-self: start; }
+  .top-nav > .top-nav-links { justify-self: center; }
+  .top-nav > #theme-toggle   { justify-self: end; }
   .top-nav-brand {
     display: flex;
     align-items: center;
@@ -1275,7 +1283,7 @@
     filter: drop-shadow(0 1px 3px rgba(0,0,0,0.7));
   }
   .top-nav-links { display: flex; align-items: center; gap: 4px; }
-  .top-nav-links a, .top-nav-links button {
+  .top-nav-links a {
     padding: 8px 14px;
     border-radius: var(--radius-md);
     color: var(--lg-text-dim);
@@ -1283,34 +1291,20 @@
     font-size: var(--text-sm);
     font-weight: 500;
     transition: color var(--dur-fast);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
   }
-  .top-nav-links a:hover, .top-nav-links button:hover { color: var(--lg-text); }
+  .top-nav-links a:hover { color: var(--lg-text); }
   .top-nav-links a[aria-current="page"] {
     color: var(--lg-text);
     background: color-mix(in oklab, var(--lg-surface) 50%, transparent);
   }
-  .top-nav-links .icon-btn {
-    font-family: var(--font-symbol);
-    font-size: 18px;
-    line-height: 1;
-    padding: 8px 10px;
-    min-width: 36px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .top-nav-links .icon-btn[aria-pressed="true"] {
-    color: var(--lg-accent-fg);
-    background: color-mix(in oklab, var(--lg-surface) 50%, transparent);
-  }
+
+  /* Icon glyphs inside .btn--icon need to render larger than the button's
+     inherited --text-sm; sized to the button's visual bounds. */
+  .btn--icon .lg { font-size: 18px; line-height: 1; }
 
   @media (max-width: 640px) {
     .top-nav { flex-wrap: wrap; gap: 8px; }
-    .top-nav-links a, .top-nav-links button { padding: 6px 10px; }
+    .top-nav-links a { padding: 6px 10px; }
   }
 
   .tabs {
@@ -1438,6 +1432,7 @@
     display: flex;
     justify-content: center;
     gap: 28px;
+    font-family: var(--font-symbol);
     font-size: 40px;
     color: var(--lg-accent-fg);
     margin-bottom: 20px;

@@ -11,18 +11,19 @@ extraCss: /css/symbol-font.css
 <div class="toolbar">
   <div class="toolbar-row">
     <label for="search" class="sr-only">Search glyphs</label>
-    <span class="input-wrap iri-rim">
-      <input id="search" type="text" placeholder="Search by name or hex code (e.g. E0C4)..." autocomplete="off">
+    <span class="input-wrap input-wrap--icon">
+      <span class="input-icon" aria-hidden="true">&#xF0349;</span>
+      <input id="search" class="input" type="search" placeholder="Search by name or hex code (e.g. E0C4)..." autocomplete="off">
     </span>
     <label for="set-filter" class="sr-only">Filter by icon set</label>
-    <span class="select-wrap iri-rim">
-      <select id="set-filter">
+    <span class="select-wrap">
+      <select id="set-filter" class="select">
         <option value="">All Sets</option>
       </select>
     </span>
     <label for="sort-order" class="sr-only">Sort order</label>
-    <span class="select-wrap iri-rim">
-      <select id="sort-order">
+    <span class="select-wrap">
+      <select id="sort-order" class="select">
         <option value="name">Sort: Name</option>
         <option value="codepoint">Sort: Codepoint</option>
       </select>
@@ -40,8 +41,8 @@ extraCss: /css/symbol-font.css
 <div id="selection-panel">
   <span class="sel-count" id="sel-count"></span>
   <div class="sel-icons" id="sel-icons"></div>
-  <button id="sel-clear" class="iri-rim">Clear</button>
-  <button id="sel-download" class="primary iri-rim">Download CSS</button>
+  <button id="sel-clear" class="btn btn--sm btn--ghost">Clear</button>
+  <button id="sel-download" class="btn btn--sm btn--primary iri-rim">Download CSS</button>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>

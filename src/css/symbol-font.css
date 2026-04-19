@@ -59,45 +59,9 @@
     margin-top: 6px;
   }
 
-  .demo-symbol-browser #search {
-    width: 100%;
-    padding: 8px 12px;
-    background: var(--lg-grad-input);
-    border: 1px solid var(--lg-border-medium);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-pressed-sm);
-    color: var(--lg-text);
-    font: inherit;
-    font-size: var(--text-sm);
-    outline: none;
-    min-width: 200px;
-  }
-  .demo-symbol-browser .input-wrap { flex: 1; min-width: 200px; }
-  .demo-symbol-browser #search:focus {
-    border-color: var(--lg-accent-fg);
-    box-shadow: var(--shadow-pressed-sm), 0 0 0 2px var(--lg-accent-ring);
-  }
-
-  .demo-symbol-browser #set-filter,
-  .demo-symbol-browser #sort-order {
-    padding: 8px 12px;
-    background: var(--lg-grad-input);
-    border: 1px solid var(--lg-border-medium);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-raised-sm);
-    color: var(--lg-text);
-    font: inherit;
-    font-size: var(--text-sm);
-    outline: none;
-    cursor: pointer;
-  }
-  .demo-symbol-browser #set-filter:hover,
-  .demo-symbol-browser #sort-order:hover { border-color: var(--lg-border-hover); }
-  .demo-symbol-browser #set-filter:focus,
-  .demo-symbol-browser #sort-order:focus {
-    outline: 2px solid var(--lg-accent-fg);
-    outline-offset: 2px;
-  }
+  /* Search input + sort/filter selects inherit styling from .input / .select
+     in common.css. Toolbar-scoped tweaks only. */
+  .demo-symbol-browser .toolbar .input-wrap { flex: 1; min-width: 200px; }
 
   .demo-symbol-browser #count {
     color: var(--lg-text-dim);
@@ -120,12 +84,13 @@
   .demo-symbol-browser #container { position: relative; }
 
   .demo-symbol-browser .card {
+    --btn-radius: 8px;
     position: absolute;
     width: var(--card-size);
     height: var(--card-size);
     background: var(--lg-grad-surface);
-    border: 1px solid var(--lg-border-medium);
-    border-radius: 8px;
+    border: 1px solid var(--lg-border-light);
+    border-radius: var(--btn-radius);
     box-shadow: var(--shadow-raised-sm);
     display: flex;
     flex-direction: column;
@@ -133,9 +98,11 @@
     justify-content: center;
     cursor: pointer;
     transition: transform var(--dur-fast);
-    overflow: hidden;
-    padding: 4px;
+    padding: 8px;
     user-select: none;
+    /* overflow visible so .iri-rim::before / ::after (inset: -1px) aren't
+       clipped; the inner ellipsis labels manage their own overflow. */
+    overflow: visible;
   }
   .demo-symbol-browser .card:hover,
   .demo-symbol-browser .card:focus-visible { transform: translateY(-1px); }
@@ -487,40 +454,8 @@
     font-size: var(--text-sm);
     white-space: nowrap;
   }
-  .demo-symbol-browser #selection-panel button {
-    padding: 8px 18px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--lg-border-medium);
-    background: var(--lg-grad-surface);
-    box-shadow: var(--shadow-raised-sm);
-    color: var(--lg-text);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: transform var(--dur-fast), color var(--dur-fast);
-    position: relative;
-    min-height: 44px;
-  }
-  .demo-symbol-browser #selection-panel button:hover {
-    transform: translateY(-1px);
-    color: var(--lg-accent-fg);
-  }
-  .demo-symbol-browser #selection-panel button:active {
-    box-shadow: var(--shadow-pressed-sm);
-    background: var(--lg-grad-pressed);
-    transform: scale(0.97);
-  }
-  .demo-symbol-browser #selection-panel button.primary {
-    background:
-      radial-gradient(farthest-side at 50% 50%,
-        color-mix(in oklab, var(--lg-accent) 100%, transparent) 0%,
-        color-mix(in oklab, var(--lg-accent) 96%, transparent) 40%,
-        color-mix(in oklab, var(--lg-accent) 75%, transparent) 100%),
-      linear-gradient(145deg, var(--lg-accent-dim), var(--lg-accent-deep));
-    color: var(--lg-text-on-accent);
-    border: none;
-  }
+  /* Selection-panel buttons use the shared .btn / .btn--primary / .btn--ghost
+     components from common.css — no page-scoped overrides. */
 
   .demo-symbol-browser #loading {
     display: flex;
