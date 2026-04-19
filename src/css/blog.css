@@ -314,30 +314,7 @@
   opacity: 0.85;
 }
 
-.code-copy-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3em;
-  background: var(--lg-grad-surface);
-  border: 1px solid var(--lg-border-medium);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-raised-sm);
-  color: var(--lg-text-dim);
-  font-size: var(--text-xs);
-  padding: 0.2em 0.45em;
-  cursor: pointer;
-  transition: transform var(--dur-fast);
-  font-family: inherit;
-  line-height: 1.4;
-}
-.code-copy-btn:hover { color: var(--lg-text); transform: translateY(-1px); }
-.code-copy-btn:active {
-  box-shadow: var(--shadow-pressed-sm);
-  background: var(--lg-grad-pressed);
-  transform: scale(0.97);
-}
-.code-copy-btn:focus-visible { outline: 2px solid var(--lg-accent-fg); outline-offset: 2px; }
-.code-copy-btn[data-copied] {
+.code-block .btn[data-copied] {
   color: var(--lgz-bright-green, #88c070);
   border-color: var(--lgz-bright-green, #88c070);
 }
@@ -542,18 +519,6 @@ dialog.img-lightbox img {
   padding-top: 24px;
   border-top: 1px solid var(--lg-border-light);
 }
-
-.post-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--lg-text-dim);
-  text-decoration: none;
-  font-size: var(--text-sm);
-  transition: color var(--dur-fast);
-}
-.post-back:hover { color: var(--lg-link); }
-.post-back .lg { font-size: 12px; }
 
 /* ── Page layout ─────────────────────────────────────────────────────────── */
 

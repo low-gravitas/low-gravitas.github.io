@@ -5,12 +5,12 @@ layout: layouts/base.njk
 <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
   <header class="post-header">
     <h1 itemprop="headline">{{ title }}</h1>
+    {% if description %}<p class="post-description" itemprop="description">{{ description }}</p>{% endif %}
     <div class="post-meta">
       <time datetime="{{ date | htmlDateString }}" itemprop="datePublished">{{ date | readableDate }}</time>
       {% if author %}<span class="post-author" itemprop="author">by {{ author }}</span>{% endif %}
       <span class="post-reading-time">{{ content | readingTime }}</span>
     </div>
-    {% if description %}<p class="post-description" itemprop="description">{{ description }}</p>{% endif %}
   </header>
 
   <div class="prose post-content" itemprop="articleBody">
@@ -18,6 +18,6 @@ layout: layouts/base.njk
   </div>
 
   <footer class="post-footer">
-    <a href="/blog/" class="post-back"><span class="lg" aria-hidden="true">&#xF053;</span> All posts</a>
+    <a href="/blog/" class="back-link">All posts</a>
   </footer>
 </article>

@@ -24,25 +24,32 @@
     header.appendChild(label);
 
     var btn = document.createElement('button');
-    btn.className = 'code-copy-btn';
+    btn.className = 'btn btn--sm btn--ghost';
     btn.setAttribute('aria-label', 'Copy code to clipboard');
-    btn.innerHTML = '<span class="lg">\uF0C5</span>';
+    var btnIcon = document.createElement('span');
+    btnIcon.className = 'lg';
+    btnIcon.textContent = '\uF0C5';
+    btn.appendChild(btnIcon);
     btn.addEventListener('click', function () {
       var code = pre.querySelector('code');
       var text = code ? code.textContent : pre.textContent;
-      navigator.clipboard.writeText(text).then(function () {
-        btn.innerHTML = '<span class="lg">\uF00C</span> Copied!';
-        btn.setAttribute('data-copied', '');
-        setTimeout(function () {
-          btn.innerHTML = '<span class="lg">\uF0C5</span>';
-          btn.removeAttribute('data-copied');
-        }, 1500);
-      }).catch(function () {
-        btn.innerHTML = '<span class="lg">\uF00D</span> Failed';
-        setTimeout(function () {
-          btn.innerHTML = '<span class="lg">\uF0C5</span>';
-        }, 1500);
-      });
+      function reset() {
+        btnIcon.textContent = '\uF0C5';
+        btn.textContent = '';
+        btn.appendChild(btnIcon);
+        btn.removeAttribute('data-copied');
+      }
+      function flash(glyph, label, copied) {
+        btnIcon.textContent = glyph;
+        btn.textContent = '';
+        btn.appendChild(btnIcon);
+        btn.appendChild(document.createTextNode(' ' + label));
+        if (copied) btn.setAttribute('data-copied', '');
+        setTimeout(reset, 1500);
+      }
+      navigator.clipboard.writeText(text)
+        .then(function () { flash('\uF00C', 'Copied!', true); })
+        .catch(function () { flash('\uF00D', 'Failed', false); });
     });
     header.appendChild(btn);
 
