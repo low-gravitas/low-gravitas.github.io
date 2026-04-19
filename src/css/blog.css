@@ -38,39 +38,20 @@
   margin-bottom: 56px;
 }
 
-/* Blog index cards use .card .card--link .iri-rim in markup; this file
-   only adds post-index-specific spacing + accent h2. */
-.post-summary h2 {
+/* Blog index entries are <a class="card card--link iri-rim"> — the .card
+   atoms own layout; this file only adds index-specific text styling. */
+.post-list .card h2 {
   font-size: var(--text-lg);
   font-weight: 600;
   margin-bottom: 6px;
   line-height: 1.4;
-}
-.post-summary h2 a {
-  color: var(--lg-accent-fg);
-  text-decoration: none;
-  transition: color var(--dur-fast);
-}
-/* Expand the title link to cover the card so the whole card is clickable */
-.post-summary h2 a::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-}
-.post-summary h2 a:hover { color: var(--lg-accent-fg); }
-.post-summary h2 a:focus-visible { outline: none; }
-.post-summary h2 a:focus-visible::after {
-  outline: 2px solid var(--lg-accent-fg);
-  outline-offset: 2px;
-  border-radius: inherit;
 }
 
 .post-excerpt {
   color: var(--lg-text-dim);
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
-  margin-top: 8px;
+  margin: 8px 0;
 }
 
 .post-empty {
@@ -78,21 +59,10 @@
   font-style: italic;
 }
 
-.draft-badge {
-  display: inline-block;
-  font-size: 0.65em;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--lg-bg);
-  background: var(--lgz-bright-yellow, #d4a017);
-  border-radius: var(--radius-sm);
-  padding: 0.15em 0.5em;
-  vertical-align: middle;
-  margin-right: 0.25em;
+.feed-link {
+  margin-top: 8px;
+  text-align: center;
 }
-
-.feed-link { margin-top: 8px; }
 
 /* ── Post meta (shared between index and post view) ──────────────────────── */
 

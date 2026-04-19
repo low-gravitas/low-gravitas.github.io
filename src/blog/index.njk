@@ -15,20 +15,17 @@ permalink: /blog/
 
   <div class="post-list">
     {% for post in collections.posts %}
-    <article class="post-summary card card--link iri-rim">
-      <h2>
-        <a href="{{ post.url }}">
-          {% if post.data.draft %}<span class="draft-badge">DRAFT</span> {% endif %}{{ post.data.title }}
-        </a>
-      </h2>
-      <div class="post-meta">
-        <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-        {% if post.data.author %}<span class="post-author">by {{ post.data.author }}</span>{% endif %}
-      </div>
+    <a class="card card--link iri-rim" href="{{ post.url }}">
+      <h2>{% if post.data.draft %}<span class="badge">Draft</span> {% endif %}{{ post.data.title }}</h2>
       {% if post.data.description %}
       <p class="post-excerpt">{{ post.data.description }}</p>
       {% endif %}
-    </article>
+      <div class="card-meta">
+        <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+        {% if post.data.author %}<span class="post-author">by {{ post.data.author }}</span>{% endif %}
+      </div>
+      <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+    </a>
     {% else %}
     <p class="post-empty">No posts yet — check back soon.</p>
     {% endfor %}

@@ -891,7 +891,7 @@
     transition: transform var(--dur-fast) var(--ease-out);
   }
   .card--link:hover { transform: translateY(-2px); }
-  .card--link > h3 { color: var(--lg-accent-fg); }
+  .card--link > :is(h2, h3) { color: var(--lg-accent-fg); }
   .card-arrow {
     position: absolute;
     bottom: 18px;
