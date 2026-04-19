@@ -16,17 +16,13 @@
 <meta name="twitter:description" content="{{ description or 'Low Gravitas — developer tools, side projects, and randomness.' }}">
 <meta name="twitter:image" content="{{ site.url }}/icon-512.png">
 <script>
-  // Set data-theme and data-iri before CSS loads so we always have explicit
-  // attributes. Avoids a flash of the wrong theme / motion state.
+  // Set data-theme before CSS loads so we always have an explicit attribute
+  // and never flash the wrong theme.
   (function () {
     try {
       var t = localStorage.getItem('theme');
       if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', t);
-    } catch (e) {}
-    try {
-      var i = localStorage.getItem('iri');
-      if (i === 'paused') document.documentElement.setAttribute('data-iri', 'paused');
     } catch (e) {}
   })();
 </script>
@@ -54,7 +50,6 @@
 {% include "partials/footer.njk" %}
 
 <script src="/js/theme-toggle.js" defer></script>
-<script src="/js/iri-pause.js" defer></script>
 {% if tags and "blog" in tags %}
 <script src="/js/blog-code.js" defer></script>
 <script src="/js/blog-lightbox.js" defer></script>

@@ -320,8 +320,6 @@
   html[data-page-bg="iri-subtle"] body::after { opacity: 0.4; }
   html[data-page-bg="iri-vivid"]  body::before,
   html[data-page-bg="iri-vivid"]  body::after { opacity: 0.75; }
-  html[data-iri="paused"] body::before,
-  html[data-iri="paused"] body::after,
   html[data-page-bg="none"] body::before,
   html[data-page-bg="none"] body::after { animation: none; }
 
@@ -396,7 +394,6 @@
   }
   @keyframes iri-spin-rim  { from { --hue-rim:  0deg; }  to { --hue-rim:  360deg; } }
   @keyframes iri-spin-rim2 { from { --hue-rim2: 90deg; } to { --hue-rim2: 450deg; } }
-  html[data-iri="paused"] { animation: none; }
 
   .iri-rim { position: relative; isolation: isolate; }
   .iri-rim::before,
