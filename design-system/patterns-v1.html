@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-page-bg="iri-subtle">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patterns v1 — Low Gravitas</title>
+  <meta name="color-scheme" content="dark light">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/Unbounded-Variable.woff2" crossorigin>
+  <link rel="stylesheet" href="/vendor/low-gravitas.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/symbol-font.css">
+  <link rel="stylesheet" href="/css/blog.css">
+  <link rel="stylesheet" href="/design-system/demos.css">
+</head>
+<body class="demo-theme demo-symbol-font">
+
+  <!-- Demo controls bar (dev-only chrome) -->
+  <div class="demo-controls" role="toolbar" aria-label="Demo settings">
+    <strong style="color: var(--lg-text); font-size: var(--text-sm);">Patterns v1</strong>
+    <span style="color: var(--lg-text-faint); font-family: var(--font-mono);">assembled sections</span>
+
+    <div class="spacer"></div>
+
+    <div class="control-group">
+      <label>Theme</label>
+      <div class="segmented" id="ctl-theme">
+        <button type="button" data-theme="dark" aria-pressed="true">Dark</button>
+        <button type="button" data-theme="light" aria-pressed="false">Light</button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label>Page bg</label>
+      <div class="segmented" id="ctl-bg">
+        <button type="button" data-bg="none" aria-pressed="false">None</button>
+        <button type="button" data-bg="iri-subtle" aria-pressed="true">Subtle</button>
+        <button type="button" data-bg="iri-vivid" aria-pressed="false">Vivid</button>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn--sm btn--ghost" id="ctl-iri">Pause iri</button>
+
+    <a href="./components-v2.html" class="btn btn--sm btn--ghost">Components →</a>
+  </div>
+
+  <!-- Site top-nav (mirrors what the real site uses) -->
+  <nav class="top-nav">
+    <a class="top-nav-brand" href="#">
+      <img src="/apple-touch-icon.png" alt="" class="brand-logo" width="28" height="28">
+      Low Gravitas
+    </a>
+    <div class="top-nav-links">
+      <a href="#zen-theme">Theme</a>
+      <a href="#symbol-font">Symbol Font</a>
+      <a href="#blog-index" aria-current="page">Blog</a>
+    </div>
+    <button id="theme-toggle" class="btn btn--icon btn--sm iri-rim" type="button" aria-label="Toggle light/dark theme">
+      <span class="lg" aria-hidden="true">&#xF050E;</span>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- Pattern: Home                                                    -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div class="pattern-break">
+      <div class="pattern-break-label">
+        <span class="tag">Home</span>
+        <span class="note">/ index.njk — hero + narrow card grid</span>
+      </div>
+    </div>
+
+    <section class="pattern-section" id="home">
+      <div class="hero">
+        <h1>Low Gravitas</h1>
+        <p class="tagline">Developer tools, side projects, and randomness.</p>
+      </div>
+
+      <div class="home-cards">
+        <a class="card card--link iri-rim" href="#zen-theme" onclick="event.preventDefault()">
+          <h3>Zen Theme</h3>
+          <p>Dark and light color themes for VS Code, IntelliJ, Ghostty, iTerm2, Warp, and the web. WCAG AA contrast.</p>
+          <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+        </a>
+        <a class="card card--link iri-rim" href="#symbol-font" onclick="event.preventDefault()">
+          <h3>Symbol Font</h3>
+          <p>11,800+ glyphs from Nerd Fonts, Font Awesome, Material Design, Codicons, and more — in a single font file.</p>
+          <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- Pattern: Symbol-font landing                                     -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div class="pattern-break">
+      <div class="pattern-break-label">
+        <span class="tag">Symbol Font landing</span>
+        <span class="note">/ symbol-font/index.njk — floating-icons hero + features + sets preview</span>
+      </div>
+    </div>
+
+    <section class="pattern-section" id="symbol-font">
+      <div class="hero">
+        <div class="hero-icons" aria-hidden="true">
+          <span>&#x2726;</span>
+          <span>&#x2736;</span>
+          <span>&#x2745;</span>
+          <span>&#x273F;</span>
+        </div>
+        <h1>Low Gravitas Symbols</h1>
+        <span class="badge badge--version" style="margin-bottom: 12px; display: inline-block;">v1.3.1</span>
+        <p class="tagline">
+          11,847 glyphs from 15 icon sets — Nerd Fonts, Font Awesome, Material Design,
+          Codicons, Devicons, Weather Icons, and more — all in one font file.
+        </p>
+        <div class="actions">
+          <a class="btn btn--primary iri-rim" href="#" onclick="event.preventDefault()">&#x2193; Download Font</a>
+          <a class="btn iri-rim" href="#browser" onclick="event.preventDefault()">&#x2315; Browse Glyphs</a>
+          <a class="btn iri-rim" href="#" onclick="event.preventDefault()">View on GitHub &#x2197;</a>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="card card--feature">
+          <span class="card-icon" aria-hidden="true">&#x2726;</span>
+          <h3>11,800+ Glyphs</h3>
+          <p>Icons from 15 popular sets, merged into a single unified font file.</p>
+        </div>
+        <div class="card card--feature">
+          <span class="card-icon" aria-hidden="true">&#x2756;</span>
+          <h3>CSS Subset Builder</h3>
+          <p>Pick the icons you need and download a minimal CSS stylesheet.</p>
+        </div>
+        <div class="card card--feature">
+          <span class="card-icon" aria-hidden="true">&#x25A3;</span>
+          <h3>Terminal Ready</h3>
+          <p>Designed for monospaced environments — terminals, editors, and status lines.</p>
+        </div>
+      </div>
+
+      <div class="sets-preview">
+        <h2>Included Icon Sets</h2>
+        <div class="sets-grid">
+          <a class="pill" href="#" onclick="event.preventDefault()">Nerd Fonts <span class="count">3,625</span></a>
+          <a class="pill" href="#" onclick="event.preventDefault()">Font Awesome <span class="count">2,016</span></a>
+          <a class="pill" href="#" onclick="event.preventDefault()">Material Design <span class="count">7,447</span></a>
+          <a class="pill" href="#" onclick="event.preventDefault()">Codicons <span class="count">451</span></a>
+          <a class="pill" href="#" onclick="event.preventDefault()">Devicons <span class="count">192</span></a>
+          <a class="pill" href="#" onclick="event.preventDefault()">Weather Icons <span class="count">211</span></a>
+          <a class="pill" href="#" onclick="event.preventDefault()">Octicons <span class="count">287</span></a>
+          <a class="pill" href="#" onclick="event.preventDefault()">Pomicons <span class="count">10</span></a>
+          <a class="pill" href="#" onclick="event.preventDefault()">Seti-UI <span class="count">126</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- Pattern: Symbol-font browser                                     -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div class="pattern-break">
+      <div class="pattern-break-label">
+        <span class="tag">Symbol Font browser</span>
+        <span class="note">/ symbol-font/browser/ — sticky toolbar + grid + selection panel</span>
+      </div>
+    </div>
+
+    <section class="pattern-section pattern-section--wide" id="browser">
+      <div class="toolbar">
+        <div class="toolbar-row">
+          <label for="demo-search" class="sr-only">Search glyphs</label>
+          <span class="input-wrap input-wrap--icon">
+            <span class="input-icon" aria-hidden="true">&#x2315;</span>
+            <input id="demo-search" class="input" type="search" placeholder="Search by name or hex (e.g. E0C4)...">
+          </span>
+          <label for="demo-set-filter" class="sr-only">Filter by icon set</label>
+          <span class="select-wrap">
+            <select id="demo-set-filter" class="select">
+              <option>All sets</option>
+              <option>Nerd Fonts</option>
+              <option>Font Awesome</option>
+              <option>Material Design</option>
+            </select>
+          </span>
+          <label for="demo-sort-order" class="sr-only">Sort order</label>
+          <span class="select-wrap">
+            <select id="demo-sort-order" class="select">
+              <option>Sort: Name</option>
+              <option>Sort: Codepoint</option>
+              <option>Sort: Set</option>
+            </select>
+          </span>
+          <span id="count" aria-live="polite" aria-atomic="true">11,847 glyphs</span>
+        </div>
+        <div class="toolbar-hint">
+          Arrows navigate. Space/click to inspect. Enter/<code class="inline">&#x2318;</code>-click to collect. Shift extends range.
+        </div>
+      </div>
+
+      <div class="glyph-grid">
+        <div class="glyph-card iri-rim"><div class="glyph">&#x2726;</div><div class="glyph-name">star-filled</div><div class="glyph-cp">E0C4</div></div>
+        <div class="glyph-card iri-rim"><div class="glyph">&#x25B3;</div><div class="glyph-name">triangle</div><div class="glyph-cp">25B3</div></div>
+        <div class="glyph-card iri-rim is-selected"><div class="glyph">&#x2716;</div><div class="glyph-name">multiply</div><div class="glyph-cp">2716</div></div>
+        <div class="glyph-card iri-rim"><div class="glyph">&#x2318;</div><div class="glyph-name">command</div><div class="glyph-cp">2318</div></div>
+        <div class="glyph-card iri-rim"><div class="glyph">&#x2712;</div><div class="glyph-name">pen</div><div class="glyph-cp">2712</div></div>
+        <div class="glyph-card iri-rim"><div class="glyph">&#x2699;</div><div class="glyph-name">gear</div><div class="glyph-cp">2699</div></div>
+        <div class="glyph-card iri-rim"><div class="glyph">&#x2691;</div><div class="glyph-name">flag</div><div class="glyph-cp">2691</div></div>
+        <div class="glyph-card iri-rim is-selected"><div class="glyph">&#x2600;</div><div class="glyph-name">sun</div><div class="glyph-cp">2600</div></div>
+        <div class="glyph-card iri-rim"><div class="glyph">&#x263D;</div><div class="glyph-name">moon-first</div><div class="glyph-cp">263D</div></div>
+        <div class="glyph-card iri-rim"><div class="glyph">&#x2601;</div><div class="glyph-name">cloud</div><div class="glyph-cp">2601</div></div>
+        <div class="glyph-card iri-rim"><div class="glyph">&#x260E;</div><div class="glyph-name">telephone</div><div class="glyph-cp">260E</div></div>
+        <div class="glyph-card iri-rim"><div class="glyph">&#x2619;</div><div class="glyph-name">floral-heart</div><div class="glyph-cp">2619</div></div>
+      </div>
+
+      <div id="selection-panel" class="visible">
+        <span class="sel-count">2 selected</span>
+        <div class="sel-icons" aria-label="Selected glyphs">
+          <span>&#x2716;</span><span>&#x2600;</span>
+        </div>
+        <button class="btn btn--sm btn--ghost" type="button">Clear</button>
+        <button class="btn btn--sm btn--primary iri-rim" type="button">Download CSS subset</button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- Pattern: Zen-theme landing                                       -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div class="pattern-break">
+      <div class="pattern-break-label">
+        <span class="tag">Zen Theme landing</span>
+        <span class="note">/ zen-theme/index.njk — hero + palette strip + IDE mock + terminal mock</span>
+      </div>
+    </div>
+
+    <section id="zen-theme">
+      <div class="hero">
+        <h1>Low Gravitas Theme</h1>
+        <p class="tagline">
+          A warm, low-blue-light color theme for editors and terminals.
+          Dark and light variants with WCAG AA contrast throughout.
+        </p>
+        <div class="actions">
+          <a class="btn btn--primary iri-rim" href="#" onclick="event.preventDefault()">
+            <span class="lg" aria-hidden="true">&#xF019;</span> Download CSS Tokens
+          </a>
+          <a class="btn iri-rim" href="#" onclick="event.preventDefault()">
+            <span class="lg" aria-hidden="true">&#xF09B;</span> View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="demo-section-head">
+        <h2>Palette</h2>
+        <div class="segmented" role="group" aria-label="Palette demo theme">
+          <button data-demo-theme="dark" aria-pressed="true" aria-label="Dark theme">
+            <span class="lg" aria-hidden="true">&#xF0594;</span>
+          </button>
+          <button data-demo-theme="light" aria-pressed="false" aria-label="Light theme">
+            <span class="lg" aria-hidden="true">&#xF0599;</span>
+          </button>
+        </div>
+      </div>
+      <div class="demo" data-theme="dark">
+        <div class="palette-strip">
+          <div class="swatch-cell" style="background: var(--lgz-black);" data-dark="#1a140a" data-light="#e8e0d0" tabindex="0"><span class="label">black</span></div>
+          <div class="swatch-cell" style="background: var(--lgz-red);" data-dark="#b85c5c" data-light="#a84a3c" tabindex="0"><span class="label">red</span></div>
+          <div class="swatch-cell" style="background: var(--lgz-green);" data-dark="#7a9b70" data-light="#5c8452" tabindex="0"><span class="label">green</span></div>
+          <div class="swatch-cell" style="background: var(--lgz-yellow);" data-dark="#c4a060" data-light="#a88540" tabindex="0"><span class="label">yellow</span></div>
+          <div class="swatch-cell" style="background: var(--lgz-blue);" data-dark="#6b8cb0" data-light="#4a6d94" tabindex="0"><span class="label">blue</span></div>
+          <div class="swatch-cell" style="background: var(--lgz-magenta);" data-dark="#a07aa0" data-light="#805a80" tabindex="0"><span class="label">magenta</span></div>
+          <div class="swatch-cell" style="background: var(--lgz-cyan);" data-dark="#6aa0a0" data-light="#4a8080" tabindex="0"><span class="label">cyan</span></div>
+          <div class="swatch-cell" style="background: var(--lgz-white);" data-dark="#d4c8b4" data-light="#2c2418" tabindex="0"><span class="label">white</span></div>
+        </div>
+      </div>
+
+      <div class="demo-section-head">
+        <h2>Editor</h2>
+        <div class="segmented" role="group" aria-label="Editor demo theme">
+          <button data-demo-theme="dark" aria-pressed="true" aria-label="Dark theme">
+            <span class="lg" aria-hidden="true">&#xF0594;</span>
+          </button>
+          <button data-demo-theme="light" aria-pressed="false" aria-label="Light theme">
+            <span class="lg" aria-hidden="true">&#xF0599;</span>
+          </button>
+        </div>
+      </div>
+      <div class="demo" data-theme="dark">
+      <div class="ide-mock">
+        <div class="ide-titlebar">
+          <div class="ide-dots">
+            <span style="background: var(--lgz-red);"></span>
+            <span style="background: var(--lgz-yellow);"></span>
+            <span style="background: var(--lgz-green);"></span>
+          </div>
+          <span>fibonacci.py — Low Gravitas Zen</span>
+        </div>
+        <div class="ide-body">
+          <aside class="ide-sidebar">
+            <div class="dir">src/</div>
+            <div class="file active">&nbsp;&nbsp;fibonacci.py</div>
+            <div class="file">&nbsp;&nbsp;utils.py</div>
+            <div class="file">&nbsp;&nbsp;config.toml</div>
+            <div class="dir">tests/</div>
+            <div class="file">&nbsp;&nbsp;test_fib.py</div>
+            <div class="dir">docs/</div>
+            <div class="file">&nbsp;&nbsp;README.md</div>
+          </aside>
+          <div class="ide-editor">
+            <div class="ide-tabs">
+              <div class="ide-tab active">fibonacci.py</div>
+              <div class="ide-tab">utils.py</div>
+            </div>
+            <div class="ide-code">
+<span class="tk-comment"># Memoized Fibonacci using functools</span><br>
+<span class="tk-keyword">from</span> functools <span class="tk-keyword">import</span> lru_cache<br>
+<br>
+<span class="tk-keyword">@</span><span class="tk-function">lru_cache</span>(maxsize=<span class="tk-number">None</span>)<br>
+<span class="tk-keyword">def</span> <span class="tk-function">fib</span>(n: <span class="tk-keyword">int</span>) -&gt; <span class="tk-keyword">int</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tk-keyword">if</span> n &lt; <span class="tk-number">2</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tk-keyword">return</span> n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tk-keyword">return</span> <span class="tk-function">fib</span>(n - <span class="tk-number">1</span>) + <span class="tk-function">fib</span>(n - <span class="tk-number">2</span>)<br>
+<br>
+<span class="tk-keyword">if</span> __name__ == <span class="tk-string">"__main__"</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tk-keyword">for</span> i <span class="tk-keyword">in</span> <span class="tk-function">range</span>(<span class="tk-number">10</span>):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tk-function">print</span>(<span class="tk-string">f"fib({i}) = {</span>fib(i)<span class="tk-string">}"</span>)
+            </div>
+          </div>
+        </div>
+        <div class="ide-statusbar">
+          <span>Python 3.14 • UTF-8 • LF</span>
+          <span>Ln 12, Col 24</span>
+        </div>
+      </div>
+      </div>
+
+      <div class="demo-section-head">
+        <h2>Terminal</h2>
+        <div class="segmented" role="group" aria-label="Terminal demo theme">
+          <button data-demo-theme="dark" aria-pressed="true" aria-label="Dark theme">
+            <span class="lg" aria-hidden="true">&#xF0594;</span>
+          </button>
+          <button data-demo-theme="light" aria-pressed="false" aria-label="Light theme">
+            <span class="lg" aria-hidden="true">&#xF0599;</span>
+          </button>
+        </div>
+      </div>
+      <div class="demo" data-theme="dark">
+      <div class="terminal-mock">
+        <div class="ide-titlebar">
+          <div class="ide-dots">
+            <span style="background: var(--lgz-red);"></span>
+            <span style="background: var(--lgz-yellow);"></span>
+            <span style="background: var(--lgz-green);"></span>
+          </div>
+          <span>bash — 80×24</span>
+        </div>
+        <div class="terminal-body">
+<span class="term-ok">user@host</span>:<span class="term-info">~/project</span>$ git status<br>
+<span class="tk-comment">On branch main</span><br>
+<span class="term-ok">&nbsp;&nbsp;modified:&nbsp;&nbsp;&nbsp;src/fibonacci.py</span><br>
+<span class="term-err">&nbsp;&nbsp;deleted:&nbsp;&nbsp;&nbsp;&nbsp;old_config.yaml</span><br>
+<span class="term-warn">&nbsp;&nbsp;new file:&nbsp;&nbsp;&nbsp;README.md</span><br>
+<br>
+<span class="term-ok">user@host</span>:<span class="term-info">~/project</span>$ echo <span class="term-ok">"Hello, World!"</span><br>
+Hello, World!
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- Pattern: Blog index                                              -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div class="pattern-break">
+      <div class="pattern-break-label">
+        <span class="tag">Blog index</span>
+        <span class="note">/ blog/ — stacked post summaries as link cards</span>
+      </div>
+    </div>
+
+    <section class="pattern-section" id="blog-index">
+      <div class="post-index">
+        <div class="post-index-header">
+          <h1>Blog</h1>
+          <p class="post-index-tagline">
+            Notes on Low Gravitas projects, software development, and things that catch my attention.
+          </p>
+        </div>
+
+        <div class="post-list">
+          <a class="card card--link iri-rim" href="#blog-post" onclick="event.preventDefault()">
+            <h2><span class="badge">Draft</span> On fonts that age well</h2>
+            <p class="post-excerpt">
+              Typography choices that survive ten years of cultural churn,
+              twenty years of browser-engine evolution, and one rebrand.
+            </p>
+            <div class="card-meta">
+              <time datetime="2026-03-14">March 14, 2026</time>
+              <span class="post-reading-time">4 min read</span>
+            </div>
+            <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+          </a>
+
+          <a class="card card--link iri-rim" href="#" onclick="event.preventDefault()">
+            <h2>Building an 11k-glyph icon font</h2>
+            <p class="post-excerpt">
+              Merging Nerd Fonts, Material Design, Font Awesome, and eleven others into a
+              single TTF without codepoint collisions — and shipping a CSS subset builder.
+            </p>
+            <div class="card-meta">
+              <time datetime="2026-02-02">February 2, 2026</time>
+              <span class="post-reading-time">8 min read</span>
+            </div>
+            <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+          </a>
+
+          <a class="card card--link iri-rim" href="#" onclick="event.preventDefault()">
+            <h2>Low-blue-light color themes: the brief</h2>
+            <p class="post-excerpt">
+              Why every "warm dev theme" online still has cold highlights in its syntax
+              palette, and the tokens you actually need to make an editor pleasant
+              after dark.
+            </p>
+            <div class="card-meta">
+              <time datetime="2025-12-20">December 20, 2025</time>
+              <span class="post-reading-time">6 min read</span>
+            </div>
+            <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+          </a>
+        </div>
+
+        <div class="feed-link">
+          <a class="btn iri-rim" href="#" onclick="event.preventDefault()">
+            <span class="lg" aria-hidden="true">&#xF09E;</span> RSS Feed
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- Pattern: Blog post                                               -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div class="pattern-break">
+      <div class="pattern-break-label">
+        <span class="tag">Blog post</span>
+        <span class="note">/ blog/2026/… — prose + inline code + code block + callout + blockquote</span>
+      </div>
+    </div>
+
+    <section class="pattern-section" id="blog-post">
+      <div style="max-width: var(--content-narrow); margin: 0 auto; padding: 0 24px;">
+        <a class="back-link" href="#blog-index" onclick="event.preventDefault()">Back to all posts</a>
+      </div>
+
+      <article class="post">
+        <header class="post-header">
+          <h1>On fonts that age well</h1>
+          <p class="post-description">
+            Typography choices that survive ten years of cultural churn, twenty years
+            of browser-engine evolution, and one rebrand.
+          </p>
+          <div class="post-meta">
+            <time datetime="2026-03-14">March 14, 2026</time>
+            <span>·</span>
+            <span>by Mike Abney</span>
+            <span>·</span>
+            <span>4 min read</span>
+          </div>
+        </header>
+
+        <div class="prose post-content">
+          <p>
+            Typography is the slowest-changing layer of a design system. Choose a face
+            that won't embarrass you in five years — the wrong pick dates everything
+            else around it. Look for typefaces that have already survived decades,
+            not the ones trending on type sites this quarter.
+          </p>
+
+          <h2>What "aging well" means</h2>
+          <p>
+            Three things: stylistic restraint (no trend-chasing quirks), strong
+            information architecture (a real weight range, proper italics, tabular
+            figures), and institutional support — the foundry will still be here
+            in ten years. Every webfont purchase is a bet that the servicing
+            organization survives.
+          </p>
+
+          <blockquote>
+            A good typeface is silent. It holds the content up without being the
+            content.
+          </blockquote>
+
+          <h3>The shortlist</h3>
+          <p>
+            I keep circling back to a handful of families that reliably look both
+            current and timeless:
+          </p>
+          <ul>
+            <li><strong>Fraunces</strong> — variable serif with warmth. Display and body out of one file.</li>
+            <li><strong>IBM Plex</strong> — corporate-grade neutral sans with matching mono and serif siblings.</li>
+            <li><strong>Söhne</strong> — if budget allows; the closest anyone's come to a modern Akzidenz.</li>
+            <li><strong>Inter</strong> — ubiquitous but still safe, and it'll still be safe in 2035.</li>
+          </ul>
+
+          <h3>Using them well</h3>
+          <p>
+            Pairing a single display face with a quiet body face almost always beats
+            a three-face system. Ship system fonts as the fallback, self-host the
+            webfont, and use <code class="inline">font-display: swap</code> so your
+            first paint isn't blocked.
+          </p>
+
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-label">css</span>
+              <button class="btn btn--sm btn--ghost" type="button">Copy</button>
+            </div>
+<pre>@font-face {
+  font-family: "Fraunces";
+  src: url("/vendor/fraunces.woff2") format("woff2-variations");
+  font-display: swap;
+  font-weight: 100 900;
+}
+
+body {
+  font-family: "Fraunces", Georgia, serif;
+  font-variation-settings: "opsz" 14, "SOFT" 100;
+}</pre>
+          </div>
+
+          <div class="callout callout--info">
+            <span class="callout-icon" aria-hidden="true">&#x24d8;</span>
+            <div class="callout-body">
+              <strong>Heads up</strong>
+              Variable fonts load as one file regardless of how many weights you use,
+              but the browser still decodes the whole thing. Subset aggressively.
+            </div>
+          </div>
+
+          <h4>One caveat</h4>
+          <p>
+            Avoid display faces masquerading as body faces. A 48px headline is not a
+            16px paragraph. If the family doesn't ship an opsz axis or a separate
+            "text" cut, pair a real text face with it and keep the display for
+            headlines only.
+          </p>
+
+          <hr>
+
+          <p>
+            Next up: <a href="#" onclick="event.preventDefault()">how we picked the stack for Low Gravitas</a>.
+          </p>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>
+      <a href="#">Low Gravitas</a>
+      &nbsp;·&nbsp;
+      <a href="#">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="/blog/feed.xml">RSS</a>
+      &nbsp;·&nbsp;
+      <span>© 2026 Mike Abney</span>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const attrMap = { theme: 'theme', bg: 'page-bg' };
+
+    function wireSegmented(id, key) {
+      const group = document.getElementById(id);
+      if (!group) return;
+      group.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-' + key + ']');
+        if (!btn) return;
+        root.setAttribute('data-' + attrMap[key], btn.dataset[key]);
+        group.querySelectorAll('button').forEach(b => {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+      });
+    }
+    wireSegmented('ctl-theme', 'theme');
+    wireSegmented('ctl-bg', 'bg');
+
+    document.getElementById('ctl-iri').addEventListener('click', (e) => {
+      const paused = root.getAttribute('data-iri') === 'paused';
+      root.setAttribute('data-iri', paused ? 'running' : 'paused');
+      e.currentTarget.textContent = paused ? 'Pause iri' : 'Resume iri';
+    });
+  </script>
+</body>
+</html>

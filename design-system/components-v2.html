@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-page-bg="iri-subtle">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components v2 — Low Gravitas</title>
+  <meta name="color-scheme" content="dark light">
+
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/Unbounded-Variable.woff2" crossorigin>
+  <link rel="stylesheet" href="/vendor/low-gravitas.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/design-system/demos.css">
+</head>
+<body>
+
+  <div class="demo-controls" role="toolbar" aria-label="Demo settings">
+    <div class="control-group">
+      <label>Theme</label>
+      <div class="segmented" id="ctl-theme">
+        <button type="button" data-theme="dark" aria-pressed="true">Dark</button>
+        <button type="button" data-theme="light" aria-pressed="false">Light</button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label>Page bg</label>
+      <div class="segmented" id="ctl-bg">
+        <button type="button" data-bg="none" aria-pressed="false">None</button>
+        <button type="button" data-bg="iri-subtle" aria-pressed="true">Subtle iri</button>
+        <button type="button" data-bg="iri-vivid" aria-pressed="false">Vivid iri</button>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <button type="button" class="btn btn--sm btn--quiet" id="ctl-iri">Pause iri</button>
+  </div>
+
+  <main>
+
+    <header class="demo-header">
+      <div class="eyebrow">Atom library · v2</div>
+      <h1>Every component, every state.</h1>
+      <p class="sub">Unbounded display / IBM Plex Sans body. Iri edge bloom on hover (no ripple). Interactive-only — buttons, cards, inputs. Toggle theme and page-bg in the bar above.</p>
+    </header>
+
+    <section class="demo-section" id="s-tokens">
+      <div class="demo-section-head">
+        <h2>Tokens</h2>
+        <p class="note">Warm neutral surfaces + warm yellow accent (dark) / warm purple (light). Iridescent palette drops green and redistributes toward warmth.</p>
+      </div>
+
+      <h3 class="inline-head"><span>Surfaces</span></h3>
+      <div class="swatches">
+        <div class="swatch" style="background: var(--lg-bg);"><span>--bg</span></div>
+        <div class="swatch" style="background: var(--lg-bg-edge);"><span>--bg-edge</span></div>
+        <div class="swatch" style="background: var(--lg-surface);"><span>--surface</span></div>
+        <div class="swatch" style="background: var(--lg-surface-light);"><span>--surface-light</span></div>
+        <div class="swatch" style="background: var(--lg-surface-dark);"><span>--surface-dark</span></div>
+        <div class="swatch" style="background: var(--lg-surface-deep);"><span>--surface-deep</span></div>
+      </div>
+
+      <h3 class="inline-head" style="margin-top: 28px;"><span>Text & accent</span></h3>
+      <div class="swatches">
+        <div class="swatch" style="background: var(--lg-text); color: var(--lg-bg);"><span>--text</span></div>
+        <div class="swatch" style="background: var(--lg-text-dim); color: var(--lg-bg);"><span>--text-dim</span></div>
+        <div class="swatch" style="background: var(--lg-text-faint);"><span>--text-faint</span></div>
+        <div class="swatch" style="background: var(--lg-accent); color: var(--lg-text-on-accent);"><span>--accent</span></div>
+        <div class="swatch" style="background: var(--lg-accent-dim); color: var(--lg-text-on-accent);"><span>--accent-dim</span></div>
+        <div class="swatch" style="background: var(--lg-accent-deep); color: var(--lg-text-on-accent);"><span>--accent-deep</span></div>
+      </div>
+
+      <h3 class="inline-head" style="margin-top: 28px;"><span>Aurora background palette</span> <span class="count">body::before / body::after conic stops</span></h3>
+      <div class="swatches">
+        <div class="swatch" style="background: var(--lg-iri-1);"><span>--iri-1</span></div>
+        <div class="swatch" style="background: var(--lg-iri-2);"><span>--iri-2</span></div>
+        <div class="swatch" style="background: var(--lg-iri-3);"><span>--iri-3</span></div>
+        <div class="swatch" style="background: var(--lg-iri-4);"><span>--iri-4</span></div>
+        <div class="swatch" style="background: conic-gradient(from var(--hue, 0deg), var(--lg-iri-1), var(--lg-iri-2), var(--lg-iri-3), var(--lg-iri-4), var(--lg-iri-5)); color: var(--lg-text);"><span>conic composite</span></div>
+      </div>
+
+      <h3 class="inline-head" style="margin-top: 28px;"><span>Iri-rim gradient</span> <span class="count">hover ring — two counter-rotating layers</span></h3>
+      <div class="swatches">
+        <div class="swatch rim-preview rim-preview--after"><span>::after (100%)</span></div>
+        <div class="swatch rim-preview rim-preview--before"><span>::before (50%)</span></div>
+        <div class="swatch rim-preview rim-preview--ring"><span>on a button edge</span></div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-buttons">
+      <div class="demo-section-head">
+        <h2>Buttons</h2>
+        <p class="note">Hover over each. The edge sharpens into a crisp accent rim with a soft halo — ripple is gone. Keyboard focus (Tab) gives a solid 2px outline, distinct from hover.</p>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Variants</strong>default, primary, ghost, quiet, danger</div>
+        <div class="specimen-row">
+          <button class="btn iri-rim" type="button">Default</button>
+          <button class="btn btn--primary iri-rim" type="button">Primary</button>
+          <button class="btn btn--ghost iri-rim" type="button">Ghost</button>
+          <button class="btn btn--quiet" type="button">Quiet</button>
+          <button class="btn btn--danger iri-rim" type="button"><span aria-hidden="true">&#x2716;</span> Delete</button>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Sizes</strong>sm, default, lg</div>
+        <div class="specimen-row">
+          <button class="btn btn--sm iri-rim" type="button">Small</button>
+          <button class="btn iri-rim" type="button">Default</button>
+          <button class="btn btn--lg iri-rim" type="button">Large</button>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>With icons</strong>leading / trailing glyph</div>
+        <div class="specimen-row">
+          <button class="btn iri-rim" type="button"><span aria-hidden="true">&#x2193;</span> Download</button>
+          <button class="btn iri-rim" type="button">View on GitHub <span aria-hidden="true">&#x2197;</span></button>
+          <button class="btn btn--icon iri-rim" type="button" aria-label="Settings"><span aria-hidden="true">&#x2699;</span></button>
+          <button class="btn btn--icon btn--sm iri-rim" type="button" aria-label="Close"><span aria-hidden="true">&#x2715;</span></button>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>States</strong>loading, disabled</div>
+        <div class="specimen-row">
+          <button class="btn iri-rim is-loading" type="button">Submitting<span class="btn-spinner" aria-hidden="true"></span></button>
+          <button class="btn btn--primary iri-rim is-loading" type="button">Saving<span class="btn-spinner" aria-hidden="true"></span></button>
+          <button class="btn" type="button" disabled>Disabled</button>
+          <button class="btn btn--primary" type="button" disabled>Disabled</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-forms">
+      <div class="demo-section-head">
+        <h2>Form controls</h2>
+        <p class="note">One canonical shape: pressed neumorphic base, accent focus border, iri bloom on hover/focus-within.</p>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Text input</strong>.input-wrap</div>
+        <div class="specimen-row">
+          <label class="input-wrap" style="min-width: 260px;">
+            <input type="text" class="input" placeholder="Type something">
+                      </label>
+          <label class="input-wrap input-wrap--icon" style="min-width: 260px;">
+            <span class="input-icon" aria-hidden="true">&#x2315;</span>
+            <input type="search" class="input" placeholder="Search glyphs">
+                      </label>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>With label + hint</strong>field composition</div>
+        <div class="specimen-row" style="width: 100%;">
+          <div class="field" style="flex: 1; max-width: 320px;">
+            <label class="field-label" for="i-email">Email</label>
+            <span class="input-wrap" style="display: block;">
+              <input type="email" class="input" id="i-email" placeholder="you@example.com">
+                          </span>
+            <span class="field-hint">We'll never share it.</span>
+          </div>
+          <div class="field" style="flex: 1; max-width: 320px;">
+            <label class="field-label" for="i-pw">Password</label>
+            <span class="input-wrap" style="display: block;">
+              <input type="password" class="input" id="i-pw" value="wrong" aria-invalid="true">
+                          </span>
+            <span class="field-error">That password doesn't match.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Textarea</strong></div>
+        <div class="input-wrap" style="display: block; width: min(420px, 100%); min-width: 0;">
+          <textarea class="textarea" placeholder="Write a comment…"></textarea>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Select</strong>.select-wrap</div>
+        <div class="specimen-row">
+          <span class="select-wrap">
+            <select class="select">
+              <option>All sets</option>
+              <option>Nerd Fonts</option>
+              <option>Font Awesome</option>
+              <option>Material Design</option>
+            </select>
+                      </span>
+          <span class="select-wrap">
+            <select class="select">
+              <option>Sort: Name</option>
+              <option>Sort: Codepoint</option>
+              <option>Sort: Set</option>
+            </select>
+                      </span>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Checkbox</strong>checked, indeterminate, unchecked, disabled</div>
+        <div class="specimen-row">
+          <label class="check"><input type="checkbox" checked><span class="check-box"></span>Enable</label>
+          <label class="check"><input type="checkbox" id="c-indet"><span class="check-box"></span>Indeterminate</label>
+          <label class="check"><input type="checkbox"><span class="check-box"></span>Unchecked</label>
+          <label class="check" aria-disabled="true" style="opacity: 0.4;"><input type="checkbox" disabled><span class="check-box"></span>Disabled</label>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Radio</strong>grouped</div>
+        <div class="specimen-row" role="radiogroup" aria-label="Theme preference">
+          <label class="radio"><input type="radio" name="r1" checked><span class="radio-dot"></span>Dark</label>
+          <label class="radio"><input type="radio" name="r1"><span class="radio-dot"></span>Light</label>
+          <label class="radio"><input type="radio" name="r1"><span class="radio-dot"></span>Auto</label>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Toggle</strong>canonical + dual-label</div>
+        <div class="specimen-stack">
+          <label class="toggle">
+            <input type="checkbox">
+            <span class="toggle-track"><span class="toggle-knob"></span></span>
+            <span>Enable iridescent edge</span>
+          </label>
+          <label class="toggle toggle--dual">
+            <span class="toggle-label-a">Dark</span>
+            <input type="checkbox">
+            <span class="toggle-track"><span class="toggle-knob"></span></span>
+            <span class="toggle-label-b">Light</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Slider</strong>value label optional</div>
+        <div style="width: 320px;">
+          <input type="range" class="slider" min="0" max="100" value="45">
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-cards">
+      <div class="demo-section-head">
+        <h2>Cards</h2>
+        <p class="note">One base, four modifiers. Link cards carry iri + lift; feature cards stay flat; compact halves the padding.</p>
+      </div>
+
+      <div class="specimen-grid">
+        <div class="card">
+          <h3>Content card</h3>
+          <p>Static container. No iri, no hover. For information that isn't clickable — intro copy, a summary panel, a spec sheet.</p>
+        </div>
+
+        <a class="card card--link iri-rim" href="#" onclick="event.preventDefault()">
+          <h3>Link card</h3>
+          <p>Entire card is a link. Hover lifts it and blooms the edge. Used on the home grid and blog index.</p>
+          <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+        </a>
+
+        <div class="card card--compact">
+          <div class="stat">
+            <div class="stat-value">11,847</div>
+            <div class="stat-label">Glyphs</div>
+          </div>
+        </div>
+
+        <div class="card card--feature">
+          <span class="card-icon" aria-hidden="true">&#x2726;</span>
+          <h3>Feature card</h3>
+          <p>Quiet presentation for marketing features — icon, headline, two-line description. No hover change; it's not clickable.</p>
+        </div>
+
+        <a class="card card--link iri-rim" href="#" onclick="event.preventDefault()">
+          <h3>On fonts that age well <span class="badge">Draft</span></h3>
+          <p>Typography choices that survive ten years of cultural churn, twenty years of browser-engine evolution, and one rebrand.</p>
+          <div class="card-meta">
+            <time datetime="2026-03-14">March 14, 2026</time>
+            <span>·</span>
+            <span>4 min read</span>
+          </div>
+          <span class="card-arrow" aria-hidden="true">&#x2192;</span>
+        </a>
+
+        <div class="card">
+          <h3>With a footer row</h3>
+          <p>A card that separates an action area from content. Works for dismissible announcements or "keep reading" panels.</p>
+          <div style="display: flex; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--lg-border-subtle);">
+            <button class="btn btn--sm btn--ghost" type="button">Dismiss</button>
+            <button class="btn btn--sm btn--primary iri-rim" type="button">Got it</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-inline">
+      <div class="demo-section-head">
+        <h2>Inline bits</h2>
+        <p class="note">Small atoms that compose with text.</p>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Pills</strong>static, interactive, active, removable</div>
+        <div class="specimen-row">
+          <span class="pill">Static</span>
+          <a href="#" class="pill iri-rim" onclick="event.preventDefault()">Interactive</a>
+          <a href="#" class="pill pill--active iri-rim" onclick="event.preventDefault()">Active filter</a>
+          <span class="pill">Nerd Fonts <button class="pill-close" aria-label="Remove">&times;</button></span>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Badges</strong>inline with titles</div>
+        <div class="specimen-row" style="align-items: baseline;">
+          <span>An article title <span class="badge">Draft</span></span>
+          <span>Comments <span class="badge badge--count">12</span></span>
+          <span>Version <span class="badge badge--version">v1.3.1</span></span>
+          <span>Tag <span class="badge badge--muted">Archived</span></span>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Status dots</strong>online, pending, offline</div>
+        <div class="specimen-row">
+          <span><span class="dot dot--online"></span>Build passing</span>
+          <span><span class="dot dot--pending"></span>Queued</span>
+          <span><span class="dot dot--offline"></span>Disconnected</span>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Keyboard keys</strong>inline</div>
+        <div class="specimen-row" style="align-items: baseline;">
+          <span>Press <span class="kbd">&#x2318;</span> <span class="kbd">K</span> to search.</span>
+          <span><span class="kbd">Shift</span> + <span class="kbd">click</span> to extend.</span>
+          <span><span class="kbd">Esc</span> to close.</span>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Dividers</strong>plain + labeled</div>
+        <div style="width: 100%;">
+          <hr>
+          <div class="divider">or continue with</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-callouts">
+      <div class="demo-section-head">
+        <h2>Callouts</h2>
+        <p class="note">Four semantic tones. Useful in blog posts and help text.</p>
+      </div>
+
+      <div class="specimen-stack" style="width: 100%;">
+        <div class="callout callout--info">
+          <span class="callout-icon" aria-hidden="true">&#x24d8;</span>
+          <div class="callout-body"><strong>Heads up</strong>The symbol font ships as TTF. WOFF2 would save ~1MB but requires an upstream change.</div>
+        </div>
+        <div class="callout callout--success">
+          <span class="callout-icon" aria-hidden="true">&#x2714;</span>
+          <div class="callout-body"><strong>All checks passed</strong>Fixture tests green, palette verified, build artifact hash matches lockfile.</div>
+        </div>
+        <div class="callout callout--warn">
+          <span class="callout-icon" aria-hidden="true">&#x26a0;</span>
+          <div class="callout-body"><strong>Contrast warning</strong>--text-dim on --grad-surface light end may fail WCAG AA. Decide: darken dim, or lighten surface.</div>
+        </div>
+        <div class="callout callout--error">
+          <span class="callout-icon" aria-hidden="true">&#x2715;</span>
+          <div class="callout-body"><strong>Build failed</strong>Missing vendor artifact. Run <code class="inline">pnpm prebuild</code> to refetch.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-nav">
+      <div class="demo-section-head">
+        <h2>Navigation</h2>
+        <p class="note">Top nav for the site, plus the wayfinding atoms used inside pages.</p>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Top nav</strong>brand + links + theme toggle</div>
+        <div style="width: 100%;">
+          <nav class="top-nav" style="position: static; border-radius: var(--radius-md); border: 1px solid var(--lg-border-subtle);">
+            <a href="#" class="top-nav-brand" onclick="event.preventDefault()">
+              <span class="brand-mark" aria-hidden="true"></span>
+              Low Gravitas
+            </a>
+            <div class="top-nav-links">
+              <a href="#" onclick="event.preventDefault()" aria-current="page">Zen Theme</a>
+              <a href="#" onclick="event.preventDefault()">Symbol Font</a>
+              <a href="#" onclick="event.preventDefault()">Blog</a>
+            </div>
+            <button class="btn btn--icon btn--sm iri-rim" type="button" aria-label="Toggle theme">
+              <span aria-hidden="true">&#x25D1;</span>
+                          </button>
+          </nav>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Tabs</strong></div>
+        <div role="tablist" class="tabs">
+          <button class="tab" role="tab" aria-selected="true" type="button">Overview</button>
+          <button class="tab" role="tab" aria-selected="false" type="button">API</button>
+          <button class="tab" role="tab" aria-selected="false" type="button">Examples</button>
+          <button class="tab" role="tab" aria-selected="false" type="button">Changelog</button>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Segmented</strong></div>
+        <div class="specimen-row">
+          <div class="segmented">
+            <button type="button" aria-pressed="true">Dark</button>
+            <button type="button" aria-pressed="false">Light</button>
+          </div>
+          <div class="segmented">
+            <button type="button" aria-pressed="false">Day</button>
+            <button type="button" aria-pressed="true">Week</button>
+            <button type="button" aria-pressed="false">Month</button>
+            <button type="button" aria-pressed="false">Year</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Breadcrumb</strong></div>
+        <nav aria-label="Breadcrumb">
+          <ol class="crumbs" style="list-style: none; padding: 0;">
+            <li><a href="#" onclick="event.preventDefault()">Home</a></li>
+            <li class="crumbs-sep" aria-hidden="true">/</li>
+            <li><a href="#" onclick="event.preventDefault()">Blog</a></li>
+            <li class="crumbs-sep" aria-hidden="true">/</li>
+            <li aria-current="page">On fonts that age well</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Pagination</strong></div>
+        <div class="pagination">
+          <button class="btn btn--sm btn--ghost" type="button" aria-label="Previous">&larr;</button>
+          <button class="btn btn--sm iri-rim" type="button">1</button>
+          <button class="btn btn--sm btn--primary iri-rim" type="button" aria-current="page">2</button>
+          <button class="btn btn--sm iri-rim" type="button">3</button>
+          <span class="btn btn--sm btn--quiet" aria-hidden="true" style="pointer-events: none;">…</span>
+          <button class="btn btn--sm iri-rim" type="button">12</button>
+          <button class="btn btn--sm btn--ghost" type="button" aria-label="Next">&rarr;</button>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Back link</strong></div>
+        <a href="#" class="back-link" onclick="event.preventDefault()">Back to all posts</a>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-overlays">
+      <div class="demo-section-head">
+        <h2>Overlays</h2>
+        <p class="note">All modals use native <code class="inline">&lt;dialog&gt;</code>, consolidating the glyph browser's custom div backdrop with the blog lightbox. Toasts are a single render region.</p>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Tooltip</strong>hover or keyboard-focus</div>
+        <div class="specimen-row">
+          <span class="tt">
+            <button class="btn btn--icon iri-rim" type="button" aria-label="Info"><span aria-hidden="true">&#x24d8;</span></button>
+            <span class="tt-content" role="tooltip">More info about this field</span>
+          </span>
+          <span class="tt">
+            <span class="badge badge--version" tabindex="0">v1.3.1</span>
+            <span class="tt-content" role="tooltip">Released 2026-03-12 · 4 commits</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Popover</strong>menu pattern</div>
+        <div style="position: relative; display: inline-block;">
+          <button class="btn iri-rim" type="button" id="pop-trigger" aria-expanded="false" aria-controls="pop-menu">
+            Actions <span aria-hidden="true">&#x25BE;</span>          </button>
+          <div class="popover" id="pop-menu" role="menu" style="top: calc(100% + 6px); left: 0; display: none;">
+            <a class="popover-item" role="menuitem" href="#" onclick="event.preventDefault()"><span aria-hidden="true">&#x270E;</span> Edit</a>
+            <a class="popover-item" role="menuitem" href="#" onclick="event.preventDefault()"><span aria-hidden="true">&#x2398;</span> Duplicate</a>
+            <a class="popover-item" role="menuitem" href="#" onclick="event.preventDefault()"><span aria-hidden="true">&#x21a9;</span> Move to…</a>
+            <div class="popover-sep" role="separator"></div>
+            <a class="popover-item popover-item--danger" role="menuitem" href="#" onclick="event.preventDefault()"><span aria-hidden="true">&#x2716;</span> Delete</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Modal</strong>native &lt;dialog&gt;</div>
+        <div class="specimen-row">
+          <button class="btn iri-rim" id="btn-open-modal" type="button">Open confirmation</button>
+          <dialog class="modal" id="modal-1">
+            <div class="modal-inner">
+              <div class="modal-header">
+                <h2>Delete this post?</h2>
+                <button class="btn btn--icon btn--sm btn--quiet" type="button" aria-label="Close" data-close-modal>&times;</button>
+              </div>
+              <p style="color: var(--lg-text-dim); font-size: var(--text-sm); line-height: var(--leading-snug);">
+                This will permanently remove <code class="inline">on-fonts-that-age-well.md</code> and its metadata. This action can't be undone.
+              </p>
+              <div class="modal-footer">
+                <button class="btn btn--ghost" type="button" data-close-modal>Cancel</button>
+                <button class="btn btn--danger iri-rim" type="button" data-close-modal><span aria-hidden="true">&#x2716;</span> Delete</button>
+              </div>
+            </div>
+          </dialog>
+        </div>
+      </div>
+
+      <div class="specimen">
+        <div class="specimen-label"><strong>Toast</strong>transient success</div>
+        <div class="specimen-row">
+          <button class="btn iri-rim" type="button" id="btn-toast">Show toast</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-code">
+      <div class="demo-section-head">
+        <h2>Code</h2>
+        <p class="note">Inline and block. Block carries an optional header with language label and copy button.</p>
+      </div>
+
+      <p style="margin-bottom: 20px;">Inline code like <code class="inline">pnpm build</code> sits quietly in a sentence. Keywords (<code class="inline">const</code>, <code class="inline">async</code>) and paths (<code class="inline">src/index.njk</code>) don't break the reading rhythm.</p>
+
+      <div class="code-block">
+        <div class="code-block-header">
+          <span class="code-block-lang">javascript</span>
+          <button class="btn btn--sm btn--ghost copy-btn" type="button" data-copy="example">Copy</button>
+        </div>
+        <pre>async function <span style="color: #7088c0;">fetchArtifact</span>(tag) {
+  const url = `https://github.com/low-gravitas/${tag}`;
+  const <span style="color: var(--lg-accent-fg);">response</span> = await fetch(url);
+  if (!response.ok) throw new Error(`Failed: ${response.status}`);
+  return response.arrayBuffer();
+}</pre>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-prose">
+      <div class="demo-section-head">
+        <h2>Prose</h2>
+        <p class="note">Shared typography block used by blog posts, the about page, and any long-form content. Headings pick up the display font; body stays in the body stack.</p>
+      </div>
+
+      <article class="prose">
+        <h2>Fonts that age well</h2>
+        <p>Typography is the slowest-changing layer of a design system. Choose a face that won't embarrass you in five years — the wrong choice dates everything else around it. Look for typefaces that have already survived decades.</p>
+        <h3>What "aging well" means</h3>
+        <p>Three things: stylistic restraint (no trend-chasing quirks), strong information architecture (a real weight range, proper italics), and institutional support (the foundry will still be here in ten years).</p>
+        <blockquote>A good typeface is silent. It holds the content up without being the content.</blockquote>
+        <h3>The shortlist</h3>
+        <ul>
+          <li><strong>Fraunces</strong> — variable serif with genuine warmth. Works as display and body.</li>
+          <li><strong>IBM Plex</strong> — corporate-grade neutral sans with matching mono and serif.</li>
+          <li><strong>Inter</strong> — ubiquitous but safe, and it'll still be safe in 2035.</li>
+        </ul>
+        <h4>Caveats</h4>
+        <p>Avoid display faces masquerading as body faces. A 48px headline is not a 16px paragraph.</p>
+        <hr>
+        <p>Next up: <a href="#" onclick="event.preventDefault()">how we picked the stack for Low Gravitas</a>.</p>
+      </article>
+    </section>
+
+    <section class="demo-section" id="s-empty">
+      <div class="demo-section-head">
+        <h2>Empty states</h2>
+        <p class="note">Used on blog (no posts yet), browser (no results), future search UIs.</p>
+      </div>
+
+      <div class="card" style="max-width: 480px; margin: 0 auto;">
+        <div class="empty">
+          <div class="empty-icon" aria-hidden="true">&#x2314;</div>
+          <h3>No posts yet</h3>
+          <p>Notes will show up here when we have something worth saying.</p>
+          <div style="margin-top: 20px;">
+            <a href="#" class="btn btn--sm iri-rim" onclick="event.preventDefault()">Subscribe to RSS</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-skeleton">
+      <div class="demo-section-head">
+        <h2>Skeletons</h2>
+        <p class="note">For the glyph browser while 11k glyphs load. Shimmer aligns to iri palette.</p>
+      </div>
+
+      <div class="card" style="max-width: 420px;">
+        <span class="skeleton" style="width: 60%; height: 1.5em; margin-bottom: 12px;"></span>
+        <span class="skeleton" style="width: 100%; margin-bottom: 6px;"></span>
+        <span class="skeleton" style="width: 92%; margin-bottom: 6px;"></span>
+        <span class="skeleton" style="width: 72%;"></span>
+      </div>
+    </section>
+
+    <section class="demo-section" id="s-heroes">
+      <div class="demo-section-head">
+        <h2>Hero clusters</h2>
+        <p class="note">Three shapes used on home, symbol-font, and zen-theme. Same underlying structure — h1, tagline, actions — with decoration variants.</p>
+      </div>
+
+      <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 24px;">
+        <div class="hero">
+          <h1>Low Gravitas</h1>
+          <p class="tagline">Developer tools, side projects, and randomness.</p>
+          <div class="actions">
+            <a href="#" class="btn btn--primary iri-rim" onclick="event.preventDefault()">Explore projects</a>
+            <a href="#" class="btn iri-rim" onclick="event.preventDefault()">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 0; overflow: hidden; margin-bottom: 24px;">
+        <div class="hero">
+          <div class="hero-icons" aria-hidden="true">
+            <span>&#x2726;</span>
+            <span>&#x2736;</span>
+            <span>&#x2745;</span>
+            <span>&#x273F;</span>
+          </div>
+          <h1>Low Gravitas Symbols</h1>
+          <p class="tagline">11,800 glyphs from fifteen icon sets. One font file.</p>
+          <div class="actions">
+            <a href="#" class="btn btn--primary iri-rim" onclick="event.preventDefault()">Download font</a>
+            <a href="#" class="btn iri-rim" onclick="event.preventDefault()">Browse glyphs</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <div class="hero">
+          <h1><em style="font-style: italic;">Zen</em></h1>
+          <p class="tagline">A warm, low-blue-light color theme for editors and terminals. Dark and light variants, WCAG AA throughout.</p>
+          <div class="actions">
+            <a href="#" class="btn btn--primary iri-rim" onclick="event.preventDefault()">Download CSS</a>
+            <a href="#" class="btn iri-rim" onclick="event.preventDefault()">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="demo-section" style="text-align: center; color: var(--lg-text-faint); font-family: var(--font-mono); font-size: var(--text-xs);">
+      End of atom library · Patterns demo next
+    </div>
+  </main>
+
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="false"></div>
+
+  <script>
+    const root = document.documentElement;
+    const attrMap = { theme: 'theme', bg: 'page-bg' };
+
+    function wireSegmented(id, key) {
+      const group = document.getElementById(id);
+      if (!group) return;
+      group.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-' + key + ']');
+        if (!btn) return;
+        const value = btn.dataset[key];
+        root.setAttribute('data-' + attrMap[key], value);
+        group.querySelectorAll('button').forEach(b => {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+      });
+    }
+    wireSegmented('ctl-theme', 'theme');
+    wireSegmented('ctl-bg', 'bg');
+
+    document.getElementById('ctl-iri').addEventListener('click', (e) => {
+      const paused = root.getAttribute('data-iri') === 'paused';
+      root.setAttribute('data-iri', paused ? 'running' : 'paused');
+      e.currentTarget.textContent = paused ? 'Pause iri' : 'Resume iri';
+    });
+
+    const indet = document.getElementById('c-indet');
+    if (indet) indet.indeterminate = true;
+
+    const modal = document.getElementById('modal-1');
+    document.getElementById('btn-open-modal')?.addEventListener('click', () => modal.showModal());
+    modal?.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+    modal?.querySelectorAll('[data-close-modal]').forEach(btn => {
+      btn.addEventListener('click', () => modal.close());
+    });
+
+    const toastRegion = document.getElementById('toast-region');
+    document.getElementById('btn-toast')?.addEventListener('click', () => {
+      const t = document.createElement('div');
+      t.className = 'toast';
+      const icon = document.createElement('span');
+      icon.className = 'toast-icon';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = '\u2714';
+      const msg = document.createElement('span');
+      msg.textContent = 'Saved to drafts.';
+      t.append(icon, msg);
+      toastRegion.appendChild(t);
+      setTimeout(() => {
+        t.style.transition = 'opacity 200ms, transform 200ms';
+        t.style.opacity = '0';
+        t.style.transform = 'translateY(6px)';
+        setTimeout(() => t.remove(), 220);
+      }, 2400);
+    });
+
+    const popTrigger = document.getElementById('pop-trigger');
+    const popMenu = document.getElementById('pop-menu');
+    popTrigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = popMenu.style.display === 'block';
+      popMenu.style.display = open ? 'none' : 'block';
+      popTrigger.setAttribute('aria-expanded', String(!open));
+    });
+    document.addEventListener('click', (e) => {
+      if (!popMenu.contains(e.target) && e.target !== popTrigger) {
+        popMenu.style.display = 'none';
+        popTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const pre = btn.closest('.code-block').querySelector('pre');
+        try {
+          await navigator.clipboard.writeText(pre.textContent);
+          const orig = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => { btn.textContent = orig; }, 1400);
+        } catch {}
+      });
+    });
+  </script>
+</body>
+</html>

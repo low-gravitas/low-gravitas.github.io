@@ -115,11 +115,12 @@ export default function (eleventyConfig) {
   eleventyConfig.ignores.delete("vendor/generated");
   eleventyConfig.addPassthroughCopy({ "vendor/generated": "vendor" });
 
-  // Dev-only: expose design prototypes at /demos/ for reference during
-  // development. Production builds skip them so they never ship.
+  // Design system prototypes live in /design-system/ and are served only in
+  // dev. Eleventy always ignores the directory as templates (so it doesn't
+  // try to render the bare HTML); dev adds a passthrough copy on top.
+  eleventyConfig.ignores.add("design-system");
   if (!isProduction) {
-    eleventyConfig.ignores.delete("demos");
-    eleventyConfig.addPassthroughCopy({ "demos": "/demos" });
+    eleventyConfig.addPassthroughCopy({ "design-system": "/design-system" });
   }
 
   // ── Cache-busting HTML transform ──────────────────────────────────────────

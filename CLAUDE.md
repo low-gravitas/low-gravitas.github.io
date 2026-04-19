@@ -28,8 +28,11 @@ The `bin/dev` script honors a `PORT=` env var override.
 - Edit source in `src/`, never the generated `_site/` output.
 - Vendor CSS/fonts in `vendor/` are fetched artifacts — edit upstream, not here.
 - Root-relative or relative asset paths only (GitHub Pages / CORS).
-- `demos/` is gitignored scratch space for design prototypes, not part of
-  the site. Don't link to it from `src/`.
+- `design-system/` holds design prototypes (`components-v2.html`,
+  `patterns-v1.html`, `demos.css`). Served at `/design-system/` only in
+  dev — production builds exclude it via `ignores.add("design-system")`
+  in `.eleventy.js`. Treat `patterns-v1.html` as the copy-paste-ready
+  spec for site components; changes there should track site markup.
 
 ## Build and test
 

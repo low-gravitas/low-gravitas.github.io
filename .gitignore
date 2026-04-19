@@ -5,7 +5,4 @@ _site/
 vendor/
 vendor.tmp/
 vendor-local/
-
-# Standalone design prototypes — not part of the site build.
-demos/
 Todo.local.md
