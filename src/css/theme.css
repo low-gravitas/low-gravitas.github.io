@@ -121,6 +121,9 @@
     border-radius: 50%;
     display: inline-block;
   }
+  .ide-dots span:nth-child(1) { background: var(--lgz-red); }
+  .ide-dots span:nth-child(2) { background: var(--lgz-yellow); }
+  .ide-dots span:nth-child(3) { background: var(--lgz-green); }
   .ide-body {
     display: grid;
     grid-template-columns: 200px 1fr;
