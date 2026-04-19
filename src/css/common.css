@@ -255,14 +255,14 @@
     pointer-events: none;
     opacity: 0;
     z-index: 0;
-    filter: blur(90px) saturate(1.15);
+    filter: blur(55px) saturate(1.15);
     mix-blend-mode: screen;
     transition: opacity var(--dur-slow) var(--ease-out);
   }
   [data-theme="light"] body::before,
   [data-theme="light"] body::after {
     mix-blend-mode: multiply;
-    filter: blur(90px) saturate(1.1);
+    filter: blur(55px) saturate(1.1);
   }
   body::before {
     top: -25vh;
@@ -399,9 +399,12 @@
      interacted with. */
   .iri-rim:hover,
   .iri-rim:focus-within {
+    /* Slower layer uses steps(120) = 30 paints/sec instead of 60. The
+       faster layer stays linear so the composite motion still reads as
+       fluid; the stepped layer's 3° jumps are hidden under it. */
     animation:
       iri-spin-rim   2s linear infinite,
-      iri-spin-rim2  4s linear infinite reverse;
+      iri-spin-rim2  4s steps(120) infinite reverse;
   }
   @keyframes iri-spin-rim  { from { --hue-rim:  0deg; }  to { --hue-rim:  360deg; } }
   @keyframes iri-spin-rim2 { from { --hue-rim2: 90deg; } to { --hue-rim2: 450deg; } }
