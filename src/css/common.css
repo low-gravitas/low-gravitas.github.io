@@ -276,7 +276,7 @@
       rgba(140, 180, 220, 0.22) 62%,
       rgba(200, 150, 230, 0.2) 74%,
       transparent 86%);
-    animation: aurora-spin-a 28s steps(180) infinite;
+    animation: aurora-spin-a 28s steps(360) infinite;
   }
   body::after {
     bottom: -25vh;
@@ -292,7 +292,7 @@
       rgba(255, 221, 102, 0.16) 60%,
       rgba(220, 140, 200, 0.2) 74%,
       transparent 86%);
-    animation: aurora-spin-b 38s steps(180) infinite reverse;
+    animation: aurora-spin-b 38s steps(360) infinite reverse;
   }
   [data-theme="light"] body::before {
     background: conic-gradient(from 0deg at 42% 62%,
