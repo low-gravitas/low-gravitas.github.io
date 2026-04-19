@@ -844,15 +844,15 @@
     outline: 2px solid var(--lg-accent-fg);
     outline-offset: 3px;
   }
-  /* Inactive side gets the dimmest neutral + regular weight; active side gets
-     full-text + medium weight. The weight shift keeps the contrast readable
-     in light mode where text ↔ text-faint luminance delta is small. */
+  /* Use :has() on the parent because .toggle-label-a precedes the <input> in
+     the DOM — the sibling combinator `input:checked ~ .toggle-label-a` only
+     walks forward, so it would never match the pre-input label. */
   .toggle--dual .toggle-label-a,
   .toggle--dual .toggle-label-b { transition: color var(--dur-fast); }
   .toggle--dual .toggle-label-a { color: var(--lg-text);       font-weight: 500; }
   .toggle--dual .toggle-label-b { color: var(--lg-text-faint); font-weight: 400; }
-  .toggle--dual input:checked ~ .toggle-label-a { color: var(--lg-text-faint); font-weight: 400; }
-  .toggle--dual input:checked ~ .toggle-label-b { color: var(--lg-text);       font-weight: 500; }
+  .toggle--dual:has(input:checked) .toggle-label-a { color: var(--lg-text-faint); font-weight: 400; }
+  .toggle--dual:has(input:checked) .toggle-label-b { color: var(--lg-text);       font-weight: 500; }
 
   .slider {
     appearance: none;
@@ -877,7 +877,7 @@
     border-radius: 50%;
     background: var(--lg-accent-fg);
     border: 2px solid var(--lg-bg);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     margin-top: -7px;
     cursor: grab;
   }
@@ -886,7 +886,7 @@
     border-radius: 50%;
     background: var(--lg-accent-fg);
     border: 2px solid var(--lg-bg);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.18);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     cursor: grab;
   }
 }
