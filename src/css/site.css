@@ -1,39 +1,12 @@
-/* Low Gravitas Hub — homepage-specific styles.
-   Shared layout and the .card component live in common.css. This file adds
-   page-scoped centering + the hero card grid. */
+/* Home page — hero card grid.
+   The hero itself uses the shared .hero component in common.css. */
 
 @layer components {
-  .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 64px 24px;
-    text-align: center;
-    max-width: var(--content-narrow);
-    margin: 0 auto;
-  }
-
-  .home h1 {
-    font-size: var(--text-3xl);
-    font-weight: 400;
-    letter-spacing: 0.01em;
-    color: var(--lg-accent-fg);
-    margin-bottom: 12px;
-  }
-
-  .home .tagline {
-    color: var(--lg-text-dim);
-    font-size: var(--text-lg);
-    line-height: var(--leading-normal);
-    margin-bottom: 48px;
-    max-width: 56ch;
-  }
-
-  .home .cards {
+  .home-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-    width: 100%;
+    gap: 20px;
+    max-width: var(--content-narrow);
+    margin: 0 auto;
   }
 }
