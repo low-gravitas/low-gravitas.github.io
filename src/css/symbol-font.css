@@ -5,13 +5,19 @@
 @layer pages {
 
   /* ══════════════════════════════════════════════════════
-     Landing page — version label, sets preview, hero icons
+     Landing page — version badge, features grid, sets preview
      ══════════════════════════════════════════════════════ */
-  .demo-symbol-font .version {
-    color: var(--lg-text-dim);
-    font-size: var(--text-sm);
-    font-family: var(--font-mono);
+  .demo-symbol-font .hero .badge--version {
     margin-bottom: 12px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto 48px;
+    padding: 0 24px;
   }
 
   .sets-preview {
