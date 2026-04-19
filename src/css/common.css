@@ -292,7 +292,7 @@
       rgba(255, 221, 102, 0.16) 60%,
       rgba(220, 140, 200, 0.2) 74%,
       transparent 86%);
-    animation: aurora-spin-b 38s steps(360) infinite reverse;
+    animation: aurora-spin-b 50s steps(360) infinite reverse;
   }
   [data-theme="light"] body::before {
     background: conic-gradient(from 0deg at 42% 62%,
@@ -317,10 +317,11 @@
       transparent 86%);
   }
 
-  /* GPU-composited rotation: the conic gradient + filter: blur are painted
-     once to a layer; each frame just rotates the layer. transform-origin
-     puts the pivot on the gradient's focal point, mirroring the old
-     `from var(--a1) at 42% 62%` behavior visually. */
+  /* GPU-composited rotation: conic gradient + filter: blur are painted
+     once per step to a layer. transform-origin puts the pivot on each
+     gradient's focal point, mirroring the old `from var(--a1) at X Y`
+     behavior visually. ::after runs slower and coarser-stepped so its
+     layer repaints at a fraction of ::before's rate. */
   @keyframes aurora-spin-a { to { transform: rotate(360deg); } }
   @keyframes aurora-spin-b { to { transform: rotate(360deg); } }
 
