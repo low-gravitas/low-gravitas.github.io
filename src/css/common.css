@@ -44,9 +44,9 @@
     --radius-full: 999px;
     --btn-radius:  var(--radius-md);
 
-    --shadow-raised-sm: 2px 2px 4px rgba(0,0,0,0.28), -2px -2px 4px rgba(68,56,40,0.06);
-    --shadow-raised:    3px 3px 8px rgba(0,0,0,0.3),  -3px -3px 8px rgba(68,56,40,0.08);
-    --shadow-pressed-sm: inset 1px 1px 3px rgba(0,0,0,0.26), inset -1px -1px 3px rgba(68,56,40,0.05);
+    --shadow-raised-sm: 2px 2px 4px rgba(0,0,0,0.3), -2px -2px 4px rgba(255,255,255,0.04);
+    --shadow-raised:    3px 3px 8px rgba(0,0,0,0.34), -3px -3px 8px rgba(255,255,255,0.05);
+    --shadow-pressed-sm: inset 1px 1px 3px rgba(0,0,0,0.3), inset -1px -1px 3px rgba(255,255,255,0.04);
     --shadow-drop:    0 8px 32px rgba(0,0,0,0.5);
     --shadow-overlay: 0 16px 48px rgba(0,0,0,0.6);
 
@@ -59,22 +59,24 @@
     --content-narrow: 720px;
     --content-wide:   1100px;
 
-    /* Semantic site tokens (--lg-* to distinguish from vendor --lgz-* raw palette) */
-    --lg-bg:            #140f04;
-    --lg-bg-edge:       #050300;
-    --lg-surface:       #2a1f12;
-    --lg-surface-light: #3c3020;
-    --lg-surface-dark:  #1e1409;
-    --lg-surface-deep:  #0a0700;
+    /* Semantic site tokens (--lg-* to distinguish from vendor --lgz-* raw palette).
+       Neutrals — blacks / grays / whites. Accent colors (blue, warn/danger
+       reds, aurora hues, syntax tokens) carry the chromatic identity. */
+    --lg-bg:            #0c0c0c;
+    --lg-bg-edge:       #000000;
+    --lg-surface:       #1a1a1a;
+    --lg-surface-light: #262626;
+    --lg-surface-dark:  #141414;
+    --lg-surface-deep:  #000000;
 
     --lg-grad-surface: linear-gradient(145deg, var(--lg-surface-light), var(--lg-surface-dark));
     --lg-grad-pressed: linear-gradient(145deg, var(--lg-surface-dark), var(--lg-surface-light));
     --lg-grad-deep:    linear-gradient(145deg, var(--lg-surface-dark), var(--lg-surface-deep));
     --lg-grad-input:   linear-gradient(145deg, var(--lg-surface-dark), color-mix(in oklab, var(--lg-surface-dark) 85%, var(--lg-surface)));
 
-    --lg-text:       #e8e0d0;
-    --lg-text-dim:   #a89880;
-    --lg-text-faint: #6b5f4c;
+    --lg-text:       #e8e8e8;
+    --lg-text-dim:   #9a9a9a;
+    --lg-text-faint: #606060;
 
     /* Two-version accent: --lg-accent is the surface block (dark in dark mode),
        --lg-accent-fg is the on-bg foreground variant (bright in dark mode).
@@ -87,10 +89,10 @@
 
     --lg-link: var(--lg-accent-fg);
 
-    --lg-border-faint:  rgba(168,152,128,0.06);
-    --lg-border-subtle: rgba(168,152,128,0.1);
-    --lg-border-light:  rgba(168,152,128,0.16);
-    --lg-border-medium: rgba(168,152,128,0.22);
+    --lg-border-faint:  rgba(255,255,255,0.05);
+    --lg-border-subtle: rgba(255,255,255,0.09);
+    --lg-border-light:  rgba(255,255,255,0.14);
+    --lg-border-medium: rgba(255,255,255,0.2);
     --lg-border-hover:  color-mix(in oklab, var(--lg-accent-fg) 40%, transparent);
 
     --lg-iri-1: rgba(255, 221, 102, 0.32);
@@ -102,11 +104,11 @@
     --lg-accent-ring: rgb(from var(--lg-accent-fg) r g b / 0.55);
     --lg-accent-glow: rgb(from var(--lg-accent-fg) r g b / 0.22);
 
-    --lg-sticky-bg: rgba(20,15,4,0.72);
+    --lg-sticky-bg: rgba(12,12,12,0.72);
 
-    --lg-knob-off:        linear-gradient(145deg, #544432, #2a2016);
+    --lg-knob-off:        linear-gradient(145deg, #404040, #1a1a1a);
     --lg-knob-off-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    --lg-knob-on:         linear-gradient(145deg, #ffffff, #c8bca8);
+    --lg-knob-on:         linear-gradient(145deg, #ffffff, #c8c8c8);
     --lg-knob-on-shadow:  0 1px 3px rgba(0,0,0,0.35), inset 0 -1px 1.5px rgba(0,0,0,0.1);
 
     /* Syntax tokens map to vendor's --lgz-* raw palette so code blocks
@@ -124,20 +126,20 @@
   }
 
   [data-theme="light"] {
-    --lg-bg:            #f5ecd8;
-    --lg-bg-edge:       #c4b89f;
-    --lg-surface-light: #eedfc6;
-    --lg-surface:       #e2d4b6;
-    --lg-surface-dark:  #d6c8a8;
-    --lg-surface-deep:  #c0b08e;
+    --lg-bg:            #f5f5f5;
+    --lg-bg-edge:       #c8c8c8;
+    --lg-surface-light: #ffffff;
+    --lg-surface:       #eaeaea;
+    --lg-surface-dark:  #dadada;
+    --lg-surface-deep:  #c0c0c0;
 
-    /* Light mode raised surfaces stay on the lighter half of the tan ramp */
+    /* Light mode raised surfaces stay on the lighter half of the gray ramp */
     --lg-grad-surface: linear-gradient(145deg, var(--lg-surface-light), var(--lg-surface));
-    --lg-grad-input:   linear-gradient(145deg, #efe2cd, #e6d8be);
+    --lg-grad-input:   linear-gradient(145deg, #f0f0f0, #e4e4e4);
 
-    --lg-text:       #2a2014;
-    --lg-text-dim:   #5a4e3e;
-    --lg-text-faint: #8a7c68;
+    --lg-text:       #1a1a1a;
+    --lg-text-dim:   #555555;
+    --lg-text-faint: #858585;
 
     --lg-accent:          #b0cee0;
     --lg-accent-dim:      #94b8d0;
@@ -145,16 +147,16 @@
     --lg-accent-fg:       #2c547a;
     --lg-text-on-accent:  #1a2838;
 
-    --lg-border-faint:  rgba(90,78,62,0.08);
-    --lg-border-subtle: rgba(90,78,62,0.12);
-    --lg-border-light:  rgba(90,78,62,0.18);
-    --lg-border-medium: rgba(90,78,62,0.25);
+    --lg-border-faint:  rgba(0,0,0,0.05);
+    --lg-border-subtle: rgba(0,0,0,0.09);
+    --lg-border-light:  rgba(0,0,0,0.13);
+    --lg-border-medium: rgba(0,0,0,0.18);
 
-    --shadow-raised-sm: 2px 2px 4px rgba(166,150,128,0.18), -2px -2px 4px rgba(255,255,255,0.4);
-    --shadow-raised:    3px 3px 8px rgba(166,150,128,0.22), -3px -3px 8px rgba(255,255,255,0.55);
-    --shadow-pressed-sm: inset 1px 1px 3px rgba(166,150,128,0.16), inset -1px -1px 3px rgba(255,255,255,0.38);
-    --shadow-drop:    0 8px 32px rgba(40,20,60,0.12);
-    --shadow-overlay: 0 16px 48px rgba(40,20,60,0.2);
+    --shadow-raised-sm: 2px 2px 4px rgba(0,0,0,0.12), -2px -2px 4px rgba(255,255,255,0.6);
+    --shadow-raised:    3px 3px 8px rgba(0,0,0,0.15), -3px -3px 8px rgba(255,255,255,0.7);
+    --shadow-pressed-sm: inset 1px 1px 3px rgba(0,0,0,0.1), inset -1px -1px 3px rgba(255,255,255,0.5);
+    --shadow-drop:    0 8px 32px rgba(0,0,0,0.15);
+    --shadow-overlay: 0 16px 48px rgba(0,0,0,0.2);
 
     --lg-iri-1: rgba(112, 64, 160, 0.28);
     --lg-iri-2: rgba(200, 100, 150, 0.26);
@@ -162,12 +164,12 @@
     --lg-iri-4: rgba(210, 140, 110, 0.22);
     --lg-iri-5: rgba(112, 64, 160, 0.28);
 
-    --lg-sticky-bg: rgba(245,236,216,0.72);
+    --lg-sticky-bg: rgba(245,245,245,0.72);
 
-    --lg-knob-off:        linear-gradient(145deg, #f4ecde, #d6ccba);
-    --lg-knob-off-shadow: 0 1px 3px rgba(90,78,62,0.25);
-    --lg-knob-on:         linear-gradient(145deg, #ffffff, #c8bda6);
-    --lg-knob-on-shadow:  0 1px 3px rgba(90,78,62,0.4), inset 0 -1px 1.5px rgba(90,78,62,0.12);
+    --lg-knob-off:        linear-gradient(145deg, #e8e8e8, #c8c8c8);
+    --lg-knob-off-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    --lg-knob-on:         linear-gradient(145deg, #ffffff, #c8c8c8);
+    --lg-knob-on-shadow:  0 1px 3px rgba(0,0,0,0.3), inset 0 -1px 1.5px rgba(0,0,0,0.1);
 
     /* Light-mode comment stays on vendor --lgz-blue (gets a darker blue in
        light mode automatically via vendor's own [data-theme="light"] block). */
@@ -795,7 +797,7 @@
     flex-shrink: 0;
   }
   [data-theme="light"] .toggle-track {
-    background: linear-gradient(145deg, #b8ab94, #cec0a8);
+    background: linear-gradient(145deg, #c0c0c0, #d4d4d4);
   }
   .toggle-knob {
     position: absolute;
@@ -913,7 +915,7 @@
     border: 1px solid var(--lg-border-subtle);
   }
   [data-theme="light"] .card--feature {
-    background: linear-gradient(145deg, #fffaef, #f8eeda);
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
   }
   .card--feature .card-icon {
     font-size: 28px;

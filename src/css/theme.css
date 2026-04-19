@@ -184,11 +184,12 @@
     white-space: pre;
     color: var(--text);
   }
-  /* Each top-level <span> in code-samples.html wraps one source line.
-     Block display gives each its own row; white-space: pre on the span
-     itself preserves indentation without collapsing the inter-line
-     newlines into extra height at the parent level. */
-  .ide-code > span {
+  /* Line-wrapper spans emitted by code-samples.html (each wraps one source
+     line and contains a leading .line-num). :has() isolates this to those
+     outer wrappers so inline token spans in hand-authored <br>-separated
+     markup aren't forced to block. white-space: pre preserves intra-line
+     indentation without collapsing inter-line newlines into extra height. */
+  .ide-code > span:has(> .line-num) {
     display: block;
     white-space: pre;
   }
