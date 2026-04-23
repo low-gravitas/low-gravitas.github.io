@@ -1,7 +1,7 @@
 // scripts/stage-vendor.mjs — copy pristine vendor/ → vendor/generated/ with rewrites
 //
 // 1. Prunes vendor/generated/ at entry (stale file protection on pin bumps).
-// 2. Copies theme CSS, TTF, glyphs.json verbatim.
+// 2. Copies theme CSS, TTF, WOFF2, glyphs.json verbatim.
 // 3. Rewrites low-gravitas-symbols.css @font-face url() with ?v=<pinned-tag>.
 // 4. Leaves pristine vendor/ untouched (SHA-locked).
 // 5. Idempotent: running twice produces byte-identical output.
@@ -18,6 +18,7 @@ const ARTIFACTS_JSON = join(ROOT, "artifacts.json");
 const VERBATIM = [
   "low-gravitas.css",
   "LowGravitasSymbols.ttf",
+  "LowGravitasSymbols.woff2",
   "glyphs.json",
 ];
 

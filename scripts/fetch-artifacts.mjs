@@ -21,7 +21,7 @@ const REPO_MAP = {
   },
   "symbol-font": {
     repo: "low-gravitas/low-gravitas-symbol-font",
-    files: ["LowGravitasSymbols.ttf", "low-gravitas-symbols.css", "glyphs.json"],
+    files: ["LowGravitasSymbols.ttf", "LowGravitasSymbols.woff2", "low-gravitas-symbols.css", "glyphs.json"],
   },
 };
 

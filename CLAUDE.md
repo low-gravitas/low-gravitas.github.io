@@ -121,8 +121,6 @@ scoped in `theme.css`.
 - Glyph browser modal still uses custom `<div>` backdrop + dialog instead
   of the native `<dialog>` element (the blog lightbox uses `<dialog>`).
   Would benefit from consolidation but is a ~90-line refactor.
-- Symbol font is shipped as TTF; WOFF2 would save ~1 MB. Requires upstream
-  repo change.
 - `--text-dim` contrast on `--grad-surface` light end may fail WCAG AA —
   needs a design decision on whether to darken the dim tone or lighten
   the surface.

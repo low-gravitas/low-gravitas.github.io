@@ -481,7 +481,7 @@
   selDownload.addEventListener('click', () => {
     const glyphs = [...collection.values()].sort((a, b) => a.cp - b.cp);
     const lines = [
-      "@font-face {", "  font-family: 'LowGravitasSymbols';", "  src: url('LowGravitasSymbols.ttf') format('truetype');", "  font-display: swap;", "}", "",
+      "@font-face {", "  font-family: 'LowGravitasSymbols';", "  src: url('LowGravitasSymbols.woff2') format('woff2'),", "       url('LowGravitasSymbols.ttf') format('truetype');", "  font-display: swap;", "}", "",
       "[class^='lg-'],", "[class*=' lg-'] {", "  font-family: 'LowGravitasSymbols';", "  font-style: normal;", "  font-weight: normal;",
       "  font-variant: normal;", "  text-transform: none;", "  line-height: 1;", "  -webkit-font-smoothing: antialiased;", "  -moz-osx-font-smoothing: grayscale;", "}", "",
     ];

@@ -236,7 +236,8 @@
   }
   @font-face {
     font-family: 'LowGravitasSymbols';
-    src: url('/vendor/LowGravitasSymbols.ttf') format('truetype');
+    src: url('/vendor/LowGravitasSymbols.woff2') format('woff2'),
+         url('/vendor/LowGravitasSymbols.ttf') format('truetype');
     font-display: swap;
   }
   .lg { font-family: var(--font-symbol); }

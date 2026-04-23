@@ -94,6 +94,26 @@ for (const key of Object.keys(REPOS)) {
 // Write updated pins
 await writeFile(ARTIFACTS_JSON, JSON.stringify(newPins, null, 2) + "\n");
 
+// For explicitly-targeted or changed repos, remove their lock entries so
+// fetch-artifacts doesn't reject intentional SHA changes as tampering.
+// (Uses explicit CLI args rather than pin diff so re-runs after a partial
+// failure don't silently skip the cleanup.)
+const REPO_FILES = {
+  "theme": ["low-gravitas.css", "palette.json", "code-samples.html"],
+  "symbol-font": ["LowGravitasSymbols.ttf", "LowGravitasSymbols.woff2", "low-gravitas-symbols.css", "glyphs.json"],
+};
+const bumpedRepos = new Set(
+  Object.keys(REPOS).filter(key => args[key] !== undefined || newPins[key] !== oldPins[key])
+);
+if (bumpedRepos.size > 0) {
+  for (const key of bumpedRepos) {
+    for (const file of (REPO_FILES[key] || [])) {
+      delete oldLock[file];
+    }
+  }
+  await writeFile(LOCK_JSON, JSON.stringify(oldLock, null, 2) + "\n");
+}
+
 // Run fetch + stage + verify
 console.log("Fetching artifacts...");
 const { execSync } = await import("node:child_process");
@@ -112,6 +132,7 @@ const FILE_OWNERS = {
   "palette.json": "theme",
   "code-samples.html": "theme",
   "LowGravitasSymbols.ttf": "symbol-font",
+  "LowGravitasSymbols.woff2": "symbol-font",
   "low-gravitas-symbols.css": "symbol-font",
   "glyphs.json": "symbol-font",
 };
