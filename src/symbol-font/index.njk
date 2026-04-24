@@ -25,6 +25,9 @@ extraCss: /css/symbol-font.css
     <a class="btn iri-rim" href="/symbol-font/browser/">
       <span class="lg" aria-hidden="true">&#xF002;</span> Browse Glyphs
     </a>
+    <a class="btn iri-rim" href="/symbol-font/changelog/">
+      <span class="lg" aria-hidden="true">&#xF017;</span> Changelog
+    </a>
     <a class="btn iri-rim" href="https://github.com/low-gravitas/low-gravitas-symbol-font">
       <span class="lg" aria-hidden="true">&#xF09B;</span> View on GitHub
     </a>
@@ -48,6 +51,36 @@ extraCss: /css/symbol-font.css
     <p>Designed for monospaced environments — terminals, editors, and status lines.</p>
   </div>
 </div>
+
+{% if glyphChangelog | length %}
+{% set latest = glyphChangelog[0] %}
+<section class="whats-new">
+  <a class="whats-new-link" href="/symbol-font/changelog/">
+    <div class="wn-meta">
+      <span class="wn-label">What's new</span>
+      <span class="badge">{{ latest.version }}</span>
+      {% if latest.summary.added %}<span class="summary-pill summary-pill--added">+{{ latest.summary.added }}</span>{% endif %}
+      {% if latest.summary.removed %}<span class="summary-pill summary-pill--removed">−{{ latest.summary.removed }}</span>{% endif %}
+      {% if latest.summary.renamed %}<span class="summary-pill summary-pill--renamed">~{{ latest.summary.renamed }}</span>{% endif %}
+    </div>
+    <div class="wn-glyphs">
+      {% for g in latest.preview.added %}
+      <span class="wn-chip" title="{{ g.name }} · U+{{ g.hex }}">
+        <span class="lg wn-chip-glyph" aria-hidden="true">{{ g.char }}</span>
+        <span class="wn-chip-name">{{ g.name }}</span>
+      </span>
+      {% endfor %}
+      {% for g in latest.preview.renamed %}
+      <span class="wn-chip wn-chip--renamed" title="{{ g.old_name }} → {{ g.new_name }} · U+{{ g.hex }}">
+        <span class="lg wn-chip-glyph" aria-hidden="true">{{ g.char }}</span>
+        <span class="wn-chip-name"><del>{{ g.old_name }}</del><span class="wn-arrow" aria-hidden="true">→</span>{{ g.new_name }}</span>
+      </span>
+      {% endfor %}
+    </div>
+    <span class="wn-cta">Full changelog →</span>
+  </a>
+</section>
+{% endif %}
 
 <section class="sets-preview">
   <h2>Included Icon Sets</h2>

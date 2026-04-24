@@ -1,0 +1,116 @@
+---
+layout: layouts/base.njk
+title: Glyph Changelog — Low Gravitas Symbols
+description: A history of glyph additions, removals, and renames across Low Gravitas Symbols releases.
+bodyClass: demo-symbol-changelog
+extraCss: /css/symbol-font.css
+permalink: /symbol-font/changelog/
+---
+
+<div class="changelog-hero">
+  <nav class="cl-breadcrumb" aria-label="Breadcrumb">
+    <a href="/symbol-font/">Low Gravitas Symbols</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">Changelog</span>
+  </nav>
+  <h1>Glyph Changelog</h1>
+  <p class="cl-lead">Additions, removals, and renames across every release.</p>
+</div>
+
+<div class="changelog-feed">
+  {% if glyphChangelog | length %}
+
+    {% for release in glyphChangelog %}
+    <div class="changelog-release">
+
+      <div class="release-header">
+        <a class="release-version" href="{{ release.htmlUrl }}" target="_blank" rel="noopener">{{ release.version }}</a>
+        <time class="release-date" datetime="{{ release.date }}">{{ release.date }}</time>
+        <div class="release-summary">
+          {% if release.summary.added %}
+          <span class="summary-pill summary-pill--added">+{{ release.summary.added }}</span>
+          {% endif %}
+          {% if release.summary.removed %}
+          <span class="summary-pill summary-pill--removed">−{{ release.summary.removed }}</span>
+          {% endif %}
+          {% if release.summary.renamed %}
+          <span class="summary-pill summary-pill--renamed">~{{ release.summary.renamed }}</span>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if release.added | length %}
+      <details class="glyph-section glyph-section--added"{% if release.added | length <= 40 %} open{% endif %}>
+        <summary>
+          <span class="section-title">Added</span>
+          <span class="section-count">{{ release.added | length }}</span>
+        </summary>
+        <div class="glyph-grid">
+          {% for g in release.added %}
+          <div class="glyph-card glyph-card--added" title="{{ g.name }} · U+{{ g.hex }} · {{ g.set }}">
+            <span class="lg glyph-char" aria-hidden="true">{{ g.char }}</span>
+            <span class="glyph-name">{{ g.name }}</span>
+            <span class="glyph-cp">U+{{ g.hex }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </details>
+      {% endif %}
+
+      {% if release.removed | length %}
+      <details class="glyph-section glyph-section--removed"{% if release.removed | length <= 40 %} open{% endif %}>
+        <summary>
+          <span class="section-title">Removed</span>
+          <span class="section-count">{{ release.removed | length }}</span>
+        </summary>
+        <div class="glyph-grid">
+          {% for g in release.removed %}
+          <div class="glyph-card {{ 'glyph-card--reassigned' if g.reassigned else 'glyph-card--removed' }}"
+               title="{{ g.name }} · U+{{ g.hex }} · {{ g.set }}{% if g.reassigned %} — codepoint reassigned{% endif %}">
+            {% if g.reassigned %}
+            <span class="lg glyph-char" aria-hidden="true">{{ g.char }}</span>
+            {% else %}
+            <span class="glyph-missing" aria-hidden="true">◻</span>
+            {% endif %}
+            <span class="glyph-name">{{ g.name }}</span>
+            <span class="glyph-cp">U+{{ g.hex }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </details>
+      {% endif %}
+
+      {% if release.renamed | length %}
+      <details class="glyph-section glyph-section--renamed"{% if release.renamed | length <= 40 %} open{% endif %}>
+        <summary>
+          <span class="section-title">Renamed</span>
+          <span class="section-count">{{ release.renamed | length }}</span>
+        </summary>
+        <div class="rename-grid">
+          {% for g in release.renamed %}
+          <div class="rename-card">
+            <span class="lg rename-char" aria-hidden="true">{{ g.char }}</span>
+            <div class="rename-info">
+              <span class="rename-names">
+                <del>{{ g.old_name }}</del><span class="rename-arrow" aria-hidden="true">→</span>{{ g.new_name }}
+              </span>
+              <span class="rename-meta">U+{{ g.hex }} · {{ g.set }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </details>
+      {% endif %}
+
+    </div>
+    {% endfor %}
+
+  {% else %}
+  <div class="cl-empty">
+    <p>No changelog data yet — glyph diffs will appear here after the next font release ships.</p>
+    <a class="btn" href="https://github.com/low-gravitas/low-gravitas-symbol-font/releases" target="_blank" rel="noopener">
+      View releases on GitHub
+    </a>
+  </div>
+  {% endif %}
+</div>

@@ -120,6 +120,7 @@
         <div class="actions">
           <a class="btn btn--primary iri-rim" href="#" onclick="event.preventDefault()">&#x2193; Download Font</a>
           <a class="btn iri-rim" href="#browser" onclick="event.preventDefault()">&#x2315; Browse Glyphs</a>
+          <a class="btn iri-rim" href="#symbol-font-changelog" onclick="event.preventDefault()">&#x23F2; Changelog</a>
           <a class="btn iri-rim" href="#" onclick="event.preventDefault()">View on GitHub &#x2197;</a>
         </div>
       </div>
@@ -141,6 +142,29 @@
           <p>Designed for monospaced environments — terminals, editors, and status lines.</p>
         </div>
       </div>
+
+      <!-- What's new teaser strip — links to changelog, shows latest release summary -->
+      <section class="whats-new">
+        <a class="whats-new-link" href="#symbol-font-changelog" onclick="event.preventDefault()">
+          <div class="wn-meta">
+            <span class="wn-label">What's new</span>
+            <span class="badge">v0.3.1</span>
+            <span class="summary-pill summary-pill--added">+1</span>
+            <span class="summary-pill summary-pill--renamed">~1</span>
+          </div>
+          <div class="wn-glyphs">
+            <span class="wn-chip" title="kajabi · U+E901">
+              <span class="wn-chip-glyph" aria-hidden="true">&#x25C6;</span>
+              <span class="wn-chip-name">kajabi</span>
+            </span>
+            <span class="wn-chip wn-chip--renamed" title="vm-pending → share-window · U+F5002">
+              <span class="wn-chip-glyph" aria-hidden="true">&#x25A3;</span>
+              <span class="wn-chip-name"><del>vm-pending</del><span class="wn-arrow" aria-hidden="true">→</span>share-window</span>
+            </span>
+          </div>
+          <span class="wn-cta">Full changelog →</span>
+        </a>
+      </section>
 
       <div class="sets-preview">
         <h2>Included Icon Sets</h2>
@@ -223,6 +247,93 @@
         <button class="btn btn--sm btn--ghost" type="button">Clear</button>
         <button class="btn btn--sm btn--primary iri-rim" type="button">Download CSS subset</button>
       </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- Pattern: Symbol-font changelog                                    -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <div class="pattern-break">
+      <div class="pattern-break-label">
+        <span class="tag">Symbol Font changelog</span>
+        <span class="note">/ symbol-font/changelog/ — timeline feed of releases with glyph grids + rename rows</span>
+      </div>
+    </div>
+
+    <section class="pattern-section" id="symbol-font-changelog">
+
+      <!-- Release entry — one per font version, newest first -->
+      <div class="changelog-release">
+        <div class="release-header">
+          <a class="release-version" href="#" onclick="event.preventDefault()">v0.3.1</a>
+          <time class="release-date" datetime="2026-04-23">2026-04-23</time>
+          <div class="release-summary">
+            <span class="summary-pill summary-pill--added">+1</span>
+            <span class="summary-pill summary-pill--renamed">~1</span>
+          </div>
+        </div>
+
+        <!-- Added glyphs — square cards in a responsive grid -->
+        <details class="glyph-section glyph-section--added" open>
+          <summary>
+            <span class="section-title">Added</span>
+            <span class="section-count">1</span>
+          </summary>
+          <div class="glyph-grid">
+            <div class="glyph-card glyph-card--added" title="kajabi · U+E901 · Custom">
+              <span class="glyph-char" aria-hidden="true">&#x25C6;</span>
+              <span class="glyph-name">kajabi</span>
+              <span class="glyph-cp">U+E901</span>
+            </div>
+            <div class="glyph-card glyph-card--added" title="share-window · U+F5003 · Codicons">
+              <span class="glyph-char" aria-hidden="true">&#x25A3;</span>
+              <span class="glyph-name">share-window</span>
+              <span class="glyph-cp">U+F5003</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Removed glyphs — dimmed; show ◻ placeholder if codepoint gone, actual glyph if reassigned -->
+        <details class="glyph-section glyph-section--removed" open>
+          <summary>
+            <span class="section-title">Removed</span>
+            <span class="section-count">2</span>
+          </summary>
+          <div class="glyph-grid">
+            <!-- codepoint gone entirely — show placeholder -->
+            <div class="glyph-card glyph-card--removed" title="old-glyph · U+E900 · Custom">
+              <span class="glyph-missing" aria-hidden="true">&#x25FB;</span>
+              <span class="glyph-name">old-glyph</span>
+              <span class="glyph-cp">U+E900</span>
+            </div>
+            <!-- codepoint reassigned — show current glyph, dimmed amber border -->
+            <div class="glyph-card glyph-card--reassigned" title="old-name · U+E901 · Custom — codepoint reassigned">
+              <span class="glyph-char" aria-hidden="true">&#x25C6;</span>
+              <span class="glyph-name">old-name</span>
+              <span class="glyph-cp">U+E901</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Renamed glyphs — full-width rows, same codepoint, old name → new name -->
+        <details class="glyph-section glyph-section--renamed" open>
+          <summary>
+            <span class="section-title">Renamed</span>
+            <span class="section-count">1</span>
+          </summary>
+          <div class="rename-grid">
+            <div class="rename-card">
+              <span class="rename-char" aria-hidden="true">&#x25A3;</span>
+              <div class="rename-info">
+                <span class="rename-names">
+                  <del>vm-pending</del><span class="rename-arrow" aria-hidden="true">→</span>share-window
+                </span>
+                <span class="rename-meta">U+F5002 · Codicons</span>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════════ -->
