@@ -11,6 +11,7 @@ export default {
   locale: "en-US",
   buildTime: new Date().toISOString(),
   buildHash,
+  isDev: process.env.NODE_ENV !== "production",
   versions: {
     theme: pins["theme"],
     symbolFont: pins["symbol-font"],

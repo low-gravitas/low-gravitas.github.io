@@ -51,6 +51,9 @@
 
 <script src="/js/theme-toggle.js" defer></script>
 <script src="/js/nav.js" defer></script>
+{% if eleventy.env.runMode === "serve" %}
+<a class="dev-badge" href="/design-system/components-v2.html" title="Open design system">DS</a>
+{% endif %}
 {% if tags and "blog" in tags %}
 <script src="/js/blog-code.js" defer></script>
 <script src="/js/blog-lightbox.js" defer></script>

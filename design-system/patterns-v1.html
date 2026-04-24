@@ -13,6 +13,15 @@
   <link rel="stylesheet" href="/css/symbol-font.css">
   <link rel="stylesheet" href="/css/blog.css">
   <link rel="stylesheet" href="/design-system/demos.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body class="demo-theme demo-symbol-font">
 
@@ -20,41 +29,22 @@
   <div class="demo-controls" role="toolbar" aria-label="Demo settings">
     <strong class="demo-title">Patterns v1</strong>
     <span class="demo-subtitle">assembled sections</span>
-
     <div class="spacer"></div>
-
-    <div class="control-group">
-      <label>Theme</label>
-      <div class="segmented" id="ctl-theme">
-        <button type="button" data-theme="dark" aria-pressed="true">Dark</button>
-        <button type="button" data-theme="light" aria-pressed="false">Light</button>
-      </div>
-    </div>
-
-    <div class="control-group">
-      <label>Page bg</label>
-      <div class="segmented" id="ctl-bg">
-        <button type="button" data-bg="none" aria-pressed="false">None</button>
-        <button type="button" data-bg="iri-subtle" aria-pressed="true">Subtle</button>
-        <button type="button" data-bg="iri-vivid" aria-pressed="false">Vivid</button>
-      </div>
-    </div>
-
     <button type="button" class="btn btn--sm btn--ghost" id="ctl-iri">Pause iri</button>
-
     <a href="./components-v2.html" class="btn btn--sm btn--ghost">Components →</a>
   </div>
 
-  <!-- Site top-nav (mirrors what the real site uses) -->
+  <!-- Site nav — same markup as the real site -->
   <nav class="top-nav">
-    <a class="top-nav-brand" href="#">
+    <a class="top-nav-brand" href="/">
       <img src="/apple-touch-icon.png" alt="" class="brand-logo" width="28" height="28">
       Low Gravitas
     </a>
     <div class="top-nav-links">
-      <a href="#zen-theme">Theme</a>
-      <a href="#symbol-font">Symbol Font</a>
-      <a href="#blog-index" aria-current="page">Blog</a>
+      <a href="/theme/">Theme</a>
+      <a href="/symbol-font/">Symbol Font</a>
+      <a href="/blog/">Blog</a>
+      <a href="/design-system/components-v2.html" aria-current="page">Design System</a>
     </div>
     <button id="theme-toggle" class="btn btn--icon btn--sm iri-rim" type="button" aria-label="Toggle light/dark theme">
       <span class="lg" aria-hidden="true">&#xF050E;</span>
@@ -687,28 +677,12 @@ body {
     </div>
   </footer>
 
+  <script src="/js/theme-toggle.js" defer></script>
+  <script src="/js/nav.js" defer></script>
   <script>
-    const root = document.documentElement;
-    const attrMap = { theme: 'theme', bg: 'page-bg' };
-
-    function wireSegmented(id, key) {
-      const group = document.getElementById(id);
-      if (!group) return;
-      group.addEventListener('click', (e) => {
-        const btn = e.target.closest('button[data-' + key + ']');
-        if (!btn) return;
-        root.setAttribute('data-' + attrMap[key], btn.dataset[key]);
-        group.querySelectorAll('button').forEach(b => {
-          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
-        });
-      });
-    }
-    wireSegmented('ctl-theme', 'theme');
-    wireSegmented('ctl-bg', 'bg');
-
     document.getElementById('ctl-iri').addEventListener('click', (e) => {
-      const paused = root.getAttribute('data-iri') === 'paused';
-      root.setAttribute('data-iri', paused ? 'running' : 'paused');
+      const paused = document.documentElement.getAttribute('data-iri') === 'paused';
+      document.documentElement.setAttribute('data-iri', paused ? 'running' : 'paused');
       e.currentTarget.textContent = paused ? 'Pause iri' : 'Resume iri';
     });
   </script>

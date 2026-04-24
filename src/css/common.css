@@ -1368,6 +1368,27 @@
     .top-nav-links a { padding: 5px 10px; }
   }
 
+  /* Dev-only floating badge — rendered only in eleventy serve mode */
+  .dev-badge {
+    position: fixed;
+    bottom: 14px;
+    right: 16px;
+    z-index: 200;
+    font-size: 10px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--lg-surface-dark);
+    color: var(--lg-text-faint);
+    border: 1px solid var(--lg-border-medium);
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity var(--dur-fast), color var(--dur-fast);
+  }
+  .dev-badge:hover { opacity: 1; color: var(--lg-accent-fg); }
+
   .tabs {
     display: flex;
     gap: 4px;
