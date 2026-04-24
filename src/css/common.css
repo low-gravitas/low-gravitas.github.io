@@ -1414,6 +1414,12 @@
   .crumbs-sep { color: var(--lg-text-faint); opacity: 0.6; }
   .crumbs [aria-current="page"] { color: var(--lg-text); }
 
+  .page-crumbs {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 24px 0;
+  }
+
   .pagination {
     display: flex;
     gap: 4px;

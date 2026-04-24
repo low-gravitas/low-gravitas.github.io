@@ -2,6 +2,14 @@
 layout: layouts/base.njk
 ---
 
+<nav class="page-crumbs" aria-label="Breadcrumb">
+  <ol class="crumbs">
+    <li><a href="/blog/">Blog</a></li>
+    <li class="crumbs-sep" aria-hidden="true">/</li>
+    <li aria-current="page">{{ title }}</li>
+  </ol>
+</nav>
+
 <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
   <header class="post-header">
     <h1 itemprop="headline">{{ title }}</h1>

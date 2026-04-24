@@ -261,8 +261,21 @@
 
     <section class="pattern-section" id="symbol-font-changelog">
 
+      <!-- Breadcrumb — shared .crumbs component, outside the centered hero -->
+      <nav class="page-crumbs" aria-label="Breadcrumb">
+        <ol class="crumbs">
+          <li><a href="#" onclick="event.preventDefault()">Symbol Font</a></li>
+          <li class="crumbs-sep" aria-hidden="true">/</li>
+          <li aria-current="page">Changelog</li>
+        </ol>
+      </nav>
+      <div class="changelog-hero">
+        <h1>Glyph Changelog</h1>
+        <p class="cl-lead">Additions, removals, and renames across every release.</p>
+      </div>
+
       <!-- Release entry — one per font version, newest first -->
-      <div class="changelog-release">
+      <div class="changelog-feed"><div class="changelog-release">
         <div class="release-header">
           <a class="release-version" href="#" onclick="event.preventDefault()">v0.3.1</a>
           <time class="release-date" datetime="2026-04-23">2026-04-23</time>
@@ -332,7 +345,7 @@
             </div>
           </div>
         </details>
-      </div>
+      </div></div><!-- /.changelog-release /.changelog-feed -->
 
     </section>
 

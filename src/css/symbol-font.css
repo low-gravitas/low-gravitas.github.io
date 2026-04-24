@@ -617,20 +617,13 @@
     text-align: center;
   }
 
-  .cl-breadcrumb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: var(--text-xs);
-    color: var(--lg-text-dim);
-    margin-bottom: 16px;
+  /* Browser breadcrumb is full-width to match the toolbar */
+  .demo-symbol-browser .page-crumbs {
+    max-width: none;
+    padding: 20px 24px 0;
   }
-  .cl-breadcrumb a {
-    color: var(--lg-accent-fg);
-    text-decoration: none;
-  }
-  .cl-breadcrumb a:hover { text-decoration: underline; }
+
+  .changelog-hero { margin-top: 20px; }
 
   .cl-lead {
     color: var(--lg-text-dim);
