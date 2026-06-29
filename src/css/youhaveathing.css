@@ -1,0 +1,53 @@
+/* You Have a Thing — app landing.
+   Mirrors the Symbol Font landing: a centered hero (with the app icon in place
+   of the floating glyphs), a 3-up feature grid, and a status banner styled
+   like the Symbol Font "What's new" card. */
+
+@layer pages {
+  .app-yhat .hero .app-icon {
+    display: block;
+    width: 112px;
+    height: auto;
+    margin: 0 auto 20px;
+  }
+  .app-yhat .hero .badge { margin-bottom: 12px; }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto 48px;
+    padding: 0 24px;
+  }
+
+  /* Status banner — same visual language as the Symbol Font "What's new" card. */
+  .app-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    width: min(720px, calc(100% - 48px));
+    margin: 0 auto 48px;
+    padding: 14px 18px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--lg-border-subtle);
+    background: var(--lg-grad-surface);
+  }
+  .app-banner-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--lg-text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    flex-shrink: 0;
+  }
+  .app-banner-text {
+    flex: 1;
+    min-width: 0;
+    color: var(--lg-text-dim);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+  }
+  .app-banner-text strong { color: var(--lg-text); }
+}

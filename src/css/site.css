@@ -1,12 +1,19 @@
-/* Home page — hero card grid.
+/* Home + app landing — card grid and landing note.
    The hero itself uses the shared .hero component in common.css. */
 
 @layer components {
+  /* Centered flex-wrap handles 1, 2, or 3 cards gracefully: a lone card
+     centers, three sit in a single row instead of wrapping 2 + 1. */
   .home-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
-    max-width: var(--content-narrow);
+    max-width: var(--content-wide);
     margin: 0 auto;
+  }
+  .home-cards > .card {
+    flex: 1 1 280px;
+    max-width: 360px;
   }
 }
