@@ -50,4 +50,43 @@
     line-height: var(--leading-snug);
   }
   .app-banner-text strong { color: var(--lg-text); }
+
+  /* Screenshots. All three sit together below the feature cards, capped at the
+     regular content width: the full-screen takeover scales to that width, with
+     the popover and banner paired beneath it. */
+  .shots {
+    width: min(var(--content-narrow), calc(100% - 48px));
+    margin: 0 auto 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .shot { margin: 0; text-align: center; }
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--lg-border-subtle);
+  }
+  .shot figcaption {
+    margin-top: 14px;
+    color: var(--lg-text-dim);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+  }
+
+  .shot-takeover img { box-shadow: var(--shadow-overlay); }
+
+  .shots-duo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 28px 36px;
+  }
+  .shots-duo .shot img { width: auto; box-shadow: var(--shadow-drop); }
+  .shots-duo .shot-popover img { width: 220px; max-width: 100%; }
+  .shots-duo .shot-banner img { width: 440px; max-width: 100%; }
+  .shots-duo figcaption { max-width: 30ch; margin-inline: auto; }
 }
