@@ -4,6 +4,12 @@ title: You Have a Thing — Support
 description: Help and answers for You Have a Thing, the macOS menu bar meeting reminder.
 extraCss: /css/blog.css
 contactJs: true
+crumbs:
+  - label: Apps
+    url: /apps/
+  - label: You Have a Thing
+    url: /apps/you-have-a-thing/
+  - label: Support
 ---
 
 Need a hand? Email <a class="email-link" data-user="support" data-domain="lowgravitas.com">support [at] lowgravitas.com</a> and we'll get back to you.

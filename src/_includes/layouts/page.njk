@@ -2,6 +2,16 @@
 layout: layouts/base.njk
 ---
 
+{% if crumbs %}
+<nav class="page-crumbs" aria-label="Breadcrumb">
+  <ol class="crumbs">
+    {%- for c in crumbs %}
+    {%- if c.url %}<li><a href="{{ c.url }}">{{ c.label }}</a></li>{% else %}<li aria-current="page">{{ c.label }}</li>{% endif %}
+    {%- if not loop.last %}<li class="crumbs-sep" aria-hidden="true">/</li>{% endif %}
+    {%- endfor %}
+  </ol>
+</nav>
+{% endif %}
 <div class="page">
   <h1>{{ title }}</h1>
   <div class="prose page-content">

@@ -4,6 +4,12 @@ title: You Have a Thing — Privacy Policy
 description: You Have a Thing runs entirely on your Mac and collects no personal data. No tracking, no analytics, no servers.
 extraCss: /css/blog.css
 contactJs: true
+crumbs:
+  - label: Apps
+    url: /apps/
+  - label: You Have a Thing
+    url: /apps/you-have-a-thing/
+  - label: Privacy
 ---
 
 *Last updated: June 29, 2026*
